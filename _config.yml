@@ -1,7 +1,8 @@
-markdown: rdiscount
+#markdown: rdiscount
+markdown: kramdown
 permalink: /:year/:month/:day/:title/
-url: http://webfrogs.github.com
-author: webfrogs
+url: http://www.iguowei.com
+author: guowei
 pygments: true
 safe: true
 paginate: 16
