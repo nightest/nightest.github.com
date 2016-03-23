@@ -1,8 +1,8 @@
 #markdown: rdiscount
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
-url: http://www.iguowei.com
-author: guowei
+url: http:nightest.github.com
+author: Eugene
 pygments: true
 safe: true
 paginate: 16
