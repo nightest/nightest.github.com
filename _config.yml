@@ -3,7 +3,7 @@ permalink: /:year/:month/:day/:title/
 url: http:nightest.github.com
 author: Eugene
 pygments: true
-safe: true
+safe: false
 paginate: 16
 auto: true
 
