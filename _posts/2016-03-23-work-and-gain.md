@@ -2,7 +2,7 @@
 layout: post
 title: 这一年来
 category: default
-tags: [notes][工作]
+tags: [notes]
 ---
 
 ### 感叹
