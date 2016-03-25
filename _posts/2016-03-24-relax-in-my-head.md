@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 心，得自在
+title: 心，自在
 category: default
 tags: [notes, 自在]
 ---
