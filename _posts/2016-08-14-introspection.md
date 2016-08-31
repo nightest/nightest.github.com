@@ -1,12 +1,10 @@
 ---
 layout: post
-title: self introspection
+title: Self Introspection
 category: introspection
 tags: [notes]
 ---
 
-
-## Self introspection
 
 ### start from today
 

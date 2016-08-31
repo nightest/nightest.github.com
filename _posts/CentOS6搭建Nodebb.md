@@ -1,0 +1,125 @@
+---
+layout: post
+title: CentOS搭建Nodebb
+category: tech
+tags: [tech, linux, centos, nodebb]
+---
+
+# CentOS搭建Nodebb
+
+## 1. 安装MongoDB
+[参考](http://www.cnblogs.com/kgdxpr/p/3519352.html)
+
+### 1.1 下载MongoDB（64位）
+
+[http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz](http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz)
+
+### 1.2 安装MongoDB
+
+```
+tar zxvf mongodb-linux-x86_64-2.4.9.tgz
+mv mongodb-linux-x86_64-2.4.9 /usr/local/mongodb
+cd mongodb
+mkdir db
+mkdir logs
+cd bin
+vi /usr/local/mongodb/bin/mongodb.conf
+```
+
+加入内容：
+
+```
+dbpath=/usr/local/mongodb/db
+logpath=/usr/local/mongodb/logs/mongodb.log
+port=27017
+fork=true
+nohttpinterface=true
+```
+
+修改mongodb.conf内容：
+```
+#auth = true
+修改成（去掉注释）
+auth = true
+```
+
+### 1.3 重新绑定mongodb的配置文件地址和访问IP
+
+```
+/usr/local/mongodb/bin/mongod --bind_ip localhost -f /usr/local/mongodb/bin/mongodb.conf
+```
+
+### 1.4 开机自启动
+
+```
+vim /etc/rc.d/rc.local
+/usr/local/mongodb/bin/mongod --config /usr/local/mongodb/bin/mongodb.conf
+```
+
+### 1.4 测试MongoDB
+
+```
+#进入mongodb的shell模式
+/usr/local/mongodb/bin/mongo
+#查看数据库列表
+show dbs
+#当前db版本
+db.version();
+```
+
+### 1.5 设置数据库、用户名、密码
+
+设置方法[如下](https://nodebb.readthedocs.io/en/latest/configuring/databases/mongo.html)：
+
+```
+$ mongo
+> use nodebb
+#For MongoDB 2.6.x
+> db.createUser( { user: "nodebb", pwd: "<Enter in a secure password>", roles: [ "readWrite" ] } )
+#For earlier versions of MongoDB (if the above throws an error)
+> db.addUser( { user: "nodebb", pwd: "<Enter in a secure password>", roles: [ "readWrite" ] } )
+```
+
+## 2. 安装依赖
+[参考](http://www.chinaz.com/web/2015/1102/465216.shtml)
+
+```
+yum install nodejs
+yum install npm
+yum install  imagemagick
+yum install libjpeg* libpng* freetype* gd*
+```
+
+## 3. 安装Nodebb
+[参考](http://www.tuicool.com/articles/zIJzm2I)
+
+```
+cd  安装目录
+git clone git://github.com/NodeBB/NodeBB.git nodebb
+```
+
+进入目录安装nodebb所需要的nodejs模块:`cd nodebb && npm install`
+
+其他安装模块方法：
+```
+npm i mongodb@2.1.21
+npm ls mongodb
+```
+
+## 4. 配置Nodebb
+
+```
+cd  安装nodebb目录
+node app --setup
+```
+或者编辑config.json文件
+
+## 5. 启动nodebb启动脚本
+
+```
+./nodebb start
+#查看log
+./nodebb log
+#重启nodebb
+./nodebb restart
+```
