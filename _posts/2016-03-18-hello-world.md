@@ -2,6 +2,7 @@
 layout: post
 title: Hello world!
 category: 生活随笔
+tag: [开始, jekyll, 图片]
 ---
 
 这是一篇测试文章，是我在**Blog**写下的第一篇文章。
