@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 我的健康
-category: default
+category: 生活随笔
 tags: [notes, 健康]
 ---
 

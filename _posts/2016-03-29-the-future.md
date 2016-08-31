@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 未来
-category: 计划
+category: 生活随笔
 tags: [生活, 未来]
 ---
 

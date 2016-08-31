@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 心，自在
-category: default
+category: 生活随笔
 tags: [notes, 自在]
 ---
 

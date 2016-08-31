@@ -2,7 +2,7 @@
 layout: post
 title: Self Introspection
 category: introspection
-tags: [notes]
+tags: [notes, eng]
 ---
 
 

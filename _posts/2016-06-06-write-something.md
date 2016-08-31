@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 写点儿什么
-category: default
+category: 生活随笔
 tags: [notes, 涂鸦]
 ---
 
