@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Hello world!
-category: default
+category: 生活随笔
 ---
 
-这是一篇测试文章，你可以在`_posts`目录修改或删除它。
+这是一篇测试文章，是我在**Blog**写下的第一篇文章。
 
 现在，我可以：
 
@@ -19,5 +19,7 @@ category: default
 * [Gravatar]统一头像标识服务
 * ……
 
-感谢这个有云的时代！可以让我们通过一件件简单的工具打造属于每个程序员自己的站点，[像黑客一样写博客](http://kyle.xlau.org/posts/blogging-like-a-hacker.html)（原文：[Blogging Like a Hacker](http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html)）。
+测试插入图片：![test](https://goo.gl/photos/H3xQwpMrBrncjmoM8)
+
+参考：[像黑客一样写博客](http://kyle.xlau.org/posts/blogging-like-a-hacker.html)（原文：[Blogging Like a Hacker](http://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html)）。
 
