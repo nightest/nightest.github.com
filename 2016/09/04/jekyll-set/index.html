@@ -73,7 +73,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -196,7 +196,7 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">All my Notes</p>
+  <p class="site-subtitle">All Notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -365,11 +365,11 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
 <hr>
 <h2 id="1-如何添加代码高亮"><a href="#1-如何添加代码高亮" class="headerlink" title="1. 如何添加代码高亮"></a>1. 如何添加代码高亮</h2><p>不同编程语言的关键词、语法不同，因此需要对不同的位置进行高亮设置，因为目前<strong>jekyll</strong>默认编辑器为<strong>kramdown</strong>，并不支持<strong>pygments</strong>的代码高亮渲染，因此需要改为<strong>rouge</strong>进行渲染。</p>
 <p><strong>jekyll 3.0</strong>的修改方法如下，修改<strong>_config.yml</strong>文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">markdown: kramdown</div><div class="line">highlighter: rouge</div></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">markdown:</span> kramdown</div><div class="line"><span class="symbol">highlighter:</span> rouge</div></pre></td></tr></table></figure>
 <p>添加<strong>highlighter</strong>为<strong>rouge</strong>即可。</p>
 <p><strong>Ref:</strong> <a href="https://sacha.me/articles/jekyll-rouge/" target="_blank" rel="external">https://sacha.me/articles/jekyll-rouge/</a></p>
 <h2 id="2-修改代码块背景与字体颜色"><a href="#2-修改代码块背景与字体颜色" class="headerlink" title="2. 修改代码块背景与字体颜色"></a>2. 修改代码块背景与字体颜色</h2><p>修改文件 <strong>media/css/style.css</strong>即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pre,code&#123;font-family:Menlo,&quot;Andale Mono&quot;,Consolas,&quot;Courier New&quot;,Monaco,monospace;font-size:14px;color:#586e75;&#125;</div><div class="line">code&#123;background-color:#fdf6e3;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">pre</span>,<span class="selector-tag">code</span>&#123;<span class="attribute">font-family</span>:Menlo,<span class="string">"Andale Mono"</span>,Consolas,<span class="string">"Courier New"</span>,Monaco,monospace;<span class="attribute">font-size</span>:<span class="number">14px</span>;<span class="attribute">color</span>:<span class="number">#586e75</span>;&#125;</div><div class="line"><span class="selector-tag">code</span>&#123;<span class="attribute">background-color</span>:<span class="number">#fdf6e3</span>;&#125;</div></pre></td></tr></table></figure>
 <p>在线调色工具：<a href="http://www.atool.org/colorpicker.php" target="_blank" rel="external">http://www.atool.org/colorpicker.php</a></p>
 <h2 id="3-绑定域名"><a href="#3-绑定域名" class="headerlink" title="3. 绑定域名"></a>3. 绑定域名</h2><p>为了方便访问，我从namecheap上购买了一个top域名，绑定方法如下~</p>
 <h4 id="coding-net-设置"><a href="#coding-net-设置" class="headerlink" title="coding net 设置"></a><strong>coding net</strong> 设置</h4><p>首先打开<strong>coding net</strong>中该项目的<strong>pages服务</strong>选项，绑定一个自定义域名。</p>
@@ -525,7 +525,7 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -542,7 +542,7 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

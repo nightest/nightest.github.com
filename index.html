@@ -73,7 +73,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -170,7 +170,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">All my Notes</p>
+  <p class="site-subtitle">All Notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -244,6 +244,143 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/24/hexo-migrate/" itemprop="url">
+                  从jekyll迁移到hexo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-24T00:00:00+08:00" content="2016-09-24">
+              2016-09-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/24/hexo-migrate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/24/hexo-migrate/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+           人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。
+—— 刘易斯
+
+近期看到很多布置在Git上的blog都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。
+现将迁移的方法与步骤记录如下，方便参考~~
+1. shell环境代理设置因为在安装node、hexo过程中发现有时候因为网速太慢，或者GFW影响，导致安装停顿，所以国内条件允许的情况下需要设置代理~设置方法如下：
+1export http_proxy=proxy_addr:port
+2. Hexo与Next主题安装2.1 安装node如果本机没有安装过node则需要安装该环境，安装示例：
+12yum install nodejsyum install npm
+或者从源文件安装，å®装方法请自行搜索。
+查看安装的node版本：
+12node -vnpm -v
+2.2 安装Hexo与Next主题1sudo npm install 
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/24/hexo-migrate/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1160,7 +1297,7 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
 添加highlighter为rouge即可。
 Ref: https://sacha.me/articles/jekyll-rouge/
 2. 修改代码块背景与字体颜色修改文件 media/css/style.css即可：
-12pre,code&#123;font-family:Menlo,&quot;Andale Mono&quot;,Consolas,&quot;Courier New&quot;,Monaco,monospace;font-s
+12pre,code&#123;font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:14px;color:#586e
           ...
 
           <div class="post-more-link text-center">
@@ -1293,8 +1430,8 @@ content{:toc}
 
 前期设置前期设置包括绑定远程git分支，源代码绑定为远程gcorigin主机的master分支，而子文件夹_site中的build完成的软件则绑定为gcorigin的coding-pages分支，具体配置方法请参考jekyll的迁移。
 自动化shell脚本根据提交顺序，在blog所在文件夹内新建add_post.sh文件，内容如下：
-12345678git add .git commit -m &apos;add posts&apos;git push gcorigin coding-pages:masterjekyll buildcd _site/git add .git commit -m &apos;add posts&apos;git push origin master:coding-pages
-赋予该脚本运行权限，在_posts文件夹下添加文件后，在当前文件夹下用./add_post.s
+12345678git add .git commit -m 'add posts'git push gcorigin coding-pages:masterjekyll buildcd _site/git add .git commit -m 'add posts'git push origin master:coding-pages
+赋予该脚本运行权限，在_posts文件夹下添加文件后，在当前文件夹下用./add_post.sh的方式运行即可自动buld并提交静态网
           ...
 
           <div class="post-more-link text-center">
@@ -1569,7 +1706,7 @@ content{:toc}
 sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：
 sublime配置在使用sublime之前需要进行一系列的配置，配置方法如下：
 安装包管理插件使用快捷键ctr + ~调出命令行模式，输入以下内容并回车：
-1import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(
+1import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.jo
           ...
 
           <div class="post-more-link text-center">
@@ -1838,144 +1975,11 @@ content{:toc}
 2. jekyll 代码修改在文件_layouts/post.html的末尾添加：
 1#&#123;% include comments.md %&#125;
 然后新建文件_includes/comments.md，文件内容如下：
-12345678910111213141516171819202122232425262728&lt;!-- Disqus Comment BEGIN --&gt;    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;    &lt;script type=&quot;text/javascript&quot;&gt;    /**     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND 
+12345678910111213141516171819202122232425262728&lt;!-- Disqus Comment BEGIN --&gt;    &lt;div id="disqus_thread"&gt;&lt;/div&gt;    &lt;script type="text/javascript"&gt;    /**     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTIO
           ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/02/disqus/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/31/mongdb-mig/" itemprop="url">
-                  CentOS6迁移NOdebb与MongoDB的升级
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/mongdb-mig/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/mongdb-mig/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-Content{:toc}
-
-1. 常见问题1：mongodb 启动不了 mongodb 启动不了
-报错:child process failed, exited with error number 100
-检查启动日志发现：
-12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/core/repair for recovery instructions.*************Sat Apr 20 09:40:31.286 [initandlisten] exception in initAndListen: 12596 old lock file, terminating
-于是：
-12345678#删除db文件夹下的mongod.lock文件rm /usr/local/mongodb/db/mongod.lock#然后以repair的模式启动：/usr/local/m
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/mongdb-mig/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2159,8 +2163,8 @@ CentOS搭建Nodebb1. 安装MongoDB参考
             
               
                 
-                <a class="post-title-link" href="/2016/08/30/10x-data-ana/" itemprop="url">
-                  10X Data Analysis
+                <a class="post-title-link" href="/2016/08/31/mongdb-mig/" itemprop="url">
+                  CentOS6迁移NOdebb与MongoDB的升级
                 </a>
               
             
@@ -2173,8 +2177,8 @@ CentOS搭建Nodebb1. 安装MongoDB参考
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
-              2016-08-30
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
             </time>
           </span>
 
@@ -2187,8 +2191,8 @@ CentOS搭建Nodebb1. 安装MongoDB参考
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
-                    <span itemprop="name">bioinformatics</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -2203,8 +2207,8 @@ CentOS搭建Nodebb1. 安装MongoDB参考
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/30/10x-data-ana/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/10x-data-ana/" itemprop="commentsCount"></span>
+                <a href="/2016/08/31/mongdb-mig/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/mongdb-mig/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -2232,14 +2236,16 @@ CentOS搭建Nodebb1. 安装MongoDB参考
           
 Content{:toc}
 
-1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
-执行：:
-12345678$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXXsupernova demuxCopyright (c) 2016 10x Genomics, Inc.  All rights reserved.-----------------------------------------------------------------------------Martian Runtime - 2.0.0Running preflight checks (please wait)...
-如果
+1. 常见问题1：mongodb 启动不了 mongodb 启动不了
+报错:child process failed, exited with error number 100
+检查启动日志发现：
+12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/core/repair for recovery instructions.*************Sat Apr 20 09:40:31.286 [initandlisten] exception in initAndListen: 12596 old lock file, terminating
+于是：
+12345678#删除db文件夹下的mongod.lock文件rm /usr/local/mongodb/db/mongod.lock#然后以repair的模式启动：/usr/local/m
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/30/10x-data-ana/#more" rel="contents">
+            <a class="btn" href="/2016/08/31/mongdb-mig/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2375,6 +2381,137 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/30/10x-soft-pre/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/30/10x-data-ana/" itemprop="url">
+                  10X Data Analysis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
+                    <span itemprop="name">bioinformatics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/10x-data-ana/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/10x-data-ana/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+Content{:toc}
+
+1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
+执行：:
+12345678$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXXsupernova demuxCopyright (c) 2016 10x Genomics, Inc.  All rights reserved.-----------------------------------------------------------------------------Martian Runtime - 2.0.0Running preflight checks (please wait)...
+如果
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/30/10x-data-ana/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2801,133 +2938,6 @@ To insist- work for 3 hours
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/27/about-health/" itemprop="url">
-                  我的健康
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-27T00:00:00+08:00" content="2016-07-27">
-              2016-07-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/生活随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">生活随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/27/about-health/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/27/about-health/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          健康人这一辈子什么最重要，健康。好的身体是一切的基础，没有一个健康的身体，一切都是空谈，无论是理想还是兴趣，无论是事业还是休闲，无论是亲情还是爱情，都会注定遗憾~
-那怎么保持健康呢？有的人说要靠大夫，因为大夫的职责就是治病救人；有人说靠家人，因为最爱你的是你的亲人。其实都不是，健康的身体最后靠的还是自己。大夫每天要面对无数的病人，根本记不清病人的具体情况；亲人虽然关心你，但他并不能知道你的切身感受；因此，最终还是要靠自己~
-
-          
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/27/about-health/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2973,7 +2983,7 @@ To insist- work for 3 hours
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2990,7 +3000,7 @@ To insist- work for 3 hours
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

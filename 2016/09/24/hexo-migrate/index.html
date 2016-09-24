@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tech,linux,hexo,Next主题," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。
+—— 刘易斯
+
+近期看到很多布置在Git上的blog都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。
+现将迁移的方法与步骤记录如下，方便参考~~
+1. shell环境代理设置因为在安装node、hexo过程中发现有时候因为网速太慢，或者G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从jekyll迁移到hexo">
+<meta property="og:url" content="http://yoursite.com/2016/09/24/hexo-migrate/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。
+—— 刘易斯
+
+近期看到很多布置在Git上的blog都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。
+现将迁移的方法与步骤记录如下，方便参考~~
+1. shell环境代理设置因为在安装node、hexo过程中发现有时候因为网速太慢，或者G">
+<meta property="og:image" content="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg">
+<meta property="og:updated_time" content="2016-09-24T13:31:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从jekyll迁移到hexo">
+<meta name="twitter:description" content="人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。
+—— 刘易斯
+
+近期看到很多布置在Git上的blog都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。
+现将迁移的方法与步骤记录如下，方便参考~~
+1. shell环境代理设置因为在安装node、hexo过程中发现有时候因为网速太慢，或者G">
+<meta name="twitter:image" content="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/24/hexo-migrate/"/>
+
+  <title> 从jekyll迁移到hexo | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                从jekyll迁移到hexo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-24T00:00:00+08:00" content="2016-09-24">
+              2016-09-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/24/hexo-migrate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/24/hexo-migrate/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p> 人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。</p>
+<p>—— 刘易斯</p>
+</blockquote>
+<p>近期看到很多布置在<strong>Git</strong>上的<em>blog</em>都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。</p>
+<p>现将迁移的方法与步骤记录如下，方便参考~~</p>
+<h2 id="1-shell环境代理设置"><a href="#1-shell环境代理设置" class="headerlink" title="1. shell环境代理设置"></a>1. shell环境代理设置</h2><p>因为在安装node、hexo过程中发现有时候因为网速太慢，或者GFW影响，导致安装停顿，所以国内条件允许的情况下需要设置代理~设置方法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> http_proxy=proxy_addr:port</div></pre></td></tr></table></figure>
+<h2 id="2-Hexo与Next主题安装"><a href="#2-Hexo与Next主题安装" class="headerlink" title="2. Hexo与Next主题安装"></a>2. Hexo与Next主题安装</h2><h3 id="2-1-安装node"><a href="#2-1-安装node" class="headerlink" title="2.1 安装node"></a>2.1 安装node</h3><p>如果本机没有安装过node则需要安装该环境，安装示例：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> nodejs</div><div class="line">yum <span class="keyword">install</span> npm</div></pre></td></tr></table></figure>
+<p>或者从源文件安装，å®装方法请自行搜索。</p>
+<p>查看安装的node版本：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">-v</span></div><div class="line">npm -v</div></pre></td></tr></table></figure>
+<h3 id="2-2-安装Hexo与Next主题"><a href="#2-2-安装Hexo与Next主题" class="headerlink" title="2.2 安装Hexo与Next主题"></a>2.2 安装Hexo与Next主题</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo-<span class="keyword">cli</span></div></pre></td></tr></table></figure>
+<p>利用hexo初始化blog：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init hexoB<span class="built_in">log</span></div><div class="line"><span class="comment"># 如果init后不加文件夹的名字，则默认在当前文件夹初始化</span></div><div class="line"><span class="built_in">cd</span> hexoB<span class="built_in">log</span></div><div class="line"><span class="comment"># 安装next主题</span></div><div class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<h2 id="3-blog初始配置与hexo使用"><a href="#3-blog初始配置与hexo使用" class="headerlink" title="3. blog初始配置与hexo使用"></a>3. blog初始配置与hexo使用</h2><blockquote>
+<p>站点配置文件：<em>_config.yml</em><br>主题配置文件：<em>themes/next/_config.yml</em></p>
+</blockquote>
+<h3 id="3-1-更改主题与语言"><a href="#3-1-更改主题与语言" class="headerlink" title="3.1 更改主题与语言"></a>3.1 更改主题与语言</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim _config.yml</div><div class="line"></div><div class="line"><span class="symbol">theme:</span> next</div><div class="line"><span class="symbol">language:</span> <span class="built_in">zh</span>-Hans</div></pre></td></tr></table></figure>
+<p>Next主题设置：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim themes<span class="meta-keyword">/next/</span>_config.yml</div><div class="line"><span class="symbol"></span></div><div class="line">scheme: Pisces</div></pre></td></tr></table></figure>
+<h3 id="3-2-hexo使用与预览"><a href="#3-2-hexo使用与预览" class="headerlink" title="3.2 hexo使用与预览"></a>3.2 hexo使用与预览</h3><h4 id="3-2-1-常用命令"><a href="#3-2-1-常用命令" class="headerlink" title="3.2.1 常用命令"></a>3.2.1 常用命令</h4><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> ”postName” <span class="meta">#新建文章</span></div><div class="line">hexo <span class="keyword">new</span> page ”pageName” <span class="meta">#新建页面</span></div><div class="line">hexo generate <span class="meta">#生成静态页面至public目录</span></div><div class="line">hexo <span class="keyword">server</span> <span class="meta">#开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</span></div><div class="line">hexo deploy <span class="meta">#将.deploy目录部署到GitHub</span></div><div class="line">hexo help <span class="meta"># 查看帮助</span></div><div class="line">hexo version <span class="meta">#查看Hexo的版本</span></div></pre></td></tr></table></figure>
+<h4 id="3-2-2-hexo预览"><a href="#3-2-2-hexo预览" class="headerlink" title="3.2.2 hexo预览"></a>3.2.2 hexo预览</h4><p>删除以前的静态html，从新产生然后再本地开启http服务即可：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo <span class="keyword">generate</span> # 可以简化为hexo g；重新生成html</div><div class="line">hexo server</div></pre></td></tr></table></figure>
+<p>成功生成html并无任何错误时，回显信息如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INFO  <span class="keyword">Start</span> processing</div><div class="line">INFO  Hexo <span class="keyword">is</span> running <span class="keyword">at</span> <span class="keyword">http</span>://localhost:<span class="number">4000</span>/. Press Ctrl+C <span class="keyword">to</span> stop.</div></pre></td></tr></table></figure>
+<p>此时可以在本机访问<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>进行预览。</p>
+<h2 id="4-主题配置与使用"><a href="#4-主题配置与使用" class="headerlink" title="4. 主题配置与使用"></a>4. 主题配置与使用</h2><p>主题配置方案主要参考iissnan开发的next主题帮助文件，具体请参考：</p>
+<ul>
+<li><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a></li>
+<li><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">http://theme-next.iissnan.com/theme-settings.html</a></li>
+<li><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">http://theme-next.iissnan.com/third-party-services.html</a></li>
+</ul>
+<h3 id="4-1-页面的配置"><a href="#4-1-页面的配置" class="headerlink" title="4.1 页面的配置"></a>4.1 页面的配置</h3><p>编辑主题配置文件：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">vim</span> themes/<span class="keyword">next</span>/_config.yml</div></pre></td></tr></table></figure>
+<p>以tags为例，将想要添加的页面前#删除</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">http://theme-<span class="keyword">next</span>.iissnan.<span class="keyword">com</span>/theme-settings.html#tags-page</div><div class="line"><span class="keyword">menu</span>:</div><div class="line">  home: /</div><div class="line">  archive<span class="variable">s:</span> /archives</div><div class="line">  #abou<span class="variable">t:</span> /about</div><div class="line">  #categorie<span class="variable">s:</span> /categories</div><div class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></div><div class="line">  #commonwea<span class="variable">l:</span> /<span class="number">404</span>.html</div></pre></td></tr></table></figure>
+<p>同时利用hexo new page 添加tags页面：<code>hexo new page tags</code></p>
+<p>然后修改新生成的该页面模板：<code>vim source/tags/index.md</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">type:</span> <span class="string">'tags'</span></div><div class="line"><span class="string">comments:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<h2 id="5-jekyll内容迁移"><a href="#5-jekyll内容迁移" class="headerlink" title="5. jekyll内容迁移"></a>5. jekyll内容迁移</h2><p>Jekyll与Hexo支持的post格式相近，因此只需要把Jekyll的 <code>_posts</code> 文件夹内的所有文件复制到 <code>source/_posts</code> 文件夹，并在 <code>_config.yml</code> 中修改 <code>new_post_name</code> 参数。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">new_post_name:</span> <span class="symbol">:year-</span><span class="symbol">:month-</span><span class="symbol">:day-</span><span class="symbol">:title</span>.md</div></pre></td></tr></table></figure>
+<h3 id="5-1-为posts添加目录"><a href="#5-1-为posts添加目录" class="headerlink" title="5.1 为posts添加目录"></a>5.1 为posts添加目录</h3><p>编辑主题配置文件：<code>vim themes/next/_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">toc:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"></div><div class="line">  <span class="comment"># Automatically add list,因为我习惯在写**md 文件**时，手动添加目录编号，因此这里设置为false</span></div><div class="line"><span class="attr">  number:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<h2 id="6-hexo的自动部署"><a href="#6-hexo的自动部署" class="headerlink" title="6. hexo的自动部署"></a>6. hexo的自动部署</h2><h3 id="6-1-站点配置文件"><a href="#6-1-站点配置文件" class="headerlink" title="6.1 站点配置文件"></a>6.1 站点配置文件</h3><p>首先，利用git对原有版本的blog进行备份，防止出现意外。</p>
+<p>然后，安装deploy插件，实现自动部署功能。<code>npm install hexo-deployer-git --save</code></p>
+<p>同时部署多个平台的配置（branch和前面的逗号不能有空格），编辑站点é置文件：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  message:</span> [message]</div><div class="line"><span class="symbol">  repo:</span></div><div class="line"><span class="symbol">    github:</span> <span class="params">&lt;repository url&gt;</span>,[branch]</div><div class="line"><span class="symbol">    gitcafe:</span> <span class="params">&lt;repository url&gt;</span>,[branch]</div><div class="line"><span class="symbol">    coding:</span> <span class="params">&lt;repository url&gt;</span>,[branch]</div></pre></td></tr></table></figure>
+<p>每次利用<code>hexo generate</code>产生网站之后，利用<code>hexo deploy</code>即可自动同步到以上git站点。</p>
+<h3 id="6-2-自动部署脚本"><a href="#6-2-自动部署脚本" class="headerlink" title="6.2 自动部署脚本"></a>6.2 自动部署脚本</h3><p>利用shell脚本，每次添加posts后自动进行git同步，产生静态站点，并推送到git pages页面。脚本内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo deploy</div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'add posts'</span></div><div class="line">git push coding master:master</div></pre></td></tr></table></figure>
+<h2 id="7-其他坑"><a href="#7-其他坑" class="headerlink" title="7. 其他坑"></a>7. 其他坑</h2><h3 id="7-1-网速"><a href="#7-1-网速" class="headerlink" title="7.1 网速"></a>7.1 网速</h3><p>npm安装某些插件时，可能因为网速原因卡住，可以终止之后再次运行；或者使用代理。</p>
+<p>我一般终止之后重复安装，往复两次左右可以快速完成安装过程。</p>
+<h3 id="7-2-图片浮动效果"><a href="#7-2-图片浮动效果" class="headerlink" title="7.2 图片浮动效果"></a>7.2 图片浮动效果</h3><p><a href="http://www.ezlippi.com/blog/2016/02/jekyll-to-hexo.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">fancybox使用</a></p>
+<p>在文章*.md文件的头上添加photos项即可，然后一行行添加你要展示的照片;也可只在post头部添加<code>photos:</code>，然后在需要添加图片的位置正常添加即可出现图片浮动效果。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">title:</span> Jekyll迁移到Hexo建立个人博客</div><div class="line"><span class="string">photos:</span></div><div class="line">- <span class="string">http:</span><span class="comment">//bruce.u.qiniudn.com/2013/11/27/reading/photos-0.jpg</span></div><div class="line">- <span class="string">http:</span><span class="comment">//bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg</span></div></pre></td></tr></table></figure>
+<p>测试图片：<br><img src="http://bruce.u.qiniudn.com/2013/11/27/reading/photos-1.jpg" alt="fig2"></p>
+<h3 id="7-3-代码自动高亮"><a href="#7-3-代码自动高亮" class="headerlink" title="7.3 代码自动高亮"></a>7.3 代码自动高亮</h3><p>预览站点发现代码块内部没有自动高亮，查询后发现是因为没有自动匹配代码语言，需要编辑站点配置文件<code>vim _config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">highlight:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h2 id="8-参考文献"><a href="#8-参考文献" class="headerlink" title="8. 参考文献"></a>8. 参考文献</h2><ul>
+<li><a href="https://blog.yuanbin.me/posts/2014/05/multi-deployment-with-hexo.html" target="_blank" rel="external">https://blog.yuanbin.me</a></li>
+<li><a href="http://laker.me/blog/2015/09/28/15_0928_hexo_to_coding/" target="_blank" rel="external">http://laker.me</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/migration.html</a></li>
+<li><a href="http://jelon.top/2016/05/15/fill-hexo/" target="_blank" rel="external">http://jelon.top/2016/05/15/fill-hexo/</a></li>
+<li><a href="http://theme-next.iissnan.com/getting-started.html#sidebar-settings" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a></li>
+<li><a href="http://notes.iissnan.com/" target="_blank" rel="external">http://notes.iissnan.com/</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag">#tech</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/Next主题/" rel="tag">#Next主题</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/20/tmux-using/" rel="next" title="tmux安装与使用">
+                <i class="fa fa-chevron-left"></i> tmux安装与使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-shell环境代理设置"><span class="nav-text">1. shell环境代理设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Hexo与Next主题安装"><span class="nav-text">2. Hexo与Next主题安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-安装node"><span class="nav-text">2.1 安装node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-安装Hexo与Next主题"><span class="nav-text">2.2 安装Hexo与Next主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-blog初始配置与hexo使用"><span class="nav-text">3. blog初始配置与hexo使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-更改主题与语言"><span class="nav-text">3.1 更改主题与语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-hexo使用与预览"><span class="nav-text">3.2 hexo使用与预览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-常用命令"><span class="nav-text">3.2.1 常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-hexo预览"><span class="nav-text">3.2.2 hexo预览</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-主题配置与使用"><span class="nav-text">4. 主题配置与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-页面的配置"><span class="nav-text">4.1 页面的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-jekyll内容迁移"><span class="nav-text">5. jekyll内容迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-为posts添加目录"><span class="nav-text">5.1 为posts添加目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-hexo的自动部署"><span class="nav-text">6. hexo的自动部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-站点配置文件"><span class="nav-text">6.1 站点配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-自动部署脚本"><span class="nav-text">6.2 自动部署脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-其他坑"><span class="nav-text">7. 其他坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-网速"><span class="nav-text">7.1 网速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-图片浮动效果"><span class="nav-text">7.2 图片浮动效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-代码自动高亮"><span class="nav-text">7.3 代码自动高亮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-参考文献"><span class="nav-text">8. 参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/09/24/hexo-migrate/';
+      var disqus_title = "从jekyll迁移到hexo";
+      var disqus_url = 'http://yoursite.com/2016/09/24/hexo-migrate/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

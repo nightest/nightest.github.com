@@ -73,7 +73,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -194,7 +194,7 @@ pairs函数当有多组样本数据，需要对比这些样本之间的相关性
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">All my Notes</p>
+  <p class="site-subtitle">All Notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -362,13 +362,13 @@ pairs函数当有多组样本数据，需要对比这些样本之间的相关性
 </ul>
 <hr>
 <h3 id="pairs函数"><a href="#pairs函数" class="headerlink" title="pairs函数"></a>pairs函数</h3><p>当有多组样本数据，需要对比这些样本之间的相关性并且进行可视化时，可以通过R中base包的pairs函数实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Load the iris dataset.</div><div class="line">data(iris)</div><div class="line"></div><div class="line"># Plot #1: Basic scatterplot matrix of the four measurements</div><div class="line">pairs(~Sepal.Length+Sepal.Width+Petal.Length+Petal.Width, data=iris)</div><div class="line"># or</div><div class="line">pairs(iris[,1:4])</div></pre></td></tr></table></figure>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Load the iris dataset.</span></div><div class="line"><span class="class"><span class="keyword">data</span>(<span class="title">iris</span>)</span></div><div class="line"></div><div class="line"><span class="meta"># Plot #1: Basic scatterplot matrix of the four measurements</span></div><div class="line"><span class="title">pairs</span>(~<span class="type">Sepal</span>.<span class="type">Length</span>+<span class="type">Sepal</span>.<span class="type">Width</span>+<span class="type">Petal</span>.<span class="type">Length</span>+<span class="type">Petal</span>.<span class="type">Width</span>, <span class="class"><span class="keyword">data</span>=iris)</span></div><div class="line"><span class="meta"># or</span></div><div class="line"><span class="title">pairs</span>(iris[,<span class="number">1</span>:<span class="number">4</span>])</div></pre></td></tr></table></figure>
 <p><img src="http://ocs218n9i.bkt.clouddn.com/u001.png" alt="pairs"></p>
 <h3 id="加入相关系数"><a href="#加入相关系数" class="headerlink" title="加入相关系数"></a>加入相关系数</h3><p>如果想在右上方区域显示相关系数，而并非像现在这样显示重复的散点图则：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># panel.smooth function is built in.</div><div class="line"># panel.cor puts correlation in upper panels, size proportional to correlation</div><div class="line"># digits 表示有效小数的位数, 默认为2</div><div class="line">panel.cor &lt;- function(x, y, digits=2, prefix=&quot;&quot;, cex.cor, ...)</div><div class="line">&#123;</div><div class="line">    usr &lt;- par(&quot;usr&quot;); on.exit(par(usr))</div><div class="line">    par(usr = c(0, 1, 0, 1))</div><div class="line">    r &lt;- abs(cor(x, y))</div><div class="line">    txt &lt;- format(c(r, 0.123456789), digits=digits)[1]</div><div class="line">    txt &lt;- paste(prefix, txt, sep=&quot;&quot;)</div><div class="line">    if(missing(cex.cor)) cex.cor &lt;- 0.8/strwidth(txt)</div><div class="line">    text(0.5, 0.5, txt, cex = cex.cor * r)</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Plot #2: same as above, but add loess smoother in lower and correlation in upper</div><div class="line">pairs(~Sepal.Length+Sepal.Width+Petal.Length+Petal.Width, data=iris,</div><div class="line">      lower.panel=panel.smooth, upper.panel=panel.cor,</div><div class="line">      pch=20, main=&quot;Iris Scatterplot Matrix&quot;)</div></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># panel.<span class="keyword">smooth</span> function is built <span class="keyword">in</span>.</div><div class="line"># panel.<span class="keyword">cor</span> puts correlation <span class="keyword">in</span> upper panels, size proportional to correlation</div><div class="line"># digits 表示有效小数的位数, 默认为2</div><div class="line">panel.<span class="keyword">cor</span> &lt;- function(x, y, digits=2, prefix=<span class="string">""</span>, cex.<span class="keyword">cor</span>, ...)</div><div class="line">&#123;</div><div class="line">    usr &lt;- par(<span class="string">"usr"</span>); <span class="keyword">on</span>.<span class="keyword">exit</span>(par(usr))</div><div class="line">    par(usr = c(0, 1, 0, 1))</div><div class="line">    r &lt;- <span class="built_in">abs</span>(<span class="keyword">cor</span>(x, y))</div><div class="line">    txt &lt;- <span class="keyword">format</span>(c(r, 0.123456789), digits=digits)[1]</div><div class="line">    txt &lt;- paste(prefix, txt, sep=<span class="string">""</span>)</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">missing</span>(cex.<span class="keyword">cor</span>)) cex.<span class="keyword">cor</span> &lt;- 0.8/strwidth(txt)</div><div class="line">    text(0.5, 0.5, txt, cex = cex.<span class="keyword">cor</span> * r)</div><div class="line">&#125;</div><div class="line"></div><div class="line"># <span class="keyword">Plot</span> #2: same <span class="keyword">as</span> above, but add loess smoother <span class="keyword">in</span> lower and correlation <span class="keyword">in</span> <span class="built_in">upper</span></div><div class="line">pairs(~Sepal.Length+Sepal.Width+Petal.Length+Petal.Width, data=iris,</div><div class="line">      lower.panel=panel.<span class="keyword">smooth</span>, upper.panel=panel.<span class="keyword">cor</span>,</div><div class="line">      pch=20, main=<span class="string">"Iris Scatterplot Matrix"</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://ocs218n9i.bkt.clouddn.com/u002.png" alt="function and pairs"></p>
 <h3 id="利用psych实现相似功能"><a href="#利用psych实现相似功能" class="headerlink" title="利用psych实现相似功能"></a>利用psych实现相似功能</h3><p>利用psych的pairs.panels函数可以做出相似的图：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#install.packages(&apos;psych&apos;)</div><div class="line">library(psych)</div><div class="line">pairs.panels(iris[, 1:4], breaks = 30, ellipses = F)</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#install</span>.packages(<span class="string">'psych'</span>)</div><div class="line"><span class="function"><span class="title">library</span><span class="params">(psych)</span></span></div><div class="line">pairs.panels(iris[, <span class="number">1</span>:<span class="number">4</span>], breaks = <span class="number">30</span>, ellipses = F)</div></pre></td></tr></table></figure>
 <p><img src="http://ocs218n9i.bkt.clouddn.com/u003.png" alt="psych"></p>
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
 <li><a href="http://personality-project.org/r/r.short.html" target="_blank" rel="external">http://personality-project.org/r/r.short.html</a></li>
@@ -520,7 +520,7 @@ pairs函数当有多组样本数据，需要对比这些样本之间的相关性
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -537,7 +537,7 @@ pairs函数当有多组样本数据，需要对比这些样本之间的相关性
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

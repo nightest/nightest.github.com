@@ -73,7 +73,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -196,7 +196,7 @@ content{:toc}
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">All my Notes</p>
+  <p class="site-subtitle">All Notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -365,10 +365,10 @@ content{:toc}
 <hr>
 <h2 id="1-ABySS-的安装"><a href="#1-ABySS-的安装" class="headerlink" title="1. ABySS 的安装"></a>1. ABySS 的安装</h2><h3 id="1-1-sparsehash下载安装"><a href="#1-1-sparsehash下载安装" class="headerlink" title="1.1 sparsehash下载安装"></a>1.1 sparsehash下载安装</h3><p>sparsehash能够减小组装过程中的内存使用量，增加组装效率。</p>
 <p>下载sparsehash：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/sparsehash/sparsehash.git sparsehash-latest</div></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/sparsehash/sparsehash.git sparsehash-latest</div></pre></td></tr></table></figure>
 <p>安装sparsehash到指定文件夹：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mkdir sparsehash</div><div class="line"></div><div class="line">#configure的同时指定安装路径prefix</div><div class="line">./configure --prefix=/gpfs01/home/path/to/bioSoft/abyss/sparsehash/</div><div class="line"></div><div class="line">make -j 10</div><div class="line">make check</div><div class="line">make install</div><div class="line">make installcheck</div><div class="line">make clean</div></pre></td></tr></table></figure>
-<h3 id="1-2-ABySS-下载安装"><a href="#1-2-ABySS-下载安装" class="headerlink" title="1.2 ABySS 下载安装"></a>1.2 ABySS 下载安装</h3><h4 id="1-2-1-下载并解压"><a href="#1-2-1-下载并解压" class="headerlink" title="1.2.1 下载并解压"></a>1.2.1 <strong>下载并解压</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/1.3.7/abyss-1.3.7.tar.gz</div><div class="line">tar xvf abyss-1.3.7.tar.gz</div></pre></td></tr></table></figure>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mkdir sparsehash</div><div class="line"></div><div class="line"><span class="comment">#configure的同时指定安装路径prefix</span></div><div class="line"><span class="keyword">.</span>/configure --prefix=/gpfs01/home/path/to/bioSoft/abyss/sparsehash/</div><div class="line"></div><div class="line">make -j 10</div><div class="line">make<span class="built_in"> check</span></div><div class="line">make install</div><div class="line">make installcheck</div><div class="line">make clean</div></pre></td></tr></table></figure>
+<h3 id="1-2-ABySS-下载安装"><a href="#1-2-ABySS-下载安装" class="headerlink" title="1.2 ABySS 下载安装"></a>1.2 ABySS 下载安装</h3><h4 id="1-2-1-下载并解压"><a href="#1-2-1-下载并解压" class="headerlink" title="1.2.1 下载并解压"></a>1.2.1 <strong>下载并解压</strong></h4><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget <span class="symbol">http:</span>/<span class="regexp">/www.bcgsc.ca/platform</span><span class="regexp">/bioinfo/software</span><span class="regexp">/abyss/releases</span><span class="regexp">/1.3.7/abyss</span>-<span class="number">1.3</span>.<span class="number">7</span>.tar.gz</div><div class="line">tar xvf abyss-<span class="number">1.3</span>.<span class="number">7</span>.tar.gz</div></pre></td></tr></table></figure>
 <p>如果需要下载最新版的ABySS可访问以下网址：</p>
 <ul>
 <li><a href="http://www.bcgsc.ca/platform/bioinfo/software/abyss" target="_blank" rel="external">http://www.bcgsc.ca/platform/bioinfo/software/abyss</a></li>
@@ -376,11 +376,11 @@ content{:toc}
 </ul>
 <h4 id="1-2-2-编译安装"><a href="#1-2-2-编译安装" class="headerlink" title="1.2.2 编译安装"></a>1.2.2 <strong>编译安装</strong></h4><p>不同版本ABySS在configure时，参数略有不同：</p>
 <p><strong>2.0版</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/gpfs01/home/path/to/bioSoft/abyss/abyss2.0/ --with-boost=/usr/include --with-mpi=//gpfs01/apps/intel/impi/5.0.1.035/bin64 CPPFLAGS=-I/gpfs01/home/path/to/bioSoft/abyss/sparsehash/include/ --with-sqlite=/usr/bin/sqlite3 --enable-maxk=128</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.<span class="regexp">/configure --prefix=/g</span>pfs01<span class="regexp">/home/</span>path<span class="regexp">/to/</span>bioSoft<span class="regexp">/abyss/</span>abyss2.<span class="number">0</span><span class="regexp">/ --with-boost=/u</span>sr<span class="regexp">/include --with-mpi=/</span><span class="regexp">/gpfs01/</span>apps<span class="regexp">/intel/im</span>pi<span class="regexp">/5.0.1.035/</span>bin64 CPPFLAGS=-I<span class="regexp">/gpfs01/</span>home<span class="regexp">/path/</span>to<span class="regexp">/bioSoft/</span>abyss<span class="regexp">/sparsehash/i</span>nclude<span class="regexp">/ --with-sqlite=/u</span>sr<span class="regexp">/bin/</span>sqlite3 --enable-maxk=<span class="number">128</span></div></pre></td></tr></table></figure>
 <p><strong>1.3版</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure --prefix=/gpfs01/home/path/to/bioSoft/abyss/abyss/ --with-boost=/usr/include --with-mpi=//gpfs01/apps/intel/impi/5.0.1.035/bin64 CPPFLAGS=-I/gpfs01/home/path/to/bioSoft/abyss/sparsehash/include/ --enable-maxk=128</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.<span class="regexp">/configure --prefix=/g</span>pfs01<span class="regexp">/home/</span>path<span class="regexp">/to/</span>bioSoft<span class="regexp">/abyss/</span>abyss<span class="regexp">/ --with-boost=/u</span>sr<span class="regexp">/include --with-mpi=/</span><span class="regexp">/gpfs01/</span>apps<span class="regexp">/intel/im</span>pi<span class="regexp">/5.0.1.035/</span>bin64 CPPFLAGS=-I<span class="regexp">/gpfs01/</span>home<span class="regexp">/path/</span>to<span class="regexp">/bioSoft/</span>abyss<span class="regexp">/sparsehash/i</span>nclude<span class="regexp">/ --enable-maxk=128</span></div></pre></td></tr></table></figure>
 <p>继续安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">make -j 20</div><div class="line">make check</div><div class="line">make install</div><div class="line">make installcheck</div><div class="line">make clean</div></pre></td></tr></table></figure>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">make -j 20</div><div class="line">make<span class="built_in"> check</span></div><div class="line">make install</div><div class="line">make installcheck</div><div class="line">make clean</div></pre></td></tr></table></figure>
 <p>configure过程中各参数的含义请参考：</p>
 <ul>
 <li><a href="https://github.com/bcgsc/abyss#install-abyss-on-debian-or-ubuntu" target="_blank" rel="external">https://github.com/bcgsc/abyss#install-abyss-on-debian-or-ubuntu</a></li>
@@ -389,7 +389,7 @@ content{:toc}
 <p>注意，最后需要把安装路径加入到环境变量PATH之中</p>
 </blockquote>
 <h2 id="2-ABySS-使用"><a href="#2-ABySS-使用" class="headerlink" title="2. ABySS 使用"></a>2. ABySS 使用</h2><h3 id="2-1-PE数据的组装"><a href="#2-1-PE数据的组装" class="headerlink" title="2.1 PE数据的组装"></a>2.1 PE数据的组装</h3><p>如果PE数据的文件名分别为<code>reads1.fa</code>和<code>reads2.fa</code>，那么利用下面的命令可以将其组装为contigs并存储在文件<code>ecoli-contigs.fa</code>之中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abyss-pe name=ecoli k=64 in=&apos;reads1.fa reads2.fa&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abyss-pe <span class="keyword">name</span>=ecoli k=<span class="number">64</span> <span class="keyword">in</span>=<span class="string">'reads1.fa reads2.fa'</span></div></pre></td></tr></table></figure>
 <p>其中，<code>in</code>参数支持fa，fq，qseq，export，SRA，SAM，BAM及其相应的gz，bz2，xz等多种格式作为输入文件。</p>
 
       
@@ -536,7 +536,7 @@ content{:toc}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -553,7 +553,7 @@ content{:toc}
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

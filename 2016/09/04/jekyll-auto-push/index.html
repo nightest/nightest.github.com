@@ -73,7 +73,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -190,7 +190,7 @@ content{:toc}
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">All my Notes</p>
+  <p class="site-subtitle">All Notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -359,7 +359,7 @@ content{:toc}
 <hr>
 <h2 id="前期设置"><a href="#前期设置" class="headerlink" title="前期设置"></a>前期设置</h2><p>前期设置包括绑定远程<strong>git分支</strong>，源代码绑定为<strong>远程gcorigin主机</strong>的<strong>master分支</strong>，而子文件夹<strong>_site</strong>中的build完成的软件则绑定为gcorigin的<strong>coding-pages</strong>分支，具体配置方法请参考<a href="http://nightest.coding.me/2016-09-02-jekyll/" target="_blank" rel="external">jekyll的迁移</a>。</p>
 <h2 id="自动化shell脚本"><a href="#自动化shell脚本" class="headerlink" title="自动化shell脚本"></a>自动化shell脚本</h2><p>根据提交顺序，在blog所在文件夹内新建<strong>add_post.sh</strong>文件，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &apos;add posts&apos;</div><div class="line">git push gcorigin coding-pages:master</div><div class="line">jekyll build</div><div class="line">cd _site/</div><div class="line">git add .</div><div class="line">git commit -m &apos;add posts&apos;</div><div class="line">git push origin master:coding-pages</div></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -m <span class="string">'add posts'</span></div><div class="line">git push gcorigin coding-pages:master</div><div class="line">jekyll build</div><div class="line">cd _site/</div><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -m <span class="string">'add posts'</span></div><div class="line">git push origin master:coding-pages</div></pre></td></tr></table></figure>
 <p>赋予该脚本运行权限，在<strong>_posts</strong>文件夹下添加文件后，在当前文件夹下用<strong>./add_post.sh</strong>的方式运行即可自动buld并提交静态网站。</p>
 <h2 id="git-pull远程分支"><a href="#git-pull远程分支" class="headerlink" title="git pull远程分支"></a>git pull远程分支</h2><p>如果在其他机器上修改并提交给git仓库后，需要在本机进行同步，则需要使用命令：</p>
 <pre><code>git pull gcorigin master:coding-pages
@@ -509,7 +509,7 @@ content{:toc}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -526,7 +526,7 @@ content{:toc}
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

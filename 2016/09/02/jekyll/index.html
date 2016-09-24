@@ -73,7 +73,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -183,7 +183,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">All my Notes</p>
+  <p class="site-subtitle">All Notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -351,10 +351,10 @@
 <p>同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内<a href="https://portal.qiniu.com/" target="_blank" rel="external"><em>七牛云</em></a>提供的免费10G空间作为图床，以上两个网站的具体注册过程就不在此详述了~~</p>
 <h3 id="1-coding-net-注册与准备"><a href="#1-coding-net-注册与准备" class="headerlink" title="1. coding net 注册与准备"></a>1. coding net 注册与准备</h3><h4 id="1-1-创建项目并推送"><a href="#1-1-创建项目并推送" class="headerlink" title="1.1 创建项目并推送"></a>1.1 创建项目并推送</h4><p>在 Coding 上创建一个与<strong>用户名</strong>相同的项目，例如用户名为username，那么就创建名为username的项目，jekyll构建静态网页完成后即可通过<em><a href="http://username.coding.me/" target="_blank" rel="external">http://username.coding.me/</a></em>访问该网站~</p>
 <p><strong>构建方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#生成静态网页，默认在_site文件夹下</div><div class="line">jekyll build</div><div class="line">#发布到本地，默认使用[http://127.0.0.1:4000]( http://127.0.0.1:4000)预览~本人未在本地实现，因此没有利用serve</div><div class="line">jekyll serve</div></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#生成静态网页，默认在_site文件夹下</span></div><div class="line"><span class="keyword">jekyll </span><span class="keyword">build</span></div><div class="line"><span class="comment">#发布到本地，默认使用[http://127.0.0.1:4000]( http://127.0.0.1:4000)预览~本人未在本地实现，因此没有利用serve</span></div><div class="line"><span class="keyword">jekyll </span>serve</div></pre></td></tr></table></figure>
 <p><strong>提交方法</strong></p>
 <p>假设在本地<code>_site</code>文件夹已经构建好网站，那么使用git提交到网站即可，使用git时，几个常用的命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git add .</div><div class="line">git commit -m &apos;init&apos;</div><div class="line">git remote add origin  git@git.coding.net:&#123;user_name&#125;/&#123;project_name&#125;</div><div class="line">#git remote -v</div><div class="line">#git remote rm &lt;origin&gt;</div><div class="line">#把本地master分支推送到远程origin的coding-pages</div><div class="line">git push origin master:coding-pages</div></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -m <span class="string">'init'</span></div><div class="line">git remote <span class="keyword">add</span><span class="bash"> origin  git@git.coding.net:&#123;user_name&#125;/&#123;project_name&#125;</span></div><div class="line"><span class="comment">#git remote -v</span></div><div class="line"><span class="comment">#git remote rm &lt;origin&gt;</span></div><div class="line"><span class="comment">#把本地master分支推送到远程origin的coding-pages</span></div><div class="line">git push origin master:coding-pages</div></pre></td></tr></table></figure>
 <h4 id="1-2-关于自动运行"><a href="#1-2-关于自动运行" class="headerlink" title="1.2 关于自动运行"></a>1.2 关于自动运行</h4><p>本来<a href="https://coding.net/" target="_blank" rel="external"><em>码市</em></a>有免费的演示服务，可以自动把md页面根据jekyll转换成html页面并发布，不过现在该功能已开始收费，因此我未选择。不得不吐槽一句，还是github的自动部署功能更方便啊，可惜墙太高~目前我选择的是上述本地构建好静态html，然后发布到<a href="https://coding.net/" target="_blank" rel="external"><em>码市</em></a>。</p>
 <p>如果想了解如何自动部署，请参考：</p>
 <ul>
@@ -364,10 +364,10 @@
 <li><a href="http://www.jianshu.com/p/a96f60d20936" target="_blank" rel="external">http://www.jianshu.com/p/a96f60d20936</a></li>
 </ul>
 <h3 id="2-git推送到不同远程主机"><a href="#2-git推送到不同远程主机" class="headerlink" title="2. git推送到不同远程主机"></a>2. git推送到不同远程主机</h3><p>利用<code>git remote -v</code>查看已经绑定的远程主机，若是未绑定需要推送的主机则使用<code>git remote add ...</code>添加远程主机，然后使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push <span class="tag">&lt;<span class="name">远程主机名</span>&gt;</span> <span class="tag">&lt;<span class="name">本地分支名</span>&gt;</span>:<span class="tag">&lt;<span class="name">远程分支名</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>推送本地某分支至远程某分支。</p>
 <p>实例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">git branch</div><div class="line">git checkout -v source</div><div class="line">git remote -v</div><div class="line">git remote add gcorigin git@git.coding.net:username/username.git</div><div class="line">git remote -v</div><div class="line">git push gcorigin source:master</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">git branch</div><div class="line">git checkout -v source</div><div class="line">git remote -v</div><div class="line">git remote add gcorigin git@git<span class="selector-class">.coding</span><span class="selector-class">.net</span>:username/username<span class="selector-class">.git</span></div><div class="line">git remote -v</div><div class="line">git push gcorigin source:master</div></pre></td></tr></table></figure>
 <h3 id="3-链接错误"><a href="#3-链接错误" class="headerlink" title="3.链接错误"></a>3.链接错误</h3><p>github与coding的链接规则不同，因此碰到点开categories和tags链接之后找不到页面的错误，注意修改<code>_config.yml</code>中的url变量，及这两个文件夹下的index文件即可，如下图：</p>
 <p><img src="http://ocs218n9i.bkt.clouddn.com/style5.png" alt="index修改"></p>
 <h3 id="4-jekyll-build错误"><a href="#4-jekyll-build错误" class="headerlink" title="4. jekyll build错误"></a>4. jekyll build错误</h3><p><strong>错误1</strong></p>
@@ -395,10 +395,10 @@
 </blockquote>
 <p>解决方法：</p>
 <p>在<code>_config.yml</code>中添加以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Gems</div><div class="line">gems: [jekyll-paginate]</div></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Gems</span></div><div class="line"><span class="attribute">gems</span>:<span class="meta"> [jekyll-paginate]</span></div></pre></td></tr></table></figure>
 <h3 id="5-更改markdown解析器"><a href="#5-更改markdown解析器" class="headerlink" title="5. 更改markdown解析器"></a>5. 更改markdown解析器</h3><p>更改markdown解析器，以支持三个反引号构建的代码块。</p>
 <p>在<code>_config.yml</code>中修改或添加以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">markdown: kramdown</div></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">markdown: </span>kramdown</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -542,7 +542,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -559,7 +559,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

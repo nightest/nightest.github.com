@@ -73,7 +73,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -184,7 +184,7 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">All my Notes</p>
+  <p class="site-subtitle">All Notes</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -351,11 +351,11 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
 <p>10X Data Analysis</p>
 <p>本文数据分析流程来自<a href="http://support.10xgenomics.com/de-novo-assembly/software/overview/welcome" target="_blank" rel="external">10X Genomics</a>, 根据该流程对实际数据进行了分析校验。</p>
 <h2 id="supernova-Installation"><a href="#supernova-Installation" class="headerlink" title="supernova Installation"></a>supernova Installation</h2><h3 id="1-下载安装包"><a href="#1-下载安装包" class="headerlink" title="1.下载安装包"></a><strong>1.下载安装包</strong></h3><p>从10X公司提供的<a href="http://support.10xgenomics.com/de-novo-assembly/software/downloads/latest" target="_blank" rel="external">下载页面</a>下载源文件并<a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/installation" target="_blank" rel="external">安装</a>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ tar -xzvf supernova-1.0.0.tar.gz</div><div class="line">$ export PATH=/opt/supernova-1.0.0:$PATH   ## 加入到.bashrc中的环境变量</div></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>tar -xzvf supernova-<span class="number">1.0</span>.<span class="number">0</span>.tar.gz</div><div class="line"><span class="variable">$ </span>export PATH=<span class="regexp">/opt/supernova</span>-<span class="number">1.0</span>.<span class="number">0</span><span class="symbol">:</span><span class="variable">$PATH</span>   <span class="comment">## 加入到.bashrc中的环境变量</span></div></pre></td></tr></table></figure>
 <h3 id="2-检测"><a href="#2-检测" class="headerlink" title="2.检测"></a><strong>2.检测</strong></h3><pre><code>supernova sitecheck
 </code></pre><p>运行<code>sitecheck</code>命令，检查安装设置</p>
 <h3 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a><strong>3.测试</strong></h3><p>利用test数据进行测试<br>软件安装文件夹下包含测试数据，测试方法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$ supernova run --test --id=tiny</div><div class="line"></div><div class="line">supernova run 1.0.0</div><div class="line">Copyright (c) 2016 10x Genomics, Inc.  All rights reserved.</div><div class="line">-----------------------------------------------------------------------------</div><div class="line">Running Supernova in test mode.</div><div class="line">Martian Runtime - 2.0.0</div><div class="line"></div><div class="line">Running preflight checks (please wait)...</div><div class="line">2016-05-03 11:17:00 [runtime] (ready)           ID.tiny.ASSEMBLER_CS._ASSEMBLER_PREP.SETUP_CHUNKS</div><div class="line">2016-05-03 11:17:03 [runtime] (split_complete)  ID.tiny.ASSEMBLER_CS._ASSEMBLER_PREP.SETUP_CHUNKS</div><div class="line">2016-05-03 11:17:03 [runtime] (run:local)       ID.tiny.ASSEMBLER_CS._ASSEMBLER_PREP.SETUP_CHUNKS.fork0.chnk0.main</div><div class="line">...</div><div class="line">2016-05-03 11:20:36 [runtime] (run:local)       ID.tiny.ASSEMBLER_CS.ASSEMBLER_CP.fork0.join</div><div class="line">2016-05-03 11:20:39 [runtime] (join_complete)   ID.tiny.ASSEMBLER_CS.ASSEMBLER_CP</div><div class="line"></div><div class="line">Outputs:</div><div class="line">‍- assembly: /home/jdoe/tiny/outs/assembly</div><div class="line">‍- summary: /home/jdoe/tiny/outs/summary.csv</div><div class="line">‍- report: /home/jdoe/tiny/outs/report.txt</div><div class="line"></div><div class="line">Pipestance completed successfully!</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$ supernova run --test --id=tiny</div><div class="line"></div><div class="line">supernova run <span class="number">1.0</span>.<span class="number">0</span></div><div class="line">Copyright (c) <span class="number">2016</span> <span class="number">10</span>x Genomics, Inc.  All rights reserved.</div><div class="line">-----------------------------------------------------------------------------</div><div class="line">Running Supernova <span class="keyword">in</span> test mode.</div><div class="line">Martian Runtime - <span class="number">2.0</span>.<span class="number">0</span></div><div class="line"></div><div class="line">Running preflight checks (please wait)...</div><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">03</span> <span class="number">11</span>:<span class="number">17</span>:<span class="number">00</span> [runtime] (ready)           ID<span class="selector-class">.tiny</span><span class="selector-class">.ASSEMBLER_CS</span>._ASSEMBLER_PREP<span class="selector-class">.SETUP_CHUNKS</span></div><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">03</span> <span class="number">11</span>:<span class="number">17</span>:<span class="number">03</span> [runtime] (split_complete)  ID<span class="selector-class">.tiny</span><span class="selector-class">.ASSEMBLER_CS</span>._ASSEMBLER_PREP<span class="selector-class">.SETUP_CHUNKS</span></div><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">03</span> <span class="number">11</span>:<span class="number">17</span>:<span class="number">03</span> [runtime] (run:local)       ID<span class="selector-class">.tiny</span><span class="selector-class">.ASSEMBLER_CS</span>._ASSEMBLER_PREP<span class="selector-class">.SETUP_CHUNKS</span><span class="selector-class">.fork0</span><span class="selector-class">.chnk0</span><span class="selector-class">.main</span></div><div class="line">...</div><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">03</span> <span class="number">11</span>:<span class="number">20</span>:<span class="number">36</span> [runtime] (run:local)       ID<span class="selector-class">.tiny</span><span class="selector-class">.ASSEMBLER_CS</span><span class="selector-class">.ASSEMBLER_CP</span><span class="selector-class">.fork0</span><span class="selector-class">.join</span></div><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">03</span> <span class="number">11</span>:<span class="number">20</span>:<span class="number">39</span> [runtime] (join_complete)   ID<span class="selector-class">.tiny</span><span class="selector-class">.ASSEMBLER_CS</span><span class="selector-class">.ASSEMBLER_CP</span></div><div class="line"></div><div class="line">Outputs:</div><div class="line">‍- assembly: /home/jdoe/tiny/outs/assembly</div><div class="line">‍- <span class="selector-tag">summary</span>: /home/jdoe/tiny/outs/<span class="selector-tag">summary</span><span class="selector-class">.csv</span></div><div class="line">‍- report: /home/jdoe/tiny/outs/report<span class="selector-class">.txt</span></div><div class="line"></div><div class="line">Pipestance completed successfully!</div></pre></td></tr></table></figure>
 <p>在pipeline成功完成之后，会在文件夹下生成<code>outs</code>文件夹，包含所有文件；<code>tiny/tiny.mri.tgz</code>文件包含日志文件。</p>
 <h2 id="bcl2fastq-prepare"><a href="#bcl2fastq-prepare" class="headerlink" title="bcl2fastq prepare"></a>bcl2fastq prepare</h2><p>若持有下机数据原始文件，则需要转换成FASTQ 文件。supernova支持直接输入fastq文件，或者利用bcl2fastq进行转换。<br>因此需要<a href="http://support.illumina.com/downloads/bcl2fastq-conversion-software-v217.html" target="_blank" rel="external">下载</a>并安装bcl2fastq,我们在此下载的rpm二进制格式文件包，直接安装并加入到了环境变量中。</p>
 <p><a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/using/bcl2fastq-direct" target="_blank" rel="external">bcl2fastq使用帮助</a></p>
@@ -392,16 +392,16 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/27/pbs-using/" rel="next" title="PBS and qsbu manual">
-                <i class="fa fa-chevron-left"></i> PBS and qsbu manual
+              <a href="/2016/08/30/10x-data-ana/" rel="next" title="10X Data Analysis">
+                <i class="fa fa-chevron-left"></i> 10X Data Analysis
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/30/10x-data-ana/" rel="prev" title="10X Data Analysis">
-                10X Data Analysis <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/31/mongdb-mig/" rel="prev" title="CentOS6迁移NOdebb与MongoDB的升级">
+                CentOS6迁移NOdebb与MongoDB的升级 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,7 +500,7 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -517,7 +517,7 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
