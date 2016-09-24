@@ -343,7 +343,9 @@ content{:toc}
 
 
 Tmux是一个优秀的终端复用软件，支持多标签，也支持窗口内部面板的分割，更重要的是，Tmux提供了窗体随时保存和恢复的功能。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话。
-1. 
+1. 下载源代码1234git clone https://github.com/tmux/tmux.git tmuxcd tmuxsh autogen.sh./configure --prefix=/gpfs01/home/path/to/tmux
+1.1 提示需要libevent编译过程终端，提示：configure: error: &quot;libevent not found&quot;
+安装libevent12345678#./configure --prefix=/gpfs01/home/path/to/tmuxcurl -O https://cloud.github.com/down
           ...
 
           <div class="post-more-link text-center">
@@ -476,7 +478,10 @@ content{:toc}
 
 1. ABySS 的安装1.1 sparsehash下载安装sparsehash能够减小组装过程中的内存使用量，增加组装效率。
 下载sparsehash：
-1git clone https://github.c
+1git clone https://github.com/sparsehash/sparsehash.git sparsehash-latest
+安装sparsehash到指定文件夹：
+12345678910mkdir sparsehash#configure的同时指定安装路径prefix./configure --prefix=/gpfs01/home/path/to/bioSoft/abyss/sparsehash/make -j 10make checkmake installmake installcheckmake clean
+1.2 ABySS 下载安装1.2.1 下载并解压12wget http://www.bcgsc.ca/pl
           ...
 
           <div class="post-more-link text-center">
@@ -612,8 +617,10 @@ content{:toc}
 
 参考文献：
 
-http://stackove
-          ...
+http://stackoverflow.com/questions/38443545
+
+
+          
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/06/jekyll-word-wrap/#more" rel="contents">
@@ -744,7 +751,8 @@ content{:toc}
 
 
 进行测序数据分析的时候，大多并不关注reads名称的含义，例如：
-1234@E00492:20:HW5F3CCXX:6:1101:9567:1784 1:N:0:GCGATGTGGTNCTCATCTGCGGCA
+1234@E00492:20:HW5F3CCXX:6:1101:9567:1784 1:N:0:GCGATGTGGTNCTCATCTGCGGCATGGTTGGATCTCTTTGCAGTCCAAGGGANTCTGAAGAGTCTTCTCCAACACCACAGTTCAAAAGCATCAATTCTTCNGCGNTCGCTTNCNTCACANTNCAACTNNCACATCCATANATGANCANTGGAAAAACC+AA#FFJJJJJJJJJJJJJJJJFJFJJJF-FFJJJJJJJJJJJAF#JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJJJJF#JJJ#JJJ-AJ#A#JFFJJ#J#-AFJF##JJJJJJJJJJ#JA&lt;F#JJ#FJF7-FFJJJ
+各字符段的说明如下图：
           ...
 
           <div class="post-more-link text-center">
@@ -875,8 +883,11 @@ content{:toc}
 content{:toc}
 
 
-多组数据关系pairs函数当有多组样本数据，需要对比这些样本之间的相关性并且进行可视化时，可以通过R中base包的pairs函数实现：
-1234567# Load the iris dataset.data(i
+pairs函数当有多组样本数据，需要对比这些样本之间的相关性并且进行可视化时，可以通过R中base包的pairs函数实现：
+1234567# Load the iris dataset.data(iris)# Plot #1: Basic scatterplot matrix of the four measurementspairs(~Sepal.Length+Sepal.Width+Petal.Length+Petal.Width, data=iris)# orpairs(iris[,1:4])
+
+加入相关系数如果想在右上方区域显示相关系数，而并非像现在这样显示重复的散点图则：
+123456789101112131415161718# panel.smooth function is built in.# panel.cor puts correlation in upper panels, s
           ...
 
           <div class="post-more-link text-center">
@@ -1007,7 +1018,12 @@ content{:toc}
 content{:toc}
 
 
-1. bam转换为fastq使用bam2fastq，ion平台的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用samtools查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何m
+1. bam转换为fastq使用bam2fastq，ion平台的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用samtools查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何map结果，可以直接转为fq文件也不会损失任何信息。
+1bam2fastq ./path/to/&lt;name&gt;.bam -o path/to/&lt;name&gt;.fastq
+2. blast 比对这里提到的是BLAST+。
+blastn用于碱基序列之间的比对，一般只适用于少量序列与参考序列的比对。
+一般情况下建立索引比较慢，但是建立好索引之后可以多次使用，比对速度适中, 比对结果准确。
+1blastn -query ./path/to/query.fasta  -out  /output/to/&lt;name&gt;.blast  -db ~/database/blast/db
           ...
 
           <div class="post-more-link text-center">
@@ -1139,6 +1155,12 @@ content{:toc}
 
 
 1. 如何添加代码高亮不同编程语言的关键词、语法不同，因此需要对不同的位置进行高亮设置，因为目前jekyll默认编辑器为kramdown，并不支持pygments的代码高亮渲染，因此需要改为rouge进行渲染。
+jekyll 3.0的修改方法如下，修改_config.yml文件：
+12markdown: kramdownhighlighter: rouge
+添加highlighter为rouge即可。
+Ref: https://sacha.me/articles/jekyll-rouge/
+2. 修改代码块背景与字体颜色修改文件 media/css/style.css即可：
+12pre,code&#123;font-family:Menlo,&quot;Andale Mono&quot;,Consolas,&quot;Courier New&quot;,Monaco,monospace;font-s
           ...
 
           <div class="post-more-link text-center">
@@ -1269,142 +1291,14 @@ content{:toc}
 content{:toc}
 
 
-前期设置前期设置包括绑定远程git分支，源代码绑定为远程gcorigin主机的master分支，而子文件夹_site中的build完成的软件则绑定为gcorigin的coding-pages分支，具体配置方法请
+前期设置前期设置包括绑定远程git分支，源代码绑定为远程gcorigin主机的master分支，而子文件夹_site中的build完成的软件则绑定为gcorigin的coding-pages分支，具体配置方法请参考jekyll的迁移。
+自动化shell脚本根据提交顺序，在blog所在文件夹内新建add_post.sh文件，内容如下：
+12345678git add .git commit -m &apos;add posts&apos;git push gcorigin coding-pages:masterjekyll buildcd _site/git add .git commit -m &apos;add posts&apos;git push origin master:coding-pages
+赋予该脚本运行权限，在_posts文件夹下添加文件后，在当前文件夹下用./add_post.s
           ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/04/jekyll-auto-push/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/sublime-evernote/" itemprop="url">
-                  sublime设置与Evernote
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-03T00:00:00+08:00" content="2016-09-03">
-              2016-09-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/03/sublime-evernote/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/03/sublime-evernote/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          @Date: 2016-09-03 16:37:50
-
-
-content{:toc}
-
-
-sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/03/sublime-evernote/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1535,11 +1429,151 @@ Vintage是Sublime Text的vi模式编辑包。 可以使用组合vi命令来调�
 开启vim模式
 打开选项-setting user并编辑。
 
-Vintage
+Vintage默认是禁用的， 通过ignored_packages 配置。如果要从ignored packages列表中移除”Vintage”的话可以通过下面的方式编辑:选择Preferences/Settings - Default菜单编辑ignored_packages配置, 修改:
+&quot;ignored_packages&quot;: [&quot;Vintage&quot;]
+成:
+&quot;ignored_packages&quot;: []
+然后保存文件。
+Vintage模式则已启用——你可以看到”INSERT MODE”显示在状态栏了。Vintage默认是插入模式。可以添加:
+&quo
           ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/03/sublime-vim/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/03/sublime-evernote/" itemprop="url">
+                  sublime设置与Evernote
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-03T00:00:00+08:00" content="2016-09-03">
+              2016-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/03/sublime-evernote/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/03/sublime-evernote/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          @Date: 2016-09-03 16:37:50
+
+
+content{:toc}
+
+
+sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：
+sublime配置在使用sublime之前需要进行一系列的配置，配置方法如下：
+安装包管理插件使用快捷键ctr + ~调出命令行模式，输入以下内容并回车：
+1import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/03/sublime-evernote/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1664,7 +1698,10 @@ Vintage
 目录测试{:toc}
 
 之前使用的github加jekyll的方式部署blog，但是国内速度太慢，近几天得知国内的码市也能够使用git pages服务，因此决定从github迁移至coding net.
-同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内七牛云提供的免费10G空
+同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内七牛云提供的免费10G空间作为图床，以上两个网站的具体注册过程就不在此详述了~~
+1. coding net 注册与准备1.1 创建项目并推送在 Coding 上创建一个与用户名相同的项目，例如用户名为username，那么就创建名为username的项目，jekyll构建静态网页完成后即可通过http://username.coding.me/访问该网站~
+构建方法
+1234#生成静态网页，默认在_site文件夹下jekyll build#发布到本地，默认使用[http://127.0.0.1:4000]( http://127.0.0.1:4000)预览~本人未在本地实现，因此没有利用servejekyll se
           ...
 
           <div class="post-more-link text-center">
@@ -1799,141 +1836,13 @@ content{:toc}
 修改jekyll的代码
 
 2. jekyll 代码修改在文件_layouts/post.html的末尾添加：
-1#&#123;% include commen
+1#&#123;% include comments.md %&#125;
+然后新建文件_includes/comments.md，文件内容如下：
+12345678910111213141516171819202122232425262728&lt;!-- Disqus Comment BEGIN --&gt;    &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;    &lt;script type=&quot;text/javascript&quot;&gt;    /**     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND 
           ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/02/disqus/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/31/nodebb/" itemprop="url">
-                  CentOS搭建Nodebb
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/nodebb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/nodebb/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-目录测试{:toc #Test}
-
-CentOS搭建Nodebb1. 安装MongoDB参考
-1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
-1.2 安装MongoDB1234567t
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/nodebb/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2060,11 +1969,146 @@ Content{:toc}
 1. 常见问题1：mongodb 启动不了 mongodb 启动不了
 报错:child process failed, exited with error number 100
 检查启动日志发现：
-12345**************Unclean shutdown
+12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/core/repair for recovery instructions.*************Sat Apr 20 09:40:31.286 [initandlisten] exception in initAndListen: 12596 old lock file, terminating
+于是：
+12345678#删除db文件夹下的mongod.lock文件rm /usr/local/mongodb/db/mongod.lock#然后以repair的模式启动：/usr/local/m
           ...
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/31/mongdb-mig/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/31/nodebb/" itemprop="url">
+                  CentOS搭建Nodebb
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/31/nodebb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/nodebb/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+目录测试{:toc #Test}
+
+CentOS搭建Nodebb1. 安装MongoDB参考
+1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-linux-x86_64-2.4.9 /usr/local/mongodbcd mongodbmkdir dbmkdir logscd binvi /usr/local/mongodb/bin/mongodb.conf
+加入内容：
+12345dbpath=/usr/local/mongodb/dblogpath=/usr/local/mongodb/logs/mongodb.logport=27017fork=truenohttpinterface=true
+修改mongodb.conf内容：12
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/31/nodebb/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2188,7 +2232,10 @@ Content{:toc}
           
 Content{:toc}
 
-1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的
+1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
+执行：:
+12345678$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXXsupernova demuxCopyright (c) 2016 10x Genomics, Inc.  All rights reserved.-----------------------------------------------------------------------------Martian Runtime - 2.0.0Running preflight checks (please wait)...
+如果
           ...
 
           <div class="post-more-link text-center">
@@ -2319,7 +2366,11 @@ Content{:toc}
 10X Data Analysis
 本文数据分析流程来自10X Genomics, 根据该流程对实际数据进行了分析校验。
 supernova Installation1.下载安装包从10X公司提供的下载页面下载源文件并安装：
-12$ tar -xzvf superno
+12$ tar -xzvf supernova-1.0.0.tar.gz$ export PATH=/opt/supernova-1.0.0:$PATH   ## 加入到.bashrc中的环境变量
+2.检测supernova sitecheck
+运行sitecheck命令，检查安装设置
+3.测试利用test数据进行测试软件安装文件夹下包含测试数据，测试方法如下：
+12345678910111213141516171819202122$ supernova run --test --id=tinysupernova run 1.0.0Copyright (c) 2016 10x Genomics, Inc.  All rights re
           ...
 
           <div class="post-more-link text-center">
@@ -2453,7 +2504,12 @@ qsub aaa.pbs
 qsub -N supernova -l nodes=node01:ppn=20 bac.sh
 1.2 qstat用于查询作业状态
 qstat -an
-1.3 qd
+1.3 qdel用于删除已提交的作业
+qdel -W 15 18036  ##15秒后删除18036号作业
+1.4 qmgr用于队列管理，一般用不上
+2. PBS 脚本文件一般由两部分组成，PBS作业选项及运行脚本。
+2.1 PBS作业选项重要选项：
+1234-l resource_list ： 定义资源列表。以下为几个常用的资源种类。    cput=N ： 请求N 秒的CPU 时间; N 也可以是hh:mm:ss 的形式。    mem=N[K|M|G][B|W]：请求N &#123;kilo|mega|giga&#125;&#123;bytes|words&#125; 大小的内存。    nodes
           ...
 
           <div class="post-more-link text-center">
@@ -2578,7 +2634,7 @@ qstat -an
       
         
           
-          ReadingReading is important for we humans to inherite knowledge. Nowadays, We also learn from books, study knowledges in books. However, several we ha
+          ReadingReading is important for we humans to inherite knowledge. Nowadays, We also learn from books, study knowledges in books. However, several we have to notice when reading. First of all, We shoud pick out right books to read. What books are right? That depends on what we want and what we can get. If you want to relax, read some scitific fiction, novels and so on. If you want to lean something, read some books you are interested. Or, if you wa
           ...
 
           <div class="post-more-link text-center">
@@ -2703,8 +2759,16 @@ qstat -an
       
         
           
-          start from todaySelf introspection is very important for self improvement. For this reason, from today, i will introspect myself everyday to record my
-          ...
+          start from todaySelf introspection is very important for self improvement. For this reason, from today, i will introspect myself everyday to record my gains and losses, right and wrong.
+Mistatkes and Errors- wake too late
+- stay too long in bed
+- can&apos;t control myself
+- no breakfirst
+- no excercise
+To insist- work for 3 hours
+- write
+
+          
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/14/introspection/#more" rel="contents">
@@ -2829,8 +2893,9 @@ qstat -an
         
           
           健康人这一辈子什么最重要，健康。好的身体是一切的基础，没有一个健康的身体，一切都是空谈，无论是理想还是兴趣，无论是事业还是休闲，无论是亲情还是爱情，都会注定遗憾~
-那怎么保持健康呢？有的人说要靠大夫，因为大夫的职责就是治病救人；有人说靠家人，因为最爱你的是你的亲人。其实都不是，健康的身体最后靠的还是
-          ...
+那怎么保持健康呢？有的人说要靠大夫，因为大夫的职责就是治病救人；有人说靠家人，因为最爱你的是你的亲人。其实都不是，健康的身体最后靠的还是自己。大夫每天要面对无数的病人，根本记不清病人的具体情况；亲人虽然关心你，但他并不能知道你的切身感受；因此，最终还是要靠自己~
+
+          
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/27/about-health/#more" rel="contents">
