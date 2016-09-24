@@ -1,0 +1,743 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tech,linux,centos,nodebb,mongodb," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Content{:toc}
+
+1. 常见问题1：mongodb 启动不了 mongodb 启动不了
+报错:child process failed, exited with error number 100
+检查启动日志发现：
+12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS6迁移NOdebb与MongoDB的升级">
+<meta property="og:url" content="http://yoursite.com/2016/08/31/mongdb-mig/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="Content{:toc}
+
+1. 常见问题1：mongodb 启动不了 mongodb 启动不了
+报错:child process failed, exited with error number 100
+检查启动日志发现：
+12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/c">
+<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS6迁移NOdebb与MongoDB的升级">
+<meta name="twitter:description" content="Content{:toc}
+
+1. 常见问题1：mongodb 启动不了 mongodb 启动不了
+报错:child process failed, exited with error number 100
+检查启动日志发现：
+12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/c">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/31/mongdb-mig/"/>
+
+  <title> CentOS6迁移NOdebb与MongoDB的升级 | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All my Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CentOS6迁移NOdebb与MongoDB的升级
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/31/mongdb-mig/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/mongdb-mig/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>Content<br>{:toc}</li>
+</ul>
+<h2 id="1-常见问题1：mongodb-启动不了"><a href="#1-常见问题1：mongodb-启动不了" class="headerlink" title="1. 常见问题1：mongodb 启动不了"></a>1. 常见问题1：mongodb 启动不了</h2><p><strong> mongodb 启动不了</strong></p>
+<p><a href="http://www.dataguru.cn/thread-107361-1-1.html" target="_blank" rel="external">报错</a>:<strong>child process failed, exited with error number 100</strong></p>
+<p>检查启动日志发现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">**************</div><div class="line">Unclean shutdown detected.</div><div class="line">Please visit http://dochub.mongodb.org/core/repair for recovery instructions.</div><div class="line">*************</div><div class="line">Sat Apr 20 09:40:31.286 [initandlisten] exception in initAndListen: 12596 old lock file, terminating</div></pre></td></tr></table></figure>
+<p>于是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#删除db文件夹下的mongod.lock文件</div><div class="line">rm /usr/local/mongodb/db/mongod.lock</div><div class="line">#然后以repair的模式启动：</div><div class="line">/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/bin/mongodb.conf --repair</div><div class="line">#然后接着在启动一次</div><div class="line">/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/bin/mongodb.conf</div><div class="line">#现在就可以查看到mongod的进程存在了</div><div class="line">ps -ef |grep mongo</div></pre></td></tr></table></figure>
+<h2 id="2-常见问题2：如何正常关闭MongoDB"><a href="#2-常见问题2：如何正常关闭MongoDB" class="headerlink" title="2. 常见问题2：如何正常关闭MongoDB"></a>2. 常见问题2：如何正常关闭MongoDB</h2><h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a><strong>方法1</strong></h4><p>先通过shell连上服务器：<br>mongo<br>use admin<br>db.shutdownServer()</p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a><strong>方法2</strong></h4><p>ps -ef |grep mongo<br>直接kill -15 &lt;pid>;,注意kill -9 可能会导致数据文件损坏</p>
+<h2 id="3-MongoDB-升级与数据库迁移"><a href="#3-MongoDB-升级与数据库迁移" class="headerlink" title="3. MongoDB 升级与数据库迁移"></a>3. MongoDB 升级与数据库迁移</h2><p><a href="http://www.tuicool.com/articles/f2aaquq" target="_blank" rel="external">参考:http://www.tuicool.com/articles/f2aaquq</a></p>
+<blockquote>
+<p>注意：MongoDB不能从2.4一步升级到3.2；必须先从2.4升级到2.6，再升级到3.0，最后升级到3.6。<br>本文只进行了到2.6的升级。<br>**另外：新版本3.2的<code>auth=true</code>选项已经失效，必须改为<code>authorization: enabled</code></p>
+</blockquote>
+<p><strong>3.1 停止老版本MongoDB</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps -ef |grep mongod</div><div class="line">kill -15 pid</div></pre></td></tr></table></figure>
+<p><strong>3.2 下载并解压新版MongoDB</strong></p>
+<p>下载地址：<a href="http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.6.0.tgz" target="_blank" rel="external">http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.6.0.tgz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http://downloads.mongodb.org/linux/mongodb-linux-x86_64-2.6.0.tgz</div><div class="line">tar xvf mongodb-linux-x86_64-2.6.0.tgz</div><div class="line">mv mongodb-linux-x86_64-2.6.0 mongodb2.6</div></pre></td></tr></table></figure>
+<p><strong>3.3 创建logs与database文件夹</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd mongodb2.6</div><div class="line">mkdir db</div><div class="line">mkdir logs</div></pre></td></tr></table></figure>
+<p>新建配置文件<code>vim ./bin/mongodb.conf</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">bind_ip=127.0.0.1</div><div class="line">dbpath=/usr/local/mongodb2.6/db</div><div class="line">logpath=/usr/local/mongodb2.6/logs/mongodb.log</div><div class="line">port=27017</div><div class="line">fork=true</div><div class="line">nohttpinterface=true</div><div class="line">auth=true</div></pre></td></tr></table></figure>
+<p><strong>3.4 数据库备份与重新导入</strong></p>
+<p>备份：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./bin/mongod --dbpath ../mongodb/db/ &amp;</div><div class="line">./bin/mongodump --out bak</div></pre></td></tr></table></figure>
+<p>然后关闭数据库，重新启动,并修复数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#如需指定WiredTiger引擎，请加参数--storageEngine wiredTiger</div><div class="line">./bin/mongod --dbpath ./db/ &amp;</div><div class="line">./bin/mongorestore ./bak/</div></pre></td></tr></table></figure>
+<p>然后关闭数据库，修改配置文件mongodb.conf，并重新启动。<br><code>/usr/local/mongodb2.6/bin/mongod --config /usr/local/mongodb2.6/bin/mongodb.conf &amp;</code></p>
+<p><strong>3.5 验证数据库，创建用户</strong></p>
+<p>通过mongo shell进入数据库命令行，注意，mongo shell版本与MongoDB不一致，就重新修改.bashrc文件：<br><strong>验证不通过的主要原因即为：mongo shell版本与MongoDB不一致，</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">mongo</div><div class="line">&gt; show dbs</div><div class="line">&gt; use nodebb</div><div class="line">&gt; db.auth(&apos;nodebb&apos;, &apos;bioi......&apos;)</div><div class="line">#正确返回1，错误返回error，如果错误重新设置用户名密码</div><div class="line">&gt; db.createUser( &#123; user: &quot;nodebb&quot;, pwd: &quot;&lt;Enter in a secure password&gt;&quot;, roles: [ &quot;readWrite&quot; ] &#125; )</div><div class="line">&gt; #For earlier versions of MongoDB (if the above throws an error)</div><div class="line">&gt; db.addUser( &#123; user: &quot;nodebb&quot;, pwd: &quot;&lt;Enter in a secure password&gt;&quot;, roles: [ &quot;readWrite&quot; ] &#125; )</div></pre></td></tr></table></figure>
+<p>如果保证数据正确，可以登录，那么重新启动nodebb就OK了!!!</p>
+<h2 id="4-设置开机启动"><a href="#4-设置开机启动" class="headerlink" title="4. 设置开机启动"></a>4. 设置开机启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nohup /usr/local/mongodb2.6/bin/mongod --config /usr/local/mongodb2.6/bin/mongodb.conf &amp;</div><div class="line">vim /etc/rc.d/rc.local</div><div class="line">/usr/local/mongodb2.6/bin/mongod --config /usr/local/mongodb2.6/bin/mongodb.conf</div></pre></td></tr></table></figure>
+<h2 id="5-MongoDB-3-2配置文件"><a href="#5-MongoDB-3-2配置文件" class="headerlink" title="5. MongoDB 3.2配置文件"></a>5. MongoDB 3.2配置文件</h2><p>MongoDB3.2版本的配置文件有较大变动，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">systemLog:</div><div class="line">   destination: file</div><div class="line">   path: &quot;/usr/local/mongodb3.2/logs/mongod.log&quot;</div><div class="line">   logAppend: true</div><div class="line">storage:</div><div class="line">   journal:</div><div class="line">      enabled: false</div><div class="line">   dbPath: &quot;/usr/local/mongodb3.2/db&quot;</div><div class="line">   directoryPerDB: false</div><div class="line">   engine: wiredTiger</div><div class="line">   wiredTiger:</div><div class="line">      engineConfig:</div><div class="line">         cacheSizeGB: 4</div><div class="line">         directoryForIndexes: false</div><div class="line">         journalCompressor: zlib</div><div class="line">      collectionConfig:</div><div class="line">         blockCompressor: zlib</div><div class="line">      indexConfig:</div><div class="line">         prefixCompression: true</div><div class="line">net:</div><div class="line">   port: 27017</div><div class="line">processManagement:</div><div class="line">   fork: true</div><div class="line">security:</div><div class="line">   authorization: enabled</div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.tuicool.com/articles/f2aaquq" target="_blank" rel="external">http://www.tuicool.com/articles/f2aaquq</a></li>
+<li><a href="http://www.dataguru.cn/thread-107361-1-1.html" target="_blank" rel="external">http://www.dataguru.cn/thread-107361-1-1.html</a></li>
+<li><a href="http://m.blog.csdn.net/article/details?id=51111255" target="_blank" rel="external">http://m.blog.csdn.net/article/details?id=51111255</a></li>
+<li><a href="http://www.cnblogs.com/kgdxpr/p/3519352.html" target="_blank" rel="external">http://www.cnblogs.com/kgdxpr/p/3519352.html</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag">#tech</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/centos/" rel="tag">#centos</a>
+          
+            <a href="/tags/nodebb/" rel="tag">#nodebb</a>
+          
+            <a href="/tags/mongodb/" rel="tag">#mongodb</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/30/10x-soft-pre/" rel="next" title="10X data analysis -- Software Prepare">
+                <i class="fa fa-chevron-left"></i> 10X data analysis -- Software Prepare
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/31/nodebb/" rel="prev" title="CentOS搭建Nodebb">
+                CentOS搭建Nodebb <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-常见问题1：mongodb-启动不了"><span class="nav-text">1. 常见问题1：mongodb 启动不了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-常见问题2：如何正常关闭MongoDB"><span class="nav-text">2. 常见问题2：如何正常关闭MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1"><span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法2"><span class="nav-text">方法2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-MongoDB-升级与数据库迁移"><span class="nav-text">3. MongoDB 升级与数据库迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置开机启动"><span class="nav-text">4. 设置开机启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-MongoDB-3-2配置文件"><span class="nav-text">5. MongoDB 3.2配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/08/31/mongdb-mig/';
+      var disqus_title = "CentOS6迁移NOdebb与MongoDB的升级";
+      var disqus_url = 'http://yoursite.com/2016/08/31/mongdb-mig/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

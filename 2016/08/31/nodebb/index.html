@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tech,linux,centos,nodebb," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="目录测试{:toc #Test}
+
+CentOS搭建Nodebb1. 安装MongoDB参考
+1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS搭建Nodebb">
+<meta property="og:url" content="http://yoursite.com/2016/08/31/nodebb/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="目录测试{:toc #Test}
+
+CentOS搭建Nodebb1. 安装MongoDB参考
+1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-l">
+<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOS搭建Nodebb">
+<meta name="twitter:description" content="目录测试{:toc #Test}
+
+CentOS搭建Nodebb1. 安装MongoDB参考
+1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-l">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/31/nodebb/"/>
+
+  <title> CentOS搭建Nodebb | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All my Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CentOS搭建Nodebb
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/31/nodebb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/nodebb/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>目录测试<br>{:toc #Test}</li>
+</ul>
+<h1 id="CentOS搭建Nodebb"><a href="#CentOS搭建Nodebb" class="headerlink" title="CentOS搭建Nodebb"></a>CentOS搭建Nodebb</h1><h2 id="1-安装MongoDB"><a href="#1-安装MongoDB" class="headerlink" title="1. 安装MongoDB"></a>1. 安装MongoDB</h2><p><a href="http://www.cnblogs.com/kgdxpr/p/3519352.html" target="_blank" rel="external">参考</a></p>
+<h3 id="1-1-下载MongoDB（64位）"><a href="#1-1-下载MongoDB（64位）" class="headerlink" title="1.1 下载MongoDB（64位）"></a>1.1 下载MongoDB（64位）</h3><p><a href="http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz" target="_blank" rel="external">http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz</a></p>
+<h3 id="1-2-安装MongoDB"><a href="#1-2-安装MongoDB" class="headerlink" title="1.2 安装MongoDB"></a>1.2 安装MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">tar zxvf mongodb-linux-x86_64-2.4.9.tgz</div><div class="line">mv mongodb-linux-x86_64-2.4.9 /usr/local/mongodb</div><div class="line">cd mongodb</div><div class="line">mkdir db</div><div class="line">mkdir logs</div><div class="line">cd bin</div><div class="line">vi /usr/local/mongodb/bin/mongodb.conf</div></pre></td></tr></table></figure>
+<p>加入内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dbpath=/usr/local/mongodb/db</div><div class="line">logpath=/usr/local/mongodb/logs/mongodb.log</div><div class="line">port=27017</div><div class="line">fork=true</div><div class="line">nohttpinterface=true</div></pre></td></tr></table></figure>
+<p>修改mongodb.conf内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#auth = true</div><div class="line">修改成（去掉注释）</div><div class="line">auth = true</div></pre></td></tr></table></figure></p>
+<h3 id="1-3-重新绑定mongodb的配置文件地址和访问IP"><a href="#1-3-重新绑定mongodb的配置文件地址和访问IP" class="headerlink" title="1.3 重新绑定mongodb的配置文件地址和访问IP"></a>1.3 重新绑定mongodb的配置文件地址和访问IP</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/mongodb/bin/mongod --bind_ip localhost -f /usr/local/mongodb/bin/mongodb.conf</div></pre></td></tr></table></figure>
+<h3 id="1-4-开机自启动"><a href="#1-4-开机自启动" class="headerlink" title="1.4 开机自启动"></a>1.4 开机自启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vim /etc/rc.d/rc.local</div><div class="line">/usr/local/mongodb/bin/mongod --config /usr/local/mongodb/bin/mongodb.conf</div></pre></td></tr></table></figure>
+<h3 id="1-4-测试MongoDB"><a href="#1-4-测试MongoDB" class="headerlink" title="1.4 测试MongoDB"></a>1.4 测试MongoDB</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#进入mongodb的shell模式</div><div class="line">/usr/local/mongodb/bin/mongo</div><div class="line">#查看数据库列表</div><div class="line">show dbs</div><div class="line">#当前db版本</div><div class="line">db.version();</div></pre></td></tr></table></figure>
+<h3 id="1-5-设置数据库、用户名、密码"><a href="#1-5-设置数据库、用户名、密码" class="headerlink" title="1.5 设置数据库、用户名、密码"></a>1.5 设置数据库、用户名、密码</h3><p>设置方法<a href="https://nodebb.readthedocs.io/en/latest/configuring/databases/mongo.html" target="_blank" rel="external">如下</a>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ mongo</div><div class="line">&gt; use nodebb</div><div class="line">#For MongoDB 2.6.x</div><div class="line">&gt; db.createUser( &#123; user: &quot;nodebb&quot;, pwd: &quot;&lt;Enter in a secure password&gt;&quot;, roles: [ &quot;readWrite&quot; ] &#125; )</div><div class="line">#For earlier versions of MongoDB (if the above throws an error)</div><div class="line">&gt; db.addUser( &#123; user: &quot;nodebb&quot;, pwd: &quot;&lt;Enter in a secure password&gt;&quot;, roles: [ &quot;readWrite&quot; ] &#125; )</div></pre></td></tr></table></figure>
+<h2 id="2-安装依赖"><a href="#2-安装依赖" class="headerlink" title="2. 安装依赖"></a>2. 安装依赖</h2><p><a href="http://www.chinaz.com/web/2015/1102/465216.shtml" target="_blank" rel="external">参考</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install nodejs</div><div class="line">yum install npm</div><div class="line">yum install  imagemagick</div><div class="line">yum install libjpeg* libpng* freetype* gd*</div></pre></td></tr></table></figure>
+<h2 id="3-安装Nodebb"><a href="#3-安装Nodebb" class="headerlink" title="3. 安装Nodebb"></a>3. 安装Nodebb</h2><p><a href="http://www.tuicool.com/articles/zIJzm2I" target="_blank" rel="external">参考</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd  安装目录</div><div class="line">git clone git://github.com/NodeBB/NodeBB.git nodebb</div></pre></td></tr></table></figure>
+<p>进入目录安装nodebb所需要的nodejs模块:<code>cd nodebb &amp;&amp; npm install</code></p>
+<p>其他安装模块方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm i mongodb@2.1.21</div><div class="line">npm ls mongodb</div></pre></td></tr></table></figure></p>
+<h2 id="4-配置Nodebb"><a href="#4-配置Nodebb" class="headerlink" title="4. 配置Nodebb"></a>4. 配置Nodebb</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd  安装nodebb目录</div><div class="line">node app --setup</div></pre></td></tr></table></figure>
+<p>或者编辑config.json文件</p>
+<h2 id="5-启动nodebb启动脚本"><a href="#5-启动nodebb启动脚本" class="headerlink" title="5. 启动nodebb启动脚本"></a>5. 启动nodebb启动脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./nodebb start</div><div class="line">#查看log</div><div class="line">./nodebb log</div><div class="line">#重启nodebb</div><div class="line">./nodebb restart</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag">#tech</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/centos/" rel="tag">#centos</a>
+          
+            <a href="/tags/nodebb/" rel="tag">#nodebb</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/31/mongdb-mig/" rel="next" title="CentOS6迁移NOdebb与MongoDB的升级">
+                <i class="fa fa-chevron-left"></i> CentOS6迁移NOdebb与MongoDB的升级
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/02/disqus/" rel="prev" title="为jekyll添加disqus">
+                为jekyll添加disqus <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CentOS搭建Nodebb"><span class="nav-text">CentOS搭建Nodebb</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装MongoDB"><span class="nav-text">1. 安装MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-下载MongoDB（64位）"><span class="nav-text">1.1 下载MongoDB（64位）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-安装MongoDB"><span class="nav-text">1.2 安装MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-重新绑定mongodb的配置文件地址和访问IP"><span class="nav-text">1.3 重新绑定mongodb的配置文件地址和访问IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-开机自启动"><span class="nav-text">1.4 开机自启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-测试MongoDB"><span class="nav-text">1.4 测试MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-设置数据库、用户名、密码"><span class="nav-text">1.5 设置数据库、用户名、密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装依赖"><span class="nav-text">2. 安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装Nodebb"><span class="nav-text">3. 安装Nodebb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置Nodebb"><span class="nav-text">4. 配置Nodebb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-启动nodebb启动脚本"><span class="nav-text">5. 启动nodebb启动脚本</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/08/31/nodebb/';
+      var disqus_title = "CentOS搭建Nodebb";
+      var disqus_url = 'http://yoursite.com/2016/08/31/nodebb/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

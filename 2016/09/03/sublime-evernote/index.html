@@ -1,0 +1,787 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tech,sublime,evernote," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="@Date: 2016-09-03 16:37:50
+
+
+content{:toc}
+
+
+sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：
+sublime配置在使用sublime之前需要进行一系列的配置，配置方法如下：
+安装包管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sublime设置与Evernote">
+<meta property="og:url" content="http://yoursite.com/2016/09/03/sublime-evernote/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="@Date: 2016-09-03 16:37:50
+
+
+content{:toc}
+
+
+sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：
+sublime配置在使用sublime之前需要进行一系列的配置，配置方法如下：
+安装包管理">
+<meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/sy23.png">
+<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sublime设置与Evernote">
+<meta name="twitter:description" content="@Date: 2016-09-03 16:37:50
+
+
+content{:toc}
+
+
+sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：
+sublime配置在使用sublime之前需要进行一系列的配置，配置方法如下：
+安装包管理">
+<meta name="twitter:image" content="http://ocs218n9i.bkt.clouddn.com/sy23.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/03/sublime-evernote/"/>
+
+  <title> sublime设置与Evernote | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All my Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                sublime设置与Evernote
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-03T00:00:00+08:00" content="2016-09-03">
+              2016-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/03/sublime-evernote/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/03/sublime-evernote/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@Date: 2016-09-03 16:37:50</p>
+<hr>
+<ul>
+<li>content<br>{:toc}</li>
+</ul>
+<hr>
+<p><strong>sublime</strong> 是非常好用的编辑器，而<strong>Evernote</strong>是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的<strong>mardown</strong>语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：</p>
+<h2 id="sublime配置"><a href="#sublime配置" class="headerlink" title="sublime配置"></a>sublime配置</h2><p>在使用sublime之前需要进行一系列的配置，配置方法如下：</p>
+<h4 id="安装包管理插件"><a href="#安装包管理插件" class="headerlink" title="安装包管理插件"></a>安装包管理插件</h4><p>使用快捷键<code>ctr + ~</code>调出命令行模式，输入以下内容并回车：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())</div></pre></td></tr></table></figure>
+<p>等待片刻安装完毕即可用快捷键<code>ctrl + shift + p</code>调出输入框，输入install，调出包安装界面：</p>
+<p><img src="http://ocs218n9i.bkt.clouddn.com/sy23.png" alt="install cmd"></p>
+<h4 id="安装所需插件"><a href="#安装所需插件" class="headerlink" title="安装所需插件"></a>安装所需插件</h4><p>我使用的插件目录如下：</p>
+<blockquote>
+<ul>
+<li>Anaconda<ul>
+<li>Markdown Extended</li>
+<li>Markdown Preview</li>
+<li>Monokai Extended</li>
+<li>OmniMarkupPreviewer</li>
+<li>sublime-evernote</li>
+<li>Sublime Tmpl</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="关联-md文件"><a href="#关联-md文件" class="headerlink" title="关联.md文件"></a>关联.md文件</h4><p>默认情况下sublime不识别.md文件，因此，需要设置<code>view-syntax--open all with current...</code></p>
+<h4 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h4><p>我的配置文件，选择Preferences/Settings - User，加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;bold_folder_labels&quot;: true,</div><div class="line">  &quot;color_scheme&quot;: &quot;Packages/Monokai Extended/Monokai Extended.tmTheme&quot;,</div><div class="line">  &quot;font_size&quot;: 16,</div><div class="line">  &quot;highlight_line&quot;: true,</div><div class="line">  &quot;ignored_packages&quot;:</div><div class="line">  [</div><div class="line">  ],</div><div class="line">  &quot;rulers&quot;:</div><div class="line">  [</div><div class="line">    80</div><div class="line">  ],</div><div class="line">  &quot;save_on_focus_lost&quot;: true,</div><div class="line">  &quot;scroll_past_end&quot;: true,</div><div class="line">  &quot;show_encoding&quot;: true,</div><div class="line">  &quot;show_full_path&quot;: true,</div><div class="line">  &quot;show_line_endings&quot;: true,</div><div class="line">  &quot;spell_check&quot;: true,</div><div class="line">  &quot;tab_size&quot;: 2,</div><div class="line">  &quot;translate_tabs_to_spaces&quot;: true,</div><div class="line">  &quot;trim_trailing_white_space_on_save&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Evernote-相关设置"><a href="#Evernote-相关设置" class="headerlink" title="Evernote 相关设置"></a>Evernote 相关设置</h2><h4 id="获取Evernote授权"><a href="#获取Evernote授权" class="headerlink" title="获取Evernote授权"></a>获取Evernote授权</h4><p>打开 Sublime Evernote 插件的设置文件 Preferences &gt; Package Settings &gt; Evernote &gt; Settings - User</p>
+<p>打开<a href="https://app.yinxiang.com/api/DeveloperToken.action" target="_blank" rel="external">https://app.yinxiang.com/api/DeveloperToken.action</a>并登录，获得应用授权。<br>将获得 Developer Token 和 NoteStore URL<br>将上面获取到的信息复制到相应的位置, 格式是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> &quot;noteStoreUrl&quot;: &quot;你的 NoteStore URL&quot;,</div><div class="line"> &quot;token&quot;: &quot;你的 Developer Token&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>PS:</strong></p>
+<blockquote>
+<p>token 是以S=开头的一串字符串<br>noteStoreUrl 是一段 http 地址，你需要手动将https替换成http<br>保存设置文件（可能还需要重启你的Sublime Text）之后，尝试打开一个笔记以确保你的印象笔记能正常工作</p>
+</blockquote>
+<p>此时你可以ctrl + shift + p 调出Command palatte 输入 evernote: list recent notes,如果成功可以看到你最近的笔记。</p>
+<h4 id="配置markdown模板"><a href="#配置markdown模板" class="headerlink" title="配置markdown模板"></a>配置markdown模板</h4><p>通过 Preferences &gt; Bowse Packages… 找到SublimeTmpl文件夹中 找到 tmplates 文件夹新建一个md.tmpl的文档：<br>用Sublime 打开 md.tmpl 文档 写入以下格代码，保存 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">layout: post</div><div class="line">title: heading</div><div class="line">category: 技术</div><div class="line">tags: [tech, disqus, linux, jekyll]</div><div class="line">notebook: 待处理</div><div class="line">---</div><div class="line"></div><div class="line">@Date: $&#123;date&#125;</div><div class="line"></div><div class="line">--------</div><div class="line"></div><div class="line">* content</div><div class="line">&#123;:toc&#125;</div><div class="line"></div><div class="line">---------</div></pre></td></tr></table></figure>
+<blockquote>
+<p>模板配制完成，Evernote能识别这三个关键字 依次是标题，标签，笔记本。</p>
+</blockquote>
+<h4 id="配置menu中的MD选项"><a href="#配置menu中的MD选项" class="headerlink" title="配置menu中的MD选项"></a>配置menu中的MD选项</h4><p>在选项 File &gt; New file(SublimeTmpl) &gt; menu 照猫画虎的加入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;caption&quot;: &quot;md&quot;,</div><div class="line">&quot;command&quot;: &quot;sublime_tmpl&quot;,</div><div class="line">&quot;args&quot;: &#123;</div><div class="line">&quot;type&quot;: &quot;md&quot;</div><div class="line">&#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>这样我们就能看到md的模版选项了。</p>
+<h4 id="配置快捷键："><a href="#配置快捷键：" class="headerlink" title="配置快捷键："></a>配置快捷键：</h4><p>Evernote 的快捷键在 Key Bindings——User 中代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123; &quot;keys&quot;: [&quot;super+e&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: &#123;&quot;overlay&quot;: &quot;command_palette&quot;, &quot;text&quot;: &quot;Evernote: &quot;&#125; &#125;,</div><div class="line">&#123; &quot;keys&quot;: [&quot;ctrl+e&quot;, &quot;ctrl+s&quot;], &quot;command&quot;: &quot;send_to_evernote&quot; &#125;,</div><div class="line">&#123; &quot;keys&quot;: [&quot;ctrl+e&quot;, &quot;ctrl+o&quot;], &quot;command&quot;: &quot;open_evernote_note&quot; &#125;,</div><div class="line">&#123; &quot;keys&quot;: [&quot;ctrl+e&quot;, &quot;ctrl+u&quot;], &quot;command&quot;: &quot;save_evernote_note&quot; &#125;,</div></pre></td></tr></table></figure>
+<blockquote>
+<p>[“ctrl+e”, “ctrl+s”] 就是先按完ctrl + e 后再按 ctrl + s</p>
+</blockquote>
+<p>快捷键说明：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Item</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ctrl + alt + o</td>
+<td style="text-align:left">利用浏览器预览md文件</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + e, ctrl + s</td>
+<td style="text-align:left">发送到Evernote</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + e, ctrl + u</td>
+<td style="text-align:left">保存已有笔记到Evernote</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + e, ctrl + o</td>
+<td style="text-align:left">打开Evernote</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="http://www.jianshu.com/p/f5118d466f81" target="_blank" rel="external">http://www.jianshu.com/p/f5118d466f81</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag">#tech</a>
+          
+            <a href="/tags/sublime/" rel="tag">#sublime</a>
+          
+            <a href="/tags/evernote/" rel="tag">#evernote</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/02/jekyll/" rel="next" title="jekyll 迁移">
+                <i class="fa fa-chevron-left"></i> jekyll 迁移
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/03/sublime-vim/" rel="prev" title="Sublime Text启用vim模式">
+                Sublime Text启用vim模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sublime配置"><span class="nav-text">sublime配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装包管理插件"><span class="nav-text">安装包管理插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装所需插件"><span class="nav-text">安装所需插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关联-md文件"><span class="nav-text">关联.md文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我的配置"><span class="nav-text">我的配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evernote-相关设置"><span class="nav-text">Evernote 相关设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取Evernote授权"><span class="nav-text">获取Evernote授权</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置markdown模板"><span class="nav-text">配置markdown模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置menu中的MD选项"><span class="nav-text">配置menu中的MD选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置快捷键："><span class="nav-text">配置快捷键：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/09/03/sublime-evernote/';
+      var disqus_title = "sublime设置与Evernote";
+      var disqus_url = 'http://yoursite.com/2016/09/03/sublime-evernote/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,739 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,bioinfo,blastn,trim," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="@Date: 2016-09-05 10:27:40
+
+
+content{:toc}
+
+
+1. bam转换为fastq使用bam2fastq，ion平台的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用samtools查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何map结果，可以直接转为fq文件也不会损失任何信息。
+1bam2fastq ./path/to/&amp;lt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用分析方法bam2fastq、blastn、trimmomatic">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/general-ana/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="@Date: 2016-09-05 10:27:40
+
+
+content{:toc}
+
+
+1. bam转换为fastq使用bam2fastq，ion平台的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用samtools查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何map结果，可以直接转为fq文件也不会损失任何信息。
+1bam2fastq ./path/to/&amp;lt">
+<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用分析方法bam2fastq、blastn、trimmomatic">
+<meta name="twitter:description" content="@Date: 2016-09-05 10:27:40
+
+
+content{:toc}
+
+
+1. bam转换为fastq使用bam2fastq，ion平台的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用samtools查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何map结果，可以直接转为fq文件也不会损失任何信息。
+1bam2fastq ./path/to/&amp;lt">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/05/general-ana/"/>
+
+  <title> 常用分析方法bam2fastq、blastn、trimmomatic | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All my Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                常用分析方法bam2fastq、blastn、trimmomatic
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:00:00+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
+                    <span itemprop="name">bioinformatics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/05/general-ana/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/05/general-ana/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@Date: 2016-09-05 10:27:40</p>
+<hr>
+<ul>
+<li>content<br>{:toc}</li>
+</ul>
+<hr>
+<h2 id="1-bam转换为fastq"><a href="#1-bam转换为fastq" class="headerlink" title="1. bam转换为fastq"></a>1. bam转换为fastq</h2><p>使用<strong>bam2fastq</strong>，<strong>ion平台</strong>的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用<strong>samtools</strong>查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何map结果，可以直接转为fq文件也不会损失任何信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bam2fastq ./path/to/&lt;name&gt;.bam -o path/to/&lt;name&gt;.fastq</div></pre></td></tr></table></figure>
+<h2 id="2-blast-比对"><a href="#2-blast-比对" class="headerlink" title="2. blast 比对"></a>2. blast 比对</h2><p>这里提到的是<strong>BLAST+</strong>。</p>
+<p>blastn用于碱基序列之间的比对，一般只适用于少量序列与参考序列的比对。</p>
+<p>一般情况下建立索引比较慢，但是建立好索引之后可以多次使用，比对速度适中, 比对结果准确。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blastn -query ./path/to/query.fasta  -out  /output/to/&lt;name&gt;.blast  -db ~/database/blast/db/16SMicrobial/16SMicrobial&lt;已建好索引的参考库&gt; -outfmt 6 -evalue 1e-10 -num_alignments 1 -num_threads 60</div></pre></td></tr></table></figure>
+<h3 id="2-1-数据库索引"><a href="#2-1-数据库索引" class="headerlink" title="2.1 数据库索引"></a>2.1 数据库索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">makeblastdb -in db.fasta -dbtype prot -parse_seqids -out dbname</div><div class="line">参数说明:</div><div class="line">-in：待格式化的序列文件</div><div class="line">-dbtype：数据库类型，prot或nucl</div><div class="line">-out：数据库名</div></pre></td></tr></table></figure>
+<h3 id="2-2-蛋白序列比对蛋白数据库（blastp）"><a href="#2-2-蛋白序列比对蛋白数据库（blastp）" class="headerlink" title="2.2 蛋白序列比对蛋白数据库（blastp）"></a>2.2 蛋白序列比对蛋白数据库（blastp）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">blastp -query seq.fasta -out seq.blast -db dbname -outfmt 6 -evalue 1e-5 -num_descriptions 10 -num_threads 8</div><div class="line">参数说明:</div><div class="line">-query： 输入文件路径及文件名</div><div class="line">-out：输出文件路径及文件名</div><div class="line">-db：格式化了的数据库路径及数据库名</div><div class="line">-outfmt：输出文件格式，总共有12种格式，6是tabular格式对应BLAST的m8格式</div><div class="line">-evalue：设置输出结果的e-value值</div><div class="line">-num_descriptions：tabular格式输出结果的条数</div><div class="line">-num_threads：线程数</div></pre></td></tr></table></figure>
+<h3 id="2-3-核酸序列比对核酸数据库（blastn）以及核酸序列比对蛋白数据库（blastx）"><a href="#2-3-核酸序列比对核酸数据库（blastn）以及核酸序列比对蛋白数据库（blastx）" class="headerlink" title="2.3 核酸序列比对核酸数据库（blastn）以及核酸序列比对蛋白数据库（blastx）"></a>2.3 核酸序列比对核酸数据库（blastn）以及核酸序列比对蛋白数据库（blastx）</h3><p>与上面的blastp用法类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">blastn -query seq.fasta -out seq.blast -db dbname -outfmt 6 -evalue 1e-5 -num_descriptions 10 -num_threads 8</div><div class="line">blastx -query seq.fasta -out seq.blast -db dbname -outfmt 6 -evalue 1e-5 -num_descriptions 10 -num_threads 8</div></pre></td></tr></table></figure>
+<h2 id="3-trimmomatic序列质控与过滤（filter-and-trim）"><a href="#3-trimmomatic序列质控与过滤（filter-and-trim）" class="headerlink" title="3. trimmomatic序列质控与过滤（filter and trim）"></a>3. trimmomatic序列质控与过滤（filter and trim）</h2><p>使用实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">java -jar /soft/Trimmomatic-0.36/trimmomatic-0.36.jar PE -threads 10 -phred33 $m $n ../../trimmomatic/$m.cl ../../trimmomatic/$m.un ../../trimmomatic/$n.cl ../../trimmomatic/$n.un LEADING:3 TRAILING:3 SLIDINGWINDOW:36:10 MINLEN:75</div></pre></td></tr></table></figure>
+<h3 id="3-1-trimmomatic-下载安装"><a href="#3-1-trimmomatic-下载安装" class="headerlink" title="3.1 trimmomatic 下载安装"></a>3.1 trimmomatic 下载安装</h3><p>下载地址：<a href="http://www.usadellab.org/cms/?page=trimmomatic" target="_blank" rel="external">http://www.usadellab.org/cms/?page=trimmomatic</a></p>
+<p>安装好该软件后记得加入环境变量<strong>PATH</strong>~~</p>
+<h3 id="3-2-使用说明"><a href="#3-2-使用说明" class="headerlink" title="3.2 使用说明"></a>3.2 使用说明</h3><p>我使用的是<strong>0.36版</strong>，其使用说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ java -jar ~/bioSoft/Trimmomatic-0.36/trimmomatic-0.36.jar -h</div><div class="line">Usage:</div><div class="line">       PE [-version] [-threads &lt;threads&gt;] [-phred33|-phred64] [-trimlog &lt;trimLogFile&gt;] [-quiet] [-validatePairs] [-basein &lt;inputBase&gt; | &lt;inputFile1&gt; &lt;inputFile2&gt;] [-baseout &lt;outputBase&gt; | &lt;outputFile1P&gt; &lt;outputFile1U&gt; &lt;outputFile2P&gt; &lt;outputFile2U&gt;] &lt;trimmer1&gt;...</div><div class="line">   or:</div><div class="line">       SE [-version] [-threads &lt;threads&gt;] [-phred33|-phred64] [-trimlog &lt;trimLogFile&gt;] [-quiet] &lt;inputFile&gt; &lt;outputFile&gt; &lt;trimmer1&gt;...</div><div class="line">   or:</div><div class="line">       -version</div></pre></td></tr></table></figure>
+<p>其中：</p>
+<h4 id="3-2-1-PE"><a href="#3-2-1-PE" class="headerlink" title="3.2.1 PE"></a>3.2.1 PE</h4><p>双端数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">-threads：后面加数字表示使用线程数，可不设置，程序会自行检测并选择核心数（good）</div><div class="line">-phred33或-phred64：表示质量值得格式，illumina 一般设置为-phred33格式，也可不设置，软件本身会自行确定，只是需要1min时间</div><div class="line">../good\_1.fq ../good\_2.fq ：两个输入文件 (注意,给相对或者绝对路径)</div><div class="line">pa_forward_paired.fq pa_forward_unpaired.fq ：forword的两个输出文件</div><div class="line">pa_reverse_paired.fq pa_reverse_unpaired.fq ：reverse的两个输出文件</div><div class="line">#输入文件和输出文件都支持gz等压缩格式，可以直接输入输出压缩文件。输出文件还要自己直接给名字，但也可以用-basein -baseout参数减少输入</div><div class="line"></div><div class="line">ILLUMINACLIP:/path/to/adapter.fa:2:30:10</div><div class="line"> - ILLUMINACLIP这个参数后面跟着接头文件</div><div class="line"> - 2：接头匹配到读段,最多两个mismatch</div><div class="line"> - 30：palindrome模式下匹配碱基数阈值 请见本文最后</div><div class="line"> - 10：simple模式下的匹配碱基数阈值 关于模式，请自行查文献</div><div class="line"></div><div class="line">LEADING:3 ：切掉5端碱基质量小于3的碱基</div><div class="line">TRAILING:3 ：切掉3端碱基质量小于3的碱基</div><div class="line">SLIDINGWINDOW:4:15 ：以4个碱基为宽度滑动，平均碱基质量低于15的，切掉</div><div class="line">CROP:&lt;length&gt; ：Cut the read to a specified length by removing bases from the end 保留reads到指定的长度（应该是从末端切）</div><div class="line">HEADCROP:&lt;length&gt; ： 在reads的首端切除指定的长度</div><div class="line">MINLEN:50 ：短于50bp的reads，去掉remove</div><div class="line">TOPHRED33 ： 将碱基质量转换为pred33格式</div><div class="line">TOPHRED64 ： 将碱基质量转换为pred64格式</div><div class="line">AVGQUAL: 去除平均质量值小于给定阈值的reads</div></pre></td></tr></table></figure>
+<p>tips:</p>
+<ol>
+<li>此程序进行质控先后是按照给定参数的顺序进行的，推荐先进行adapter的去除,即第一使用的参数ILLUMINACLIP</li>
+<li>支持直接对.gz/.bz2等压缩文件进行操作</li>
+</ol>
+<h2 id="4-附属说明"><a href="#4-附属说明" class="headerlink" title="4. 附属说明"></a>4. 附属说明</h2><h3 id="4-1-blast输出格式说明"><a href="#4-1-blast输出格式说明" class="headerlink" title="4.1 blast输出格式说明"></a>4.1 blast输出格式说明</h3><p>有时候根据不同的需要，输出不同的比对格式文件，格式说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">-outfmt &lt;String&gt;</div><div class="line">  alignment view options:</div><div class="line">    0 = pairwise,</div><div class="line">    1 = query-anchored showing identities,</div><div class="line">    2 = query-anchored no identities,</div><div class="line">    3 = flat query-anchored, show identities,</div><div class="line">    4 = flat query-anchored, no identities,</div><div class="line">    5 = XML Blast output,</div><div class="line">    6 = tabular,</div><div class="line">    7 = tabular with comment lines,</div><div class="line">    8 = Text ASN.1,</div><div class="line">    9 = Binary ASN.1,</div><div class="line">   10 = Comma-separated values,</div><div class="line">   11 = BLAST archive format (ASN.1)</div><div class="line"></div><div class="line">  Options 6, 7, and 10 can be additionally configured to produce</div><div class="line">  a custom format specified by space delimited format specifiers.</div><div class="line"></div><div class="line">  The supported format specifiers are:</div><div class="line"></div><div class="line">          qseqid means Query Seq-id</div><div class="line">             qgi means Query GI</div><div class="line">            qacc means Query accesion</div><div class="line">         qaccver means Query accesion.version</div><div class="line">            qlen means Query sequence length</div><div class="line">          sseqid means Subject Seq-id</div><div class="line">       sallseqid means All subject Seq-id(s), separated by a &apos;;&apos;</div><div class="line">             sgi means Subject GI</div><div class="line">          sallgi means All subject GIs</div><div class="line">            sacc means Subject accession</div><div class="line">         saccver means Subject accession.version</div><div class="line">         sallacc means All subject accessions</div><div class="line">            slen means Subject sequence length</div><div class="line">          qstart means Start of alignment in query</div><div class="line">            qend means End of alignment in query</div><div class="line">          sstart means Start of alignment in subject</div><div class="line">            send means End of alignment in subject</div><div class="line">            qseq means Aligned part of query sequence</div><div class="line">            sseq means Aligned part of subject sequence</div><div class="line">          evalue means Expect value</div><div class="line">        bitscore means Bit score</div><div class="line">           score means Raw score</div><div class="line">          length means Alignment length</div><div class="line">          pident means Percentage of identical matches</div><div class="line">          nident means Number of identical matchesq</div><div class="line">        mismatch means Number of mismatches</div><div class="line">        positive means Number of positive-scoring matches</div><div class="line">         gapopen means Number of gap openings</div><div class="line">            gaps means Total number of gaps</div><div class="line">            ppos means Percentage of positive-scoring matches</div><div class="line">          frames means Query and subject frames separated by a &apos;/&apos;</div><div class="line">          qframe means Query frame</div><div class="line">          sframe means Subject frame</div><div class="line">            btop means Blast traceback operations (BTOP)</div><div class="line">         staxids means Subject Taxonomy ID(s), separated by a &apos;;&apos;</div><div class="line">       sscinames means Subject Scientific Name(s), separated by a &apos;;&apos;</div><div class="line">       scomnames means Subject Common Name(s), separated by a &apos;;&apos;</div><div class="line">      sblastnames means Subject Blast Name(s), separated by a &apos;;&apos;</div><div class="line">               (in alphabetical order)</div><div class="line">      sskingdoms means Subject Super Kingdom(s), separated by a &apos;;&apos;</div><div class="line">               (in alphabetical order)</div><div class="line">          stitle means Subject Title</div><div class="line">      salltitles means All Subject Title(s), separated by a &apos;&lt;&gt;&apos;</div><div class="line">         sstrand means Subject Strand</div><div class="line">           qcovs means Query Coverage Per Subject</div><div class="line">         qcovhsp means Query Coverage Per HSP</div></pre></td></tr></table></figure>
+<p>此时可以根据上面的格式说明自定义输出项，自定义方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blastn -query tmp.fasta -out tmp.blast -db ~/database/blast/db/16SMicrobial/16SMicrobial -evalue 1e-10 -num_alignments 1 -num_threads 60 -outfmt &quot;6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore&quot;</div></pre></td></tr></table></figure>
+<p><strong>“”</strong>中的内容即自定义的输出内容。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/bioinfo/" rel="tag">#bioinfo</a>
+          
+            <a href="/tags/blastn/" rel="tag">#blastn</a>
+          
+            <a href="/tags/trim/" rel="tag">#trim</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/04/jekyll-set/" rel="next" title="jekyll部署中的问题">
+                <i class="fa fa-chevron-left"></i> jekyll部署中的问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/05/pairs-plot/" rel="prev" title="利用pairs画图">
+                利用pairs画图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-bam转换为fastq"><span class="nav-text">1. bam转换为fastq</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-blast-比对"><span class="nav-text">2. blast 比对</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-数据库索引"><span class="nav-text">2.1 数据库索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-蛋白序列比对蛋白数据库（blastp）"><span class="nav-text">2.2 蛋白序列比对蛋白数据库（blastp）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-核酸序列比对核酸数据库（blastn）以及核酸序列比对蛋白数据库（blastx）"><span class="nav-text">2.3 核酸序列比对核酸数据库（blastn）以及核酸序列比对蛋白数据库（blastx）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-trimmomatic序列质控与过滤（filter-and-trim）"><span class="nav-text">3. trimmomatic序列质控与过滤（filter and trim）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-trimmomatic-下载安装"><span class="nav-text">3.1 trimmomatic 下载安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-使用说明"><span class="nav-text">3.2 使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-PE"><span class="nav-text">3.2.1 PE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-附属说明"><span class="nav-text">4. 附属说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-blast输出格式说明"><span class="nav-text">4.1 blast输出格式说明</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/09/05/general-ana/';
+      var disqus_title = "常用分析方法bam2fastq、blastn、trimmomatic";
+      var disqus_url = 'http://yoursite.com/2016/09/05/general-ana/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

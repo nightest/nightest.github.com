@@ -1,0 +1,793 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="bioinfo,10X," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Content{:toc}
+
+1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
+执行：:
+12345678$ supernova demux --run=/sequenci">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10X Data Analysis">
+<meta property="og:url" content="http://yoursite.com/2016/08/30/10x-data-ana/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="Content{:toc}
+
+1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
+执行：:
+12345678$ supernova demux --run=/sequenci">
+<meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/style2.png">
+<meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/style1.png">
+<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10X Data Analysis">
+<meta name="twitter:description" content="Content{:toc}
+
+1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
+执行：:
+12345678$ supernova demux --run=/sequenci">
+<meta name="twitter:image" content="http://ocs218n9i.bkt.clouddn.com/style2.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/30/10x-data-ana/"/>
+
+  <title> 10X Data Analysis | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All my Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                10X Data Analysis
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
+                    <span itemprop="name">bioinformatics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/10x-data-ana/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/10x-data-ana/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>Content<br>{:toc}</li>
+</ul>
+<h2 id="1-fastq格式转换"><a href="#1-fastq格式转换" class="headerlink" title="1. fastq格式转换"></a>1. fastq格式转换</h2><h3 id="1-1-利用supernova-demux进行格式转换"><a href="#1-1-利用supernova-demux进行格式转换" class="headerlink" title="1.1 利用supernova demux进行格式转换"></a>1.1 利用supernova demux进行<a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/using/demultiplex" target="_blank" rel="external">格式转换</a></h3><p>注意：如果测序时用的并非<code>8bp</code>的 index，那么不能使用该方法，应该直接利用<a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/using/bcl2fastq-direct" target="_blank" rel="external">bcl2fastq</a>进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。</p>
+<p><a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/using/demultiplex" target="_blank" rel="external">执行：</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXX</div><div class="line"></div><div class="line">supernova demux</div><div class="line">Copyright (c) 2016 10x Genomics, Inc.  All rights reserved.</div><div class="line">-----------------------------------------------------------------------------</div><div class="line">Martian Runtime - 2.0.0</div><div class="line"></div><div class="line">Running preflight checks (please wait)...</div></pre></td></tr></table></figure>
+<p>如果<strong>flowcell</strong>的序列号是<code>HAWT7ADXX</code>，那么会生成以之命名的文件夹：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ls -l</div><div class="line">drwxr-xr-x 4 jdoe  jdoe     4096 May  1 13:39 HAWT7ADXX</div></pre></td></tr></table></figure>
+<p>该文件夹的结构如下<code>outs/fastq_path</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ ls -l HAWT7ADXX/outs/fastq_path/</div><div class="line">-rw-r--r-- 1 jdoe  jdoe     3071801 May  1 13:39 read-I1_si-AAACGTAC_lane-001-chunk-000.fastq.gz</div><div class="line">...</div><div class="line">-rw-r--r-- 1 jdoe  jdoe    52246181 May  1 13:39 read-RA_si-GTGGAATT_lane-001-chunk-000.fastq.gz</div><div class="line">-rw-r--r-- 1 jdoe  jdoe     3759265 May  1 13:39 read-RA_si-X_lane-001-chunk-000.fastq.gz</div></pre></td></tr></table></figure>
+<p>此文件夹结构十分重要，请保持结构不变以进行后续的分析。该流程所涉及到的所有文件的流程请参考<a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/advanced/pipestance-structure" target="_blank" rel="external">以下页面</a>。</p>
+<h3 id="1-2-利用bcl2fastq进行格式转换"><a href="#1-2-利用bcl2fastq进行格式转换" class="headerlink" title="1.2 利用bcl2fastq进行格式转换"></a>1.2 利用bcl2fastq进行<a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/using/bcl2fastq-direct" target="_blank" rel="external">格式转换</a></h3><p><strong>1.2.1 制作SampleSheet</strong></p>
+<p>根据测序信息，新建一个包含测序情况的csv文件并以tab分割：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[Header]</div><div class="line">EMFileVersion,4</div><div class="line"> </div><div class="line">[Reads]</div><div class="line">150</div><div class="line">150</div><div class="line"> </div><div class="line">[Data]</div><div class="line">Lane,Sample_ID,Sample_Name,index,Sample_Project</div></pre></td></tr></table></figure>
+<p><strong>1.2.2 运行bcl2fastq</strong></p>
+<p>几个重要参数：</p>
+<ol>
+<li>–use-bases-mask <code>--use-bases-mask=Y150,I8,Y150</code></li>
+<li>${FLOWCELL_DIR} contains a flowcell’s Data folder</li>
+<li>${OUTPUT_DIR}  output FASTQs to</li>
+<li>${SAMPLE_SHEET_PATH} the sample sheet CSV you created</li>
+</ol>
+<p>运行 <strong>bcl2fastq2 Version 2.17</strong> (sequencers running RTA 1.18.54 and higher):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ bcl2fastq --use-bases-mask=Y150,I8,Y150 \</div><div class="line"> --create-fastq-for-index-reads \</div><div class="line"> --minimum-trimmed-read-length=8 \</div><div class="line"> --mask-short-adapter-reads=8 \</div><div class="line"> --ignore-missing-positions \</div><div class="line"> --ignore-missing-controls \</div><div class="line"> --ignore-missing-filter \</div><div class="line"> --ignore-missing-bcls \</div><div class="line"> -r 6 -w 6 \</div><div class="line"> -R $&#123;FLOWCELL_DIR&#125; \</div><div class="line"> --output-dir=$&#123;OUTPUT_DIR&#125; \</div><div class="line"> --interop-dir=$&#123;INTEROP_DIR&#125; \</div><div class="line"> --sample-sheet=$&#123;SAMPLE_SHEET_PATH&#125;</div></pre></td></tr></table></figure>
+<p><strong>Version 1.8.4</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ configureBclToFastq.pl --use-bases-mask=Y150,I8,Y150 \</div><div class="line">  --fastq-cluster-count=20000000 \</div><div class="line">  --no-eamss \</div><div class="line">  --ignore-missing-bcl \</div><div class="line">  --ignore-missing-control \</div><div class="line">  --ignore-missing-stats \</div><div class="line">  --mismatches=1 \</div><div class="line">  --input-dir=$&#123;FLOWCELL_DIR&#125;/Data/Intensities/BaseCalls \</div><div class="line">  --output-dir=$&#123;OUTPUT_DIR&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-数据质控"><a href="#2-数据质控" class="headerlink" title="2. 数据质控"></a>2. 数据质控</h2><p>质控方法推荐<a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4908325/" target="_blank" rel="external"><strong>fqtools</strong></a>，该软件可以从<a href="https://github.com/alastair-droop/fqtools" target="_blank" rel="external">Github</a>下载。</p>
+<p>使用例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/annoroad/data1/fqdata/bin/pipline/read_evaluation/fqtools stat   /annoroad/data1/fqdata/data2016/160805_E00492_0020_BHW5F3CCXX/fastq/Project_CR160172-05/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P_R1.fq.gz /annoroad/data1/fqdata/data2016/160805_E00492_0020_BHW5F3CCXX/fastq/Project_CR160172-05/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P_R1.report</div><div class="line">/annoroad/data1/fqdata/bin/pipline/read_evaluation/fqtools stat /annoroad/data1/fqdata/data2016/160805_E00492_0020_BHW5F3CCXX/fastq/Project_CR160172-05/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P_R2.fq.gz /annoroad/data1/fqdata/data2016/160805_E00492_0020_BHW5F3CCXX/fastq/Project_CR160172-05/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P_R2.report</div><div class="line">perl /annoroad/data1/fqdata/bin/pipline/read_evaluation/draw_base_quality_distirbution_v2.pl --r1 /annoroad/data1/fqdata/data2016/160805_E00492_0020_BHW5F3CCXX/fastq/Project_CR160172-05/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P_R1.report --r2 /annoroad/data1/fqdata/data2016/160805_E00492_0020_BHW5F3CCXX/fastq/Project_CR160172-05/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P_R2.report --prefix/annoroad/data1/fqdata/data2016/160805_E00492_0020_BHW5F3CCXX/fastq/Project_CR160172-05/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P/WBJPE161848-1_HW5F3CCXX_L678_K16Pool0812_20160805_P</div></pre></td></tr></table></figure>
+<h2 id="3-序列拼接"><a href="#3-序列拼接" class="headerlink" title="3. 序列拼接"></a>3. 序列拼接</h2><p>Supernova 是<a href="http://www.10xgenomics.com/" target="_blank" rel="external">10X Genomics公司</a> 开发的专门用来进行10X数据分析的套件，运行前需要注意是否符合其<a href="http://support.10xgenomics.com/de-novo-assembly/software/overview/sample-requirements" target="_blank" rel="external">样品要求</a>与<a href="http://support.10xgenomics.com/de-novo-assembly/software/overview/system-requirements" target="_blank" rel="external">系统要求</a>。</p>
+<p>该套件共有三个部分与序列拼接相关:</p>
+<ol>
+<li><strong>supernova demux</strong> 根据BCL文件参数FASTQ文件用于数据分析</li>
+<li><strong>supernova run</strong> 根据不同样品的fq数据进行全基因组的从头组装</li>
+<li><strong>supernova mkfasta</strong> 根据拼接结果生成不同格式的fasta文件</li>
+</ol>
+<h3 id="3-1-de-novo-assembly"><a href="#3-1-de-novo-assembly" class="headerlink" title="3.1 de novo assembly"></a>3.1 <a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/using/running" target="_blank" rel="external"><em>de novo</em> assembly</a></h3><p>Using:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ supernova run --id=sample345 \</div><div class="line">                --fastqs=/home/jdoe/runs/HAWT7ADXX/outs/fastq_path \</div><div class="line">                --indices=SI-GA-A1</div></pre></td></tr></table></figure>
+<p>该pipeline会在当前文件夹下产生以Sample ID命名的结果文件夹，如果该文件夹已存在，则supernova run会试图恢复并继续运行。</p>
+<p>结果文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Outputs:</div><div class="line">- assembly: /home/jdoe/runs/sample345/outs/assembly</div><div class="line">- summary: /home/jdoe/runs/sample345/outs/summary.csv</div><div class="line">- report: /home/jdoe/runs/sample345/outs/report.txt</div><div class="line"></div><div class="line">Pipestance completed successfully!</div></pre></td></tr></table></figure>
+<p>各文件含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>File Name</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>summary.csv</td>
+<td style="text-align:left">关于运行情况的总结</td>
+</tr>
+<tr>
+<td>report.txt</td>
+<td style="text-align:left">可阅读的总结报告</td>
+</tr>
+<tr>
+<td>assembly</td>
+<td style="text-align:left">包含二进制组装结果的文件夹</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>If you demultiplexed with Illumina BCL2FASTQ, then set –fastqs to a<br>BCL2FASTQ output folder that contains FASTQ files. In addition, set<br><code>--fastqprefix</code> to the name prefixed to the FASTQ files that your sample<br>comprises. For example, if your FASTQs are named:<br><code>mysample_S1_L001_R1_001.fastq.gz</code><br>then set <code>--fastqprefix=mysample</code></p>
+</blockquote>
+<h3 id="3-2-生成fasta结果文件"><a href="#3-2-生成fasta结果文件" class="headerlink" title="3.2 生成fasta结果文件"></a>3.2 <a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/output/generating" target="_blank" rel="external">生成fasta结果文件</a></h3><p>命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">supernova mkfasta \</div><div class="line">        --asmdir=/path/to/outs/assembly \</div><div class="line">        --outprefix=output_filename_prefix \</div><div class="line">        --style=raw|megabubbles|pseudohap|pseudohap2 \</div><div class="line">        [ --minsize=n ] \</div><div class="line">        [ --headers=short|full ]</div></pre></td></tr></table></figure>
+<p>fa文件序列名称的具体含义请参考<a href="http://support.10xgenomics.com/de-novo-assembly/software/pipelines/latest/output/graphs" target="_blank" rel="external">Assembly Graph</a>。</p>
+<p><strong>重要参数及其含义</strong></p>
+<pre><code>--style=raw|megabubbles|pseudohap|pseudohap2
+</code></pre><p>含义：</p>
+<ol>
+<li><p>raw</p>
+<p>显示所有的edge并且显示所有的<strong>microbubble</strong>和<strong>magabubbles</strong></p>
+<p><img src="http://ocs218n9i.bkt.clouddn.com/style2.png" alt="reads"></p>
+</li>
+</ol>
+<blockquote>
+<p>上图中的<strong>10,20</strong>即为<strong>edges</strong>，而<strong>1,2</strong>相当于顶点<strong>left</strong>或者<strong>right</strong>。</p>
+</blockquote>
+<p> <img src="http://ocs218n9i.bkt.clouddn.com/style1.png" alt="bubbles"></p>
+<ol>
+<li><p>megabubbles</p>
+<p>只显示一些megabubbles, 所有的bubbles根据coverage合并；所有的gap用100Ns替代；并放弃所有的反向互补序列。</p>
+</li>
+<li><p>pseudohap</p>
+<p>只显示单条完整fasta</p>
+</li>
+<li><p>pseudohap2</p>
+<p>显示两条平行的单倍型（pseudohaplotypes）</p>
+</li>
+</ol>
+<p><strong>其他参数含义</strong></p>
+<p><code>--minsize</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--minsize=n [specify minimum FASTA record size in bases, default: 1000]</div></pre></td></tr></table></figure>
+<p><code>--headers</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--headers=full  [verbose output: all edge ids written]</div><div class="line">--headers=short [only first and last edge ids shown; default]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bioinfo/" rel="tag">#bioinfo</a>
+          
+            <a href="/tags/10X/" rel="tag">#10X</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/27/pbs-using/" rel="next" title="PBS and qsbu manual">
+                <i class="fa fa-chevron-left"></i> PBS and qsbu manual
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/30/10x-soft-pre/" rel="prev" title="10X data analysis -- Software Prepare">
+                10X data analysis -- Software Prepare <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-fastq格式转换"><span class="nav-text">1. fastq格式转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-利用supernova-demux进行格式转换"><span class="nav-text">1.1 利用supernova demux进行格式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-利用bcl2fastq进行格式转换"><span class="nav-text">1.2 利用bcl2fastq进行格式转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数据质控"><span class="nav-text">2. 数据质控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-序列拼接"><span class="nav-text">3. 序列拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-de-novo-assembly"><span class="nav-text">3.1 de novo assembly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-生成fasta结果文件"><span class="nav-text">3.2 生成fasta结果文件</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/08/30/10x-data-ana/';
+      var disqus_title = "10X Data Analysis";
+      var disqus_url = 'http://yoursite.com/2016/08/30/10x-data-ana/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

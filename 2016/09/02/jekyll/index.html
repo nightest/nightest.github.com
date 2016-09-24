@@ -1,0 +1,750 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jekyll,tech,linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="目录测试{:toc}
+
+之前使用的github加jekyll的方式部署blog，但是国内速度太慢，近几天得知国内的码市也能够使用git pages服务，因此决定从github迁移至coding net.
+同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内七牛云提供的免费10G空间作为图床，以上两个网站的具体注册过程就不在此详述了~~
+1. coding net 注册与准备1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jekyll 迁移">
+<meta property="og:url" content="http://yoursite.com/2016/09/02/jekyll/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="目录测试{:toc}
+
+之前使用的github加jekyll的方式部署blog，但是国内速度太慢，近几天得知国内的码市也能够使用git pages服务，因此决定从github迁移至coding net.
+同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内七牛云提供的免费10G空间作为图床，以上两个网站的具体注册过程就不在此详述了~~
+1. coding net 注册与准备1.">
+<meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/style5.png">
+<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jekyll 迁移">
+<meta name="twitter:description" content="目录测试{:toc}
+
+之前使用的github加jekyll的方式部署blog，但是国内速度太慢，近几天得知国内的码市也能够使用git pages服务，因此决定从github迁移至coding net.
+同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内七牛云提供的免费10G空间作为图床，以上两个网站的具体注册过程就不在此详述了~~
+1. coding net 注册与准备1.">
+<meta name="twitter:image" content="http://ocs218n9i.bkt.clouddn.com/style5.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/02/jekyll/"/>
+
+  <title> jekyll 迁移 | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All my Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jekyll 迁移
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-02T00:00:00+08:00" content="2016-09-02">
+              2016-09-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/02/jekyll/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/02/jekyll/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>目录测试<br>{:toc}</li>
+</ul>
+<p>之前使用的github加jekyll的方式部署blog，但是国内速度太慢，近几天得知国内的<a href="https://coding.net/" target="_blank" rel="external"><em>码市</em></a>也能够使用<strong>git pages</strong>服务，因此决定从github迁移至<strong>coding net</strong>.</p>
+<p>同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内<a href="https://portal.qiniu.com/" target="_blank" rel="external"><em>七牛云</em></a>提供的免费10G空间作为图床，以上两个网站的具体注册过程就不在此详述了~~</p>
+<h3 id="1-coding-net-注册与准备"><a href="#1-coding-net-注册与准备" class="headerlink" title="1. coding net 注册与准备"></a>1. coding net 注册与准备</h3><h4 id="1-1-创建项目并推送"><a href="#1-1-创建项目并推送" class="headerlink" title="1.1 创建项目并推送"></a>1.1 创建项目并推送</h4><p>在 Coding 上创建一个与<strong>用户名</strong>相同的项目，例如用户名为username，那么就创建名为username的项目，jekyll构建静态网页完成后即可通过<em><a href="http://username.coding.me/" target="_blank" rel="external">http://username.coding.me/</a></em>访问该网站~</p>
+<p><strong>构建方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#生成静态网页，默认在_site文件夹下</div><div class="line">jekyll build</div><div class="line">#发布到本地，默认使用[http://127.0.0.1:4000]( http://127.0.0.1:4000)预览~本人未在本地实现，因此没有利用serve</div><div class="line">jekyll serve</div></pre></td></tr></table></figure>
+<p><strong>提交方法</strong></p>
+<p>假设在本地<code>_site</code>文件夹已经构建好网站，那么使用git提交到网站即可，使用git时，几个常用的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git add .</div><div class="line">git commit -m &apos;init&apos;</div><div class="line">git remote add origin  git@git.coding.net:&#123;user_name&#125;/&#123;project_name&#125;</div><div class="line">#git remote -v</div><div class="line">#git remote rm &lt;origin&gt;</div><div class="line">#把本地master分支推送到远程origin的coding-pages</div><div class="line">git push origin master:coding-pages</div></pre></td></tr></table></figure>
+<h4 id="1-2-关于自动运行"><a href="#1-2-关于自动运行" class="headerlink" title="1.2 关于自动运行"></a>1.2 关于自动运行</h4><p>本来<a href="https://coding.net/" target="_blank" rel="external"><em>码市</em></a>有免费的演示服务，可以自动把md页面根据jekyll转换成html页面并发布，不过现在该功能已开始收费，因此我未选择。不得不吐槽一句，还是github的自动部署功能更方便啊，可惜墙太高~目前我选择的是上述本地构建好静态html，然后发布到<a href="https://coding.net/" target="_blank" rel="external"><em>码市</em></a>。</p>
+<p>如果想了解如何自动部署，请参考：</p>
+<ul>
+<li><a href="https://coding.net/help/doc/pages/index.html" target="_blank" rel="external">https://coding.net/help/doc/pages/index.html</a></li>
+<li><a href="https://coding.net/u/demo/p/jekyll-demo/git" target="_blank" rel="external">https://coding.net/u/demo/p/jekyll-demo/git</a></li>
+<li><a href="http://ruby-china.org/topics/23329" target="_blank" rel="external">http://ruby-china.org/topics/23329</a></li>
+<li><a href="http://www.jianshu.com/p/a96f60d20936" target="_blank" rel="external">http://www.jianshu.com/p/a96f60d20936</a></li>
+</ul>
+<h3 id="2-git推送到不同远程主机"><a href="#2-git推送到不同远程主机" class="headerlink" title="2. git推送到不同远程主机"></a>2. git推送到不同远程主机</h3><p>利用<code>git remote -v</code>查看已经绑定的远程主机，若是未绑定需要推送的主机则使用<code>git remote add ...</code>添加远程主机，然后使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
+<p>推送本地某分支至远程某分支。</p>
+<p>实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git status</div><div class="line">git branch</div><div class="line">git checkout -v source</div><div class="line">git remote -v</div><div class="line">git remote add gcorigin git@git.coding.net:username/username.git</div><div class="line">git remote -v</div><div class="line">git push gcorigin source:master</div></pre></td></tr></table></figure>
+<h3 id="3-链接错误"><a href="#3-链接错误" class="headerlink" title="3.链接错误"></a>3.链接错误</h3><p>github与coding的链接规则不同，因此碰到点开categories和tags链接之后找不到页面的错误，注意修改<code>_config.yml</code>中的url变量，及这两个文件夹下的index文件即可，如下图：</p>
+<p><img src="http://ocs218n9i.bkt.clouddn.com/style5.png" alt="index修改"></p>
+<h3 id="4-jekyll-build错误"><a href="#4-jekyll-build错误" class="headerlink" title="4. jekyll build错误"></a>4. jekyll build错误</h3><p><strong>错误1</strong></p>
+<p>运行 jekyll build 在本地构建jekyll网站的时候出现问题：</p>
+<blockquote>
+<p>Deprecation: Auto-regeneration can no longer be set from your configuration file(s). Use the –[no-]watch/-w command-line option instead.</p>
+</blockquote>
+<p>解决方法：</p>
+<blockquote>
+<p>删除<code>_config.yml</code>文件中的 <code>auto: true</code> 语句</p>
+</blockquote>
+<p><strong>错误2</strong></p>
+<p>运行 jekyll build 在本地构建jekyll网站的时候出现问题：</p>
+<blockquote>
+<p>Deprecation: The ‘pygments’ configuration option has been renamed to ‘highlighter’.<br>Please update your config file accordingly.<br>The allowed values are ‘rouge’, ‘pygments’ or null.</p>
+</blockquote>
+<p>解决方法：</p>
+<blockquote>
+<p>Change <code>pygments: true</code> to <code>highlighter: pygments</code> in your <code>_config.yml</code></p>
+</blockquote>
+<p><strong>错误3</strong></p>
+<p>运行 jekyll build 在本地构建jekyll网站的时候出现问题：</p>
+<blockquote>
+<p>Deprecation: You appear to have pagination turned on, but you haven’t included the jekyll-paginate gem. Ensure you have gems: [jekyll-paginate] in your configuration file.</p>
+</blockquote>
+<p>解决方法：</p>
+<p>在<code>_config.yml</code>中添加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Gems</div><div class="line">gems: [jekyll-paginate]</div></pre></td></tr></table></figure>
+<h3 id="5-更改markdown解析器"><a href="#5-更改markdown解析器" class="headerlink" title="5. 更改markdown解析器"></a>5. 更改markdown解析器</h3><p>更改markdown解析器，以支持三个反引号构建的代码块。</p>
+<p>在<code>_config.yml</code>中修改或添加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">markdown: kramdown</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jekyll/" rel="tag">#jekyll</a>
+          
+            <a href="/tags/tech/" rel="tag">#tech</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/02/disqus/" rel="next" title="为jekyll添加disqus">
+                <i class="fa fa-chevron-left"></i> 为jekyll添加disqus
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/03/sublime-evernote/" rel="prev" title="sublime设置与Evernote">
+                sublime设置与Evernote <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-coding-net-注册与准备"><span class="nav-text">1. coding net 注册与准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-创建项目并推送"><span class="nav-text">1.1 创建项目并推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-关于自动运行"><span class="nav-text">1.2 关于自动运行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-git推送到不同远程主机"><span class="nav-text">2. git推送到不同远程主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-链接错误"><span class="nav-text">3.链接错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-jekyll-build错误"><span class="nav-text">4. jekyll build错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-更改markdown解析器"><span class="nav-text">5. 更改markdown解析器</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/09/02/jekyll/';
+      var disqus_title = "jekyll 迁移";
+      var disqus_url = 'http://yoursite.com/2016/09/02/jekyll/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

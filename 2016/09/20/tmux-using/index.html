@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tech,linux,tmux,shell," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="@Date: 2016-09-19 16:29:17
+
+
+content{:toc}
+
+
+Tmux是一个优秀的终端复用软件，支持多标签，也支持窗口内部面板的分割，更重要的是，Tmux提供了窗体随时保存和恢复的功能。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话。
+1. 下载源代码1234git clone https://github.com/tmux/tmux.gi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tmux安装与使用">
+<meta property="og:url" content="http://yoursite.com/2016/09/20/tmux-using/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="@Date: 2016-09-19 16:29:17
+
+
+content{:toc}
+
+
+Tmux是一个优秀的终端复用软件，支持多标签，也支持窗口内部面板的分割，更重要的是，Tmux提供了窗体随时保存和恢复的功能。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话。
+1. 下载源代码1234git clone https://github.com/tmux/tmux.gi">
+<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tmux安装与使用">
+<meta name="twitter:description" content="@Date: 2016-09-19 16:29:17
+
+
+content{:toc}
+
+
+Tmux是一个优秀的终端复用软件，支持多标签，也支持窗口内部面板的分割，更重要的是，Tmux提供了窗体随时保存和恢复的功能。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话。
+1. 下载源代码1234git clone https://github.com/tmux/tmux.gi">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/20/tmux-using/"/>
+
+  <title> tmux安装与使用 | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All my Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                tmux安装与使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T00:00:00+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/20/tmux-using/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/20/tmux-using/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@Date: 2016-09-19 16:29:17</p>
+<hr>
+<ul>
+<li>content<br>{:toc}</li>
+</ul>
+<hr>
+<p>Tmux是一个优秀的终端复用软件，支持多标签，也支持窗口内部面板的分割，更重要的是，Tmux提供了窗体随时保存和恢复的功能。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话。</p>
+<h2 id="1-下载源代码"><a href="#1-下载源代码" class="headerlink" title="1. 下载源代码"></a>1. 下载源代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/tmux/tmux.git tmux</div><div class="line">cd tmux</div><div class="line">sh autogen.sh</div><div class="line">./configure --prefix=/gpfs01/home/path/to/tmux</div></pre></td></tr></table></figure>
+<h3 id="1-1-提示需要libevent"><a href="#1-1-提示需要libevent" class="headerlink" title="1.1 提示需要libevent"></a>1.1 提示需要libevent</h3><p>编译过程终端，<br>提示：<code>configure: error: &quot;libevent not found&quot;</code></p>
+<h4 id="安装libevent"><a href="#安装libevent" class="headerlink" title="安装libevent"></a>安装libevent</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#./configure --prefix=/gpfs01/home/path/to/tmux</div><div class="line">curl -O https://cloud.github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz</div><div class="line">tar xvf libevent-2.0.21-stable.tar.gz</div><div class="line">cd libevent-2.0.21-stable</div><div class="line">mkdir ../libevent</div><div class="line">./configure --prefix=/gpfs01/home/path/to/tmux/src/libevent</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<h3 id="1-2-设置libevent环境变量并编译tmux"><a href="#1-2-设置libevent环境变量并编译tmux" class="headerlink" title="1.2 设置libevent环境变量并编译tmux"></a>1.2 设置libevent环境变量并编译tmux</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">CFLAGS=&apos;-I/gpfs01/home/path/to/tmux/src/libevent/include&apos; LDFLAGS=&apos;-L/gpfs01/home/path/to/tmux/src/libevent/lib&apos; ./configure --prefix=/gpfs01/home/path/to/tmux</div><div class="line"></div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<h3 id="1-3-运行tmux"><a href="#1-3-运行tmux" class="headerlink" title="1.3 运行tmux"></a>1.3 运行tmux</h3><p>将tmux安装路径加入到环境变量中，然后用tmux命令打开。</p>
+<h4 id="1-3-1-提示没有libevent-2-0-so-5文件"><a href="#1-3-1-提示没有libevent-2-0-so-5文件" class="headerlink" title="1.3.1 提示没有libevent-2.0.so.5文件"></a>1.3.1 提示没有<strong>libevent-2.0.so.5</strong>文件</h4><p>因为libevent没有安装到默认lib路径下，因此<br>提示：<code>libevent-2.0.so.5: cannot open shared object file: No such file or directory</code></p>
+<p><em>如果有超级用户权限：</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /gpfs01/home/path/to/tmux/src/libevent/lib/libevent-2.0.so.5 /usr/lib</div></pre></td></tr></table></figure>
+<p><em>如果没有root权限：</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LD_LIBRARY_PATH=/gpfs01/home/path/to/tmux/src/libevent/lib:$LD_LIBRARY_PATH</div><div class="line">export LD_LIBRARY_PATH</div></pre></td></tr></table></figure>
+<h3 id="1-4-美化-Tmux-的状态栏"><a href="#1-4-美化-Tmux-的状态栏" class="headerlink" title="1.4 美化 Tmux 的状态栏"></a>1.4 美化 Tmux 的状态栏</h3><p>下载源文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/erikw/tmux-powerline.git tmux-powerline</div></pre></td></tr></table></figure>
+<p>配置tmux加入theme部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># tmux theme, colors and status line</div><div class="line"># available themes:</div><div class="line">#   - powerline (a powerline inspired theme)</div><div class="line">#   - powerline_patched_font (a powerline inspired theme using a patched font)</div><div class="line">tmux_conf_theme=powerline</div><div class="line">set -g status-bg &apos;#666666&apos;</div><div class="line">set -g status-fg &apos;#aaaaaa&apos;</div><div class="line">set -g status-left-length 150</div><div class="line">set -g status-left &apos;[#(/gpfs01/home/path/to/tmux/tmux-powerline/powerline.sh left)]&apos;</div></pre></td></tr></table></figure>
+<h2 id="2-Tmux配置"><a href="#2-Tmux配置" class="headerlink" title="2. Tmux配置"></a>2. Tmux配置</h2><p>编辑文件：vim ~/.tmux.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#重新绑定快捷键bind</div><div class="line">set -g prefix C-a</div><div class="line">unbind C-b</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#快速载入配置</div><div class="line">bind e new-window -n &apos;~/.tmux.conf&apos; &apos;$&#123;EDITOR:-vim&#125; ~/.tmux.conf &amp;&amp; tmux source ~/.tmux.conf &amp;&amp; tmux display &quot;~/.tmux.conf sourced&quot;&apos;</div><div class="line">bind r source-file ~/.tmux.conf \; display &apos;Reloaded!&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#主题设置</div><div class="line">tmux_conf_theme=powerline</div><div class="line">set -g status-bg &apos;#666666&apos;</div><div class="line">set -g status-fg &apos;#aaaaaa&apos;</div><div class="line">set -g status-left-length 150</div><div class="line">set -g status-left &apos;[#(/gpfs01/home/path/to/tmux/tmux-powerline/powerline.sh left)]&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#分割窗口</div><div class="line">unbind %</div><div class="line">bind | split-window -h</div><div class="line">bind - split-window -v</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># pane navigation</div><div class="line">bind -r h select-pane -L  # move left</div><div class="line">bind -r j select-pane -D  # move down</div><div class="line">bind -r k select-pane -U  # move up</div><div class="line">bind -r l select-pane -R  # move right</div><div class="line">bind &gt; swap-pane -D       # swap current pane with the next one</div><div class="line">bind &lt; swap-pane -U       # swap current pane with the previous one</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># pane resizing</div><div class="line">bind -r H resize-pane -L 2</div><div class="line">bind -r J resize-pane -D 2</div><div class="line">bind -r K resize-pane -U 2</div><div class="line">bind -r L resize-pane -R 2</div></pre></td></tr></table></figure>
+<h2 id="3-主要快捷键"><a href="#3-主要快捷键" class="headerlink" title="3. 主要快捷键"></a>3. 主要快捷键</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">会话的创建和保存</div><div class="line">终端运行tmux + 会话名，创建或打开会话</div><div class="line">前缀 + d 退出并保存会话</div><div class="line">窗口操作</div><div class="line">前缀 + c 创建一个新的window</div><div class="line">前缀 + b 重命名当前window</div><div class="line">前缀 + &amp; 关闭当前windows</div><div class="line">前缀 + n 移动到下一个窗口</div><div class="line">前缀 + p 移动到前一个窗口</div><div class="line">前缀 + l 切换到上一个窗口</div><div class="line"></div><div class="line">运行C-b d   //返回主 shell ，detach, tmux 依旧在后台运行，里面的命令也保持运行状态</div><div class="line">tmux attach  //恢复tmux</div><div class="line">C-b w // 以菜单方式显示及选择窗口</div><div class="line">C-b s // 以菜单方式显示和选择会话</div><div class="line"></div><div class="line">-- 快捷键</div><div class="line">tmux 的使用主要就是依靠快捷键，通过 C-b 来调用。</div><div class="line">C-b ?  // 显示快捷键帮助</div><div class="line">C-b C-o  //调换窗口位置</div><div class="line">C-b 空格键  //采用下一个内置布局.</div><div class="line">             在预置的面板布局中循环切换；依次包括even-horizontal、even-vertical、main-horizontal、main-vertical、tiled</div><div class="line">C-b ! // 把当前窗口变为新窗口</div><div class="line">C-b  &quot;  // 模向分隔窗口</div><div class="line">C-b % // 纵向分隔窗口</div><div class="line">C-b q // 显示分隔窗口的编号</div><div class="line">C-b o // 跳到下一个分隔窗口</div><div class="line">C-b 上下键 // 上一个及下一个分隔窗口</div><div class="line">C-b C-方向键 //调整分隔窗口大小</div><div class="line"></div><div class="line">C-b &amp; // 确认后退出 tmux</div><div class="line">C-b c // 创建新窗口</div><div class="line"></div><div class="line">C-b ，//修改当前窗口名称</div><div class="line">C-b 0~9 //选择几号窗口</div><div class="line">C-b c // 创建新窗口</div><div class="line">C-b n // 选择下一个窗口</div><div class="line">C-b l // 最后使用的窗口</div><div class="line">C-b p // 选择前一个窗口</div><div class="line"></div><div class="line">C-b t //显示时钟</div><div class="line">C-b Ctrl+方向键 以1个单元格为单位移动边缘以调整当前面板大小</div><div class="line">C-b Alt+方向键 以5个单元格为单位移动边缘以调整当前面板大小</div><div class="line">C-b &#123; 向前置换当前面板</div><div class="line">C-b &#125; 向后置换当前面板</div></pre></td></tr></table></figure>
+<h2 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4. 参考文献"></a>4. 参考文献</h2><ol>
+<li><a href="http://www.ezlippi.com/blog/2016/01/tmux-guide.html" target="_blank" rel="external">http://www.ezlippi.com/</a></li>
+<li><a href="http://blog.jobbole.com/87584/" target="_blank" rel="external">http://blog.jobbole.com</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag">#tech</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/tmux/" rel="tag">#tmux</a>
+          
+            <a href="/tags/shell/" rel="tag">#shell</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/08/abyss/" rel="next" title="组装软件ABySS的安装及使用">
+                <i class="fa fa-chevron-left"></i> 组装软件ABySS的安装及使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/24/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/151210M27-11.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载源代码"><span class="nav-text">1. 下载源代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-提示需要libevent"><span class="nav-text">1.1 提示需要libevent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装libevent"><span class="nav-text">安装libevent</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-设置libevent环境变量并编译tmux"><span class="nav-text">1.2 设置libevent环境变量并编译tmux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-运行tmux"><span class="nav-text">1.3 运行tmux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-提示没有libevent-2-0-so-5文件"><span class="nav-text">1.3.1 提示没有libevent-2.0.so.5文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-美化-Tmux-的状态栏"><span class="nav-text">1.4 美化 Tmux 的状态栏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Tmux配置"><span class="nav-text">2. Tmux配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-主要快捷键"><span class="nav-text">3. 主要快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-参考文献"><span class="nav-text">4. 参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/09/20/tmux-using/';
+      var disqus_title = "tmux安装与使用";
+      var disqus_url = 'http://yoursite.com/2016/09/20/tmux-using/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
