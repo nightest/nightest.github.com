@@ -335,22 +335,13 @@
 
       
         
-          
-           人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。
-—— 刘易斯
-
-近期看到很多布置在Git上的blog都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。
-现将迁移的方法与步骤记录如下，方便参考~~
-1. shell环境代理设置因为在安装node、hexo过程中发现有时候因为网速太慢，或者GFW影响，导致安装停顿，所以国内条件允许的情况下需要设置代理~设置方法如下：
-1export http_proxy=proxy_addr:port
-2. Hexo与Next主题安装2.1 安装node如果本机没有安装过node则需要安装该环境，安装示例：
-12yum install nodejsyum install npm
-或者从源文件安装，å®装方法请自行搜索。
-查看安装的node版本：
-12node -vnpm -v
-2.2 安装Hexo与Next主题1sudo npm install 
-          ...
-
+          <blockquote class="blockquote-center"><p> 人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。</p>
+<p>—— 刘易斯</p>
+</blockquote>
+<p>近期看到很多布置在<strong>Git</strong>上的<em>blog</em>都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。</p>
+<p>现将迁移的方法与步骤记录如下，方便参考~~</p>
+<h2 id="1-shell环境代理设置"><a href="#1-shell环境代理设置" class="headerlink" title="1. shell环境代理设置"></a>1. shell环境代理设置</h2><p>因为在安装node、hexo过程中发现有时候因为网速太慢，或者GFW影响，导致安装停顿，所以国内条件允许的情况下需要设置代理~设置方法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> http_proxy=proxy_addr:port</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/24/hexo-migrate/#more" rel="contents">
               阅读全文 &raquo;
@@ -472,19 +463,14 @@
 
       
         
-          
-          @Date: 2016-09-19 16:29:17
-
-
-content{:toc}
-
-
-Tmux是一个优秀的终端复用软件，支持多标签，也支持窗口内部面板的分割，更重要的是，Tmux提供了窗体随时保存和恢复的功能。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话。
-1. 下载源代码1234git clone https://github.com/tmux/tmux.git tmuxcd tmuxsh autogen.sh./configure --prefix=/gpfs01/home/path/to/tmux
-1.1 提示需要libevent编译过程终端，提示：configure: error: &quot;libevent not found&quot;
-安装libevent12345678#./configure --prefix=/gpfs01/home/path/to/tmuxcurl -O https://cloud.github.com/down
-          ...
-
+          <p>@Date: 2016-09-19 16:29:17</p>
+<hr>
+<ul>
+<li>content<br>{:toc}</li>
+</ul>
+<hr>
+<p>Tmux是一个优秀的终端复用软件，支持多标签，也支持窗口内部面板的分割，更重要的是，Tmux提供了窗体随时保存和恢复的功能。不仅如此，你还可以通过 Tmux 使终端会话运行于后台或是按需接入、断开会话。</p>
+<h2 id="1-下载源代码"><a href="#1-下载源代码" class="headerlink" title="1. 下载源代码"></a>1. 下载源代码</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/tmux/tmux.git tmux</div><div class="line"><span class="keyword">cd</span> tmux</div><div class="line"><span class="keyword">sh</span> autogen.<span class="keyword">sh</span></div><div class="line">./configure --prefix=/gpfs01/home/path/<span class="keyword">to</span>/tmux</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/20/tmux-using/#more" rel="contents">
               阅读全文 &raquo;
@@ -888,9 +874,11 @@ content{:toc}
 
 
 进行测序数据分析的时候，大多并不关注reads名称的含义，例如：
-1234@E00492:20:HW5F3CCXX:6:1101:9567:1784 1:N:0:GCGATGTGGTNCTCATCTGCGGCATGGTTGGATCTCTTTGCAGTCCAAGGGANTCTGAAGAGTCTTCTCCAACACCACAGTTCAAAAGCATCAATTCTTCNGCGNTCGCTTNCNTCACANTNCAACTNNCACATCCATANATGANCANTGGAAAAACC+AA#FFJJJJJJJJJJJJJJJJFJFJJJF-FFJJJJJJJJJJJAF#JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJJJJF#JJJ#JJJ-AJ#A#JFFJJ#J#-AFJF##JJJJJJJJJJ#JA&lt;F#JJ#FJF7-FFJJJ
+1234@E00492:20:HW5F3CCXX:6:1101:9567:1784 1:N:0:GCGATGTGGTNCTCATCTGCGGCATGGTTGGATCTCTTTGCAGTCCAAGGGANTCTGAAGA+AA#FFJJJJJJJJJJJJJJJJFJFJJJF-FFJJJJJJJJJJJAF#JJJJJJJJ
 各字符段的说明如下图：
-          ...
+
+
+          
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/05/read-name/#more" rel="contents">
