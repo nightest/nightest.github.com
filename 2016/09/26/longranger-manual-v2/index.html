@@ -103,27 +103,27 @@
 
 
 <meta name="description" content="Perseverance is permanent enjoy.
-–Black
+—Black
 
-1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文ä»¶。
-1.1 bcl2fastq转">
+1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文件。
+1.1 bcl2fastq转换命">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Long Ranger分析10X测序数据(二)">
 <meta property="og:url" content="http://yoursite.com/2016/09/26/longranger-manual-v2/index.html">
 <meta property="og:site_name" content="RAINFORESTS">
 <meta property="og:description" content="Perseverance is permanent enjoy.
-–Black
+—Black
 
-1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文ä»¶。
-1.1 bcl2fastq转">
-<meta property="og:updated_time" content="2016-09-26T12:23:19.000Z">
+1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文件。
+1.1 bcl2fastq转换命">
+<meta property="og:updated_time" content="2016-09-26T12:25:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Long Ranger分析10X测序数据(二)">
 <meta name="twitter:description" content="Perseverance is permanent enjoy.
-–Black
+—Black
 
-1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文ä»¶。
-1.1 bcl2fastq转">
+1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文件。
+1.1 bcl2fastq转换命">
 
 
 
@@ -343,9 +343,9 @@
 
       
         <blockquote class="blockquote-center"><p>Perseverance is permanent enjoy.</p>
-<p>–Black</p>
+<p>—Black</p>
 </blockquote>
-<h2 id="1-Long-Ranger调用bcl2fastq"><a href="#1-Long-Ranger调用bcl2fastq" class="headerlink" title="1. Long Ranger调用bcl2fastq"></a>1. Long Ranger调用bcl2fastq</h2><p>如果需要转换bcl产生FASTQ文件，则需要使用<a href="http://support.illumina.com/downloads/bcl2fastq_conversion_software.html" target="_blank" rel="external">Illumina’s bcl2fastq 2.17</a>。安装Long Ranger与bcl2fastq，并加入到<code>$PATH</code>变量中即可调用 <code>longranger mkfastq</code>转化bcl文ä»¶。</p>
+<h2 id="1-Long-Ranger调用bcl2fastq"><a href="#1-Long-Ranger调用bcl2fastq" class="headerlink" title="1. Long Ranger调用bcl2fastq"></a>1. Long Ranger调用bcl2fastq</h2><p>如果需要转换bcl产生FASTQ文件，则需要使用<a href="http://support.illumina.com/downloads/bcl2fastq_conversion_software.html" target="_blank" rel="external">Illumina’s bcl2fastq 2.17</a>。安装Long Ranger与bcl2fastq，并加入到<code>$PATH</code>变量中即可调用 <code>longranger mkfastq</code>转化bcl文件。</p>
 <h3 id="1-1-bcl2fastq转换"><a href="#1-1-bcl2fastq转换" class="headerlink" title="1.1 bcl2fastq转换"></a>1.1 bcl2fastq转换</h3><p>命令：</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">bcl2fastq </span>-R /<span class="keyword">BHW5F3CCXX/ </span>--sample-sheet ./SampleSheet.csv -o ./<span class="number">1</span>lane.fq/</div></pre></td></tr></table></figure>
 <h3 id="1-2-longranger-转换"><a href="#1-2-longranger-转换" class="headerlink" title="1.2 longranger 转换"></a>1.2 longranger 转换</h3><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ longranger mkfastq --run=/path/to/tiny<span class="emphasis">_bcl \</span></div><div class="line">                     --samplesheet=tiny-bcl-samplesheet.csv</div><div class="line"></div><div class="line">longranger mkfastq</div><div class="line"><span class="section">Copyright (c) 2016 10x Genomics, Inc.  All rights reserved.</span></div><div class="line">-----------------------------------------------------------------------------</div><div class="line">Martian Runtime - 2.1.1</div><div class="line"></div><div class="line">Running preflight checks (please wait)...</div></pre></td></tr></table></figure>
