@@ -335,17 +335,151 @@
 
       
         
-          <h2 id="1-什么是Long-Ranger"><a href="#1-什么是Long-Ranger" class="headerlink" title="1. 什么是Long Ranger"></a>1. 什么是Long Ranger</h2><p>Long Ranger是10X Genomics公司开发的一套<em>Pipeline</em>，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该<em>Pipleline</em>主要包含以下5个部分，</p>
+          <blockquote class="blockquote-center"><p>People’s thinking is great, just focus on a particular career, will certainly to make yourself feel surprised.</p>
+<p>– Mark Twain</p>
+</blockquote>
+<h2 id="1-什么是Long-Ranger"><a href="#1-什么是Long-Ranger" class="headerlink" title="1. 什么是Long Ranger"></a>1. 什么是Long Ranger</h2><p>Long Ranger是10X Genomics公司开发的一套<em>Pipeline</em>，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该<em>Pipleline</em>主要包含以下5个部分，</p>
 <ul>
 <li><code>longranger mkfastq</code> 包含Illumina 公司的bcl2fastq功能，能够根据barcode demultiplex样品，生成 FASTQ 文件。亲自测试后发现就相当于bcl2fastq功能</li>
 <li><code>longranger wgs</code> 输入文件为全基因组的FASTQ文件，然后进行比对，去冗余，过滤，最后根据GemCode特有的barcodes信息 call and phase <strong><em>SNPs, indels, SVs</em></strong></li>
-<li><code>longranger targeted</code> 输入文ä»¶为目标样品的FASTQ文件，然后进行alignment, de-duplication, and filtering; 最后根据barcodes信息  call and phase <strong><em>SNPs, indels, SVs</em></strong></li>
+<li><code>longranger targeted</code> 输入文件为目标样品的FASTQ文件，然后进行alignment, de-duplication, and filtering; 最后根据barcodes信息  call and phase <strong><em>SNPs, indels, SVs</em></strong></li>
 <li><code>longranger basic</code> 输入文件为 longranger basic 产生的FASTQ文件，找出并区分不同的barcodes及reads</li>
 <li><code>longranger align</code> basic pipeline部分再加上序列比对</li>
 </ul>
 <p>Long Ranger 利用 FreeBayes （内部集成）或者GATK（用户提供）进行SNP检测。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/26/longranger-manual/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/26/longranger-manual-v2/" itemprop="url">
+                  利用Long Ranger分析10X测序数据(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-26T00:00:00+08:00" content="2016-09-26">
+              2016-09-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/26/longranger-manual-v2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/26/longranger-manual-v2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Perseverance is permanent enjoy.
+–Black
+
+1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文ä»¶。
+1.1 bcl2fastq转换命令：
+1bcl2fastq -R /BHW5F3CCXX/ --sample-sheet ./SampleSheet.csv -o ./1lane.fq/
+1.2 longranger 转换123456789$ longranger mkfastq --run=/path/to/tiny_bcl \                     --samplesheet=tiny-bcl-samplesheet.csvlongranger mkfastqCopyright (c) 2016 10
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/26/longranger-manual-v2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2408,6 +2542,137 @@ CentOS搭建Nodebb1. 安装MongoDB参考
             
               
                 
+                <a class="post-title-link" href="/2016/08/30/10x-data-ana/" itemprop="url">
+                  10X Data Analysis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
+                    <span itemprop="name">bioinformatics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/10x-data-ana/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/10x-data-ana/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+Content{:toc}
+
+1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
+执行：:
+12345678$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXXsupernova demuxCopyright (c) 2016 10x Genomics, Inc.  All rights reserved.-----------------------------------------------------------------------------Martian Runtime - 2.0.0Running preflight checks (please wait)...
+如果
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/30/10x-data-ana/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/30/10x-soft-pre/" itemprop="url">
                   10X data analysis -- Software Prepare
                 </a>
@@ -2493,137 +2758,6 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/30/10x-soft-pre/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/30/10x-data-ana/" itemprop="url">
-                  10X Data Analysis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
-              2016-08-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
-                    <span itemprop="name">bioinformatics</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/30/10x-data-ana/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/10x-data-ana/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-Content{:toc}
-
-1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
-执行：:
-12345678$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXXsupernova demuxCopyright (c) 2016 10x Genomics, Inc.  All rights reserved.-----------------------------------------------------------------------------Martian Runtime - 2.0.0Running preflight checks (please wait)...
-如果
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/30/10x-data-ana/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2792,131 +2926,6 @@ qdel -W 15 18036  ##15秒后删除18036号作业
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/16/reading/" itemprop="url">
-                  Read the right book
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-16T00:00:00+08:00" content="2016-08-16">
-              2016-08-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/introspection/" itemprop="url" rel="index">
-                    <span itemprop="name">introspection</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/16/reading/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/16/reading/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          ReadingReading is important for we humans to inherite knowledge. Nowadays, We also learn from books, study knowledges in books. However, several we have to notice when reading. First of all, We shoud pick out right books to read. What books are right? That depends on what we want and what we can get. If you want to relax, read some scitific fiction, novels and so on. If you want to lean something, read some books you are interested. Or, if you wa
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/16/reading/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2962,7 +2971,7 @@ qdel -W 15 18036  ##15秒后删除18036号作业
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

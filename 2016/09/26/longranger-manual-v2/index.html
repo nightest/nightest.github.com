@@ -1,0 +1,797 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux,bioinfo,10x,long ranger," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Perseverance is permanent enjoy.
+–Black
+
+1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文ä»¶。
+1.1 bcl2fastq转">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Long Ranger分析10X测序数据(二)">
+<meta property="og:url" content="http://yoursite.com/2016/09/26/longranger-manual-v2/index.html">
+<meta property="og:site_name" content="RAINFORESTS">
+<meta property="og:description" content="Perseverance is permanent enjoy.
+–Black
+
+1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文ä»¶。
+1.1 bcl2fastq转">
+<meta property="og:updated_time" content="2016-09-26T09:58:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用Long Ranger分析10X测序数据(二)">
+<meta name="twitter:description" content="Perseverance is permanent enjoy.
+–Black
+
+1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文ä»¶。
+1.1 bcl2fastq转">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/26/longranger-manual-v2/"/>
+
+  <title> 利用Long Ranger分析10X测序数据(二) | RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用Long Ranger分析10X测序数据(二)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-26T00:00:00+08:00" content="2016-09-26">
+              2016-09-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/26/longranger-manual-v2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/26/longranger-manual-v2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>Perseverance is permanent enjoy.</p>
+<p>–Black</p>
+</blockquote>
+<h2 id="1-Long-Ranger调用bcl2fastq"><a href="#1-Long-Ranger调用bcl2fastq" class="headerlink" title="1. Long Ranger调用bcl2fastq"></a>1. Long Ranger调用bcl2fastq</h2><p>如果需要转换bcl产生FASTQ文件，则需要使用<a href="http://support.illumina.com/downloads/bcl2fastq_conversion_software.html" target="_blank" rel="external">Illumina’s bcl2fastq 2.17</a>。安装Long Ranger与bcl2fastq，并加入到<code>$PATH</code>变量中即可调用 <code>longranger mkfastq</code>转化bcl文ä»¶。</p>
+<h3 id="1-1-bcl2fastq转换"><a href="#1-1-bcl2fastq转换" class="headerlink" title="1.1 bcl2fastq转换"></a>1.1 bcl2fastq转换</h3><p>命令：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">bcl2fastq </span>-R /<span class="keyword">BHW5F3CCXX/ </span>--sample-sheet ./SampleSheet.csv -o ./<span class="number">1</span>lane.fq/</div></pre></td></tr></table></figure>
+<h3 id="1-2-longranger-转换"><a href="#1-2-longranger-转换" class="headerlink" title="1.2 longranger 转换"></a>1.2 longranger 转换</h3><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ longranger mkfastq --run=/path/to/tiny<span class="emphasis">_bcl \</span></div><div class="line">                     --samplesheet=tiny-bcl-samplesheet.csv</div><div class="line"></div><div class="line">longranger mkfastq</div><div class="line"><span class="section">Copyright (c) 2016 10x Genomics, Inc.  All rights reserved.</span></div><div class="line">-----------------------------------------------------------------------------</div><div class="line">Martian Runtime - 2.1.1</div><div class="line"></div><div class="line">Running preflight checks (please wait)...</div></pre></td></tr></table></figure>
+<p>转化前文件结构示例：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">./</div><div class="line">├── Data</div><div class="line">│   └── Intensities</div><div class="line">│       ├── BaseCalls</div><div class="line">│       │   └── L004</div><div class="line">│       │       ├── C100.<span class="number">1</span></div><div class="line">│       │       │   ├── s_4_1102<span class="selector-class">.bcl</span><span class="selector-class">.gz</span></div><div class="line">│       │       │   └── s_4_2224<span class="selector-class">.bcl</span><span class="selector-class">.gz</span></div><div class="line">│       │       ├── C10.<span class="number">1</span></div><div class="line">│       │       │   ├── s_4_2223<span class="selector-class">.bcl</span><span class="selector-class">.gz</span></div><div class="line">│       │       │   └── s_4_2224<span class="selector-class">.bcl</span><span class="selector-class">.gz</span></div><div class="line">│       │       ├── s_4_1101<span class="selector-class">.filter</span></div><div class="line">│       │Â       └── s_4_2224<span class="selector-class">.filter</span></div><div class="line">│       └── s<span class="selector-class">.locs</span></div><div class="line">├── InterOp</div><div class="line">│   ├── StaticRunMetricsOut<span class="selector-class">.bin</span></div><div class="line">│   └── TileMetricsOut<span class="selector-class">.bin</span></div><div class="line">├── RunInfo<span class="selector-class">.xml</span></div><div class="line">└── SampleSheet.csv</div></pre></td></tr></table></figure>
+<h3 id="1-3-参考文献"><a href="#1-3-参考文献" class="headerlink" title="1.3 参考文献"></a>1.3 参考文献</h3><ul>
+<li><a href="http://support.10xgenomics.com/genome-exome/software/pipelines/latest/using/mkfastq" target="_blank" rel="external">http://support.10xgenomics.com/genome-exome/software/pipelines/latest/using/mkfastq</a></li>
+</ul>
+<h2 id="2-WGS全基因组数据分析"><a href="#2-WGS全基因组数据分析" class="headerlink" title="2. WGS全基因组数据分析"></a>2. WGS全基因组数据分析</h2><h3 id="2-1-数据demultiplexe和格式转换"><a href="#2-1-数据demultiplexe和格式转换" class="headerlink" title="2.1 数据demultiplexe和格式转换"></a>2.1 数据demultiplexe和格式转换</h3><p>调用<code>longranger mkfastq</code> or <code>bcl2fastq</code> 转化FASTQ文件。</p>
+<h3 id="2-2-在WGS模式下运行longranger"><a href="#2-2-在WGS模式下运行longranger" class="headerlink" title="2.2 在WGS模式下运行longranger"></a>2.2 在WGS模式下运行longranger</h3><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ longranger wgs --id=sample345 \</div><div class="line">                 -<span class="ruby">-reference=<span class="regexp">/opt/refdata</span>-hg19-<span class="number">2.1</span>.<span class="number">0</span> \</span></div><div class="line">                 -<span class="ruby">-fastqs=<span class="regexp">/home/jdoe</span><span class="regexp">/runs/</span>HAWT7ADXX/outs/fastq_path</span></div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Parameter</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">–id</td>
+<td style="text-align:left">A unique run ID string: e.g. sample345</td>
+</tr>
+<tr>
+<td style="text-align:left">–fastqs</td>
+<td style="text-align:left">Path of the FASTQ folder generated by longranger mkfastq</td>
+</tr>
+</tbody>
+</table>
+<p>e.g. /home/jdoe/runs/HAWT7ADXX/outs/fastq_path  |<br>| -sample  | (optional) Sample name as specified in the sample sheet supplied to mkfastq.  |<br>| –reference  | Path to a 10x compatible reference, e.g. /opt/refdata-hg19-2.1.0.  |<br>| –vcmode  | (optional) freebayes, gatk:/path/to/GenomeAnalysisTK.jar, or disable  |<br>| –precalled  | (optional) Path to a “pre-called” VCF file. Variants in this file will be phased.  |<br>| –sex  |  (optional) Sex of the sample: male or female. Sex will be detected based on coverage if not supplied.  |<br>| –somatic  | (optional) Supply this flag for somatic samples. This will increase the sensitivity of the large-scale SV caller. Note: this option currently does not affect small-scale variant calling. The small scale variant caller is not currently optimized for somatic variants  |</p>
+<p>其他参数：<code>--localcores=16</code> 默认情况下将会使用所有的CPU，该参数能够限制使用的cpu核数。<code>--localmem</code> 将会限制程序使用的内存大小（<strong>GB</strong>）。</p>
+<h3 id="2-3-Variant-Calling"><a href="#2-3-Variant-Calling" class="headerlink" title="2.3 Variant Calling"></a>2.3 Variant Calling</h3><p>默认情况下，longranger将会调用freebayes进行 call SNP 和 indels， phase variants, adds structural variant calls。也可以通过<em>–vcmode</em>指定GATK进行SNP检测。</p>
+<p>也可以利用<code>--pre-called</code>参数，引入已经处理完的<strong>VCF</strong>文件。</p>
+<h3 id="2-4-Output-Files"><a href="#2-4-Output-Files" class="headerlink" title="2.4 Output Files"></a>2.4 Output Files</h3><p>Pipleline运行结束后，产生的文件结æ如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">02</span> <span class="number">15</span>:<span class="number">46</span>:<span class="number">41</span> [runtime] (run:local)       ID<span class="selector-class">.sample345</span><span class="selector-class">.PHASER_SVCALLER_CS</span><span class="selector-class">.PHASER_SVCALLER</span><span class="selector-class">.LOUPE_PREPROCESS</span><span class="selector-class">.fork0</span><span class="selector-class">.join</span></div><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">02</span> <span class="number">15</span>:<span class="number">46</span>:<span class="number">44</span> [runtime] (join_complete)   ID<span class="selector-class">.sample345</span><span class="selector-class">.PHASER_SVCALLER_CS</span><span class="selector-class">.PHASER_SVCALLER</span><span class="selector-class">.LOUPE_PREPROCESS</span></div><div class="line"><span class="number">2016</span>-<span class="number">05</span>-<span class="number">02</span> <span class="number">15</span>:<span class="number">46</span>:<span class="number">55</span> [runtime] VDR killed <span class="number">4738</span> files, <span class="number">223</span>GB.</div><div class="line"></div><div class="line">Outputs:</div><div class="line">- Run <span class="selector-tag">summary</span>:               /home/jdoe/runs/sample345/outs/<span class="selector-tag">summary</span><span class="selector-class">.csv</span></div><div class="line">- BAM barcoded:              /home/jdoe/runs/sample345/outs/phased_possorted_bam<span class="selector-class">.bam</span></div><div class="line">- BAM index:                 /home/jdoe/runs/sample345/outs/phased_possorted_bam<span class="selector-class">.bam</span><span class="selector-class">.bai</span></div><div class="line">- VCF phased:                /home/jdoe/runs/sample345/outs/phased_variants<span class="selector-class">.vcf</span><span class="selector-class">.gz</span></div><div class="line">- VCF index:                 /home/jdoe/runs/sample345/outs/phased_variants<span class="selector-class">.vcf</span><span class="selector-class">.gz</span><span class="selector-class">.tbi</span></div><div class="line">- Large-scale SV calls:      /home/jdoe/runs/sample345/outs/large_sv_calls<span class="selector-class">.bedpe</span></div><div class="line">- Large-scale SV candidates: /home/jdoe/runs/sample345/outs/large_sv_candidates<span class="selector-class">.bedpe</span></div><div class="line">- Large-scale SVs:           /home/jdoe/runs/sample345/outs/large_svs<span class="selector-class">.vcf</span><span class="selector-class">.gz</span></div><div class="line">- Large-scale SVs index:     /home/jdoe/runs/sample345/outs/large_svs<span class="selector-class">.vcf</span><span class="selector-class">.gz</span><span class="selector-class">.tbi</span></div><div class="line">- Mid-scale deletions:       /home/jdoe/runs/sample345/outs/dels<span class="selector-class">.vcf</span><span class="selector-class">.gz</span></div><div class="line">- Mid-scale deletions index: /home/jdoe/runs/sample345/outs/dels<span class="selector-class">.vcf</span><span class="selector-class">.gz</span><span class="selector-class">.tbi</span></div><div class="line">- Loupe file:                /home/jdoe/runs/sample345/outs/loupe<span class="selector-class">.loupe</span></div><div class="line"></div><div class="line">Pipestance completed successfully!</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">File Name</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">summary.csv</td>
+<td style="text-align:left">Run summary metrics in CSV format</td>
+</tr>
+<tr>
+<td style="text-align:left">phased_possorted_bam.bam</td>
+<td style="text-align:left">Aligned reads annotated with barcode information</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">phased_possorted_bam.bam.bai</td>
+<td style="text-align:left">Index for phased_possorted_bam.bam</td>
+</tr>
+<tr>
+<td style="text-align:left">phased_variants.vcf.gz</td>
+<td style="text-align:left">VCF annotated with barcode and phasing information</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">phased_variants.vcf.gz.tbi</td>
+<td style="text-align:left">Index for phased_variants.vcf.gz</td>
+</tr>
+<tr>
+<td style="text-align:left">large_sv_calls.bedpe</td>
+<td style="text-align:left">Confidently called large-scale structural variants (</td>
+<td>≥30Kbp or inter-chromosomal) in BEDPE format</td>
+</tr>
+<tr>
+<td style="text-align:left">large_sv_candidates.bedpe</td>
+<td style="text-align:left">Large-scale structural variant calls and low</td>
+<td>confidence candidates in BEDPE format</td>
+</tr>
+<tr>
+<td style="text-align:left">large_svs.vcf.gz</td>
+<td style="text-align:left">Large-scale structural variant calls and candidates in</td>
+<td>VCF format</td>
+</tr>
+<tr>
+<td style="text-align:left">large_svs.vcf.gz.tbi</td>
+<td style="text-align:left">Index for large_svs.vcf.gz</td>
+</tr>
+<tr>
+<td style="text-align:left">dels.vcf.gz</td>
+<td style="text-align:left">Mid-scale deletion calls (50bp-30Kbp)</td>
+</tr>
+<tr>
+<td style="text-align:left">dels.vcf.gz.tbi</td>
+<td style="text-align:left">Index for dels.vcf.gz</td>
+</tr>
+<tr>
+<td style="text-align:left">loupe.loupe</td>
+<td style="text-align:left">File that can be opened in the Loupe genome browser</td>
+</tr>
+</tbody>
+</table>
+<p>运行结束后，可以使用<a href="http://support.10xgenomics.com/genome-exome/software/visualization/latest/getting-started" target="_blank" rel="external">Loupe genome browser</a>软件查看loupe文件。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/bioinfo/" rel="tag">#bioinfo</a>
+          
+            <a href="/tags/10x/" rel="tag">#10x</a>
+          
+            <a href="/tags/long-ranger/" rel="tag">#long ranger</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/24/hexo-migrate/" rel="next" title="从jekyll迁移到hexo">
+                <i class="fa fa-chevron-left"></i> 从jekyll迁移到hexo
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/26/longranger-manual/" rel="prev" title="利用Long Ranger分析10X测序数据(一)">
+                利用Long Ranger分析10X测序数据(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/a50f4bfbfbe.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Long-Ranger调用bcl2fastq"><span class="nav-text">1. Long Ranger调用bcl2fastq</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-bcl2fastq转换"><span class="nav-text">1.1 bcl2fastq转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-longranger-转换"><span class="nav-text">1.2 longranger 转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-参考文献"><span class="nav-text">1.3 参考文献</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-WGS全基因组数据分析"><span class="nav-text">2. WGS全基因组数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-数据demultiplexe和格式转换"><span class="nav-text">2.1 数据demultiplexe和格式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-在WGS模式下运行longranger"><span class="nav-text">2.2 在WGS模式下运行longranger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Variant-Calling"><span class="nav-text">2.3 Variant Calling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Output-Files"><span class="nav-text">2.4 Output Files</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/09/26/longranger-manual-v2/';
+      var disqus_title = "利用Long Ranger分析10X测序数据(二)";
+      var disqus_url = 'http://yoursite.com/2016/09/26/longranger-manual-v2/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
