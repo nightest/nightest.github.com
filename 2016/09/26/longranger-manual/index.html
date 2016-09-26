@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jekyll,tech,linux,disqus," />
+  <meta name="keywords" content="linux,bioinfo,10x,long ranger," />
 
 
 
@@ -102,43 +102,22 @@
 
 
 
-<meta name="description" content="@Date: 2016-09-03 22:37:45
+<meta name="description" content="1. 什么是Long RangerLong Ranger是10X Genomics公司开发的一套Pipeline，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该Pipleline主要包含以下5个部分，
 
-
-content{:toc}
-
-
-1. 如何添加代码高亮不同编程语言的关键词、语法不同，因此需要对不同的位置进行高亮设置，因为目前jekyll默认编辑器为kramdown，并不支持pygments的代码高亮渲染，因此需要改为rouge进行渲染。
-jekyll 3.0的修改方法如下，修改_config.yml文件：
-12markdown: kr">
+longranger mkfastq 包含Illumina 公司的bcl2fastq功能，能够根据barcode demultiplex样品，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jekyll部署中的问题">
-<meta property="og:url" content="http://yoursite.com/2016/09/04/jekyll-set/index.html">
+<meta property="og:title" content="利用Long Ranger分析10X测序数据(一)">
+<meta property="og:url" content="http://yoursite.com/2016/09/26/longranger-manual/index.html">
 <meta property="og:site_name" content="RAINFORESTS">
-<meta property="og:description" content="@Date: 2016-09-03 22:37:45
+<meta property="og:description" content="1. 什么是Long RangerLong Ranger是10X Genomics公司开发的一套Pipeline，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该Pipleline主要包含以下5个部分，
 
-
-content{:toc}
-
-
-1. 如何添加代码高亮不同编程语言的关键词、语法不同，因此需要对不同的位置进行高亮设置，因为目前jekyll默认编辑器为kramdown，并不支持pygments的代码高亮渲染，因此需要改为rouge进行渲染。
-jekyll 3.0的修改方法如下，修改_config.yml文件：
-12markdown: kr">
-<meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/23g2g.png">
-<meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/typ1.png">
-<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+longranger mkfastq 包含Illumina 公司的bcl2fastq功能，能够根据barcode demultiplex样品，">
+<meta property="og:updated_time" content="2016-09-26T06:55:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jekyll部署中的问题">
-<meta name="twitter:description" content="@Date: 2016-09-03 22:37:45
+<meta name="twitter:title" content="利用Long Ranger分析10X测序数据(一)">
+<meta name="twitter:description" content="1. 什么是Long RangerLong Ranger是10X Genomics公司开发的一套Pipeline，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该Pipleline主要包含以下5个部分，
 
-
-content{:toc}
-
-
-1. 如何添加代码高亮不同编程语言的关键词、语法不同，因此需要对不同的位置进行高亮设置，因为目前jekyll默认编辑器为kramdown，并不支持pygments的代码高亮渲染，因此需要改为rouge进行渲染。
-jekyll 3.0的修改方法如下，修改_config.yml文件：
-12markdown: kr">
-<meta name="twitter:image" content="http://ocs218n9i.bkt.clouddn.com/23g2g.png">
+longranger mkfastq 包含Illumina 公司的bcl2fastq功能，能够根据barcode demultiplex样品，">
 
 
 
@@ -159,9 +138,9 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/04/jekyll-set/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/26/longranger-manual/"/>
 
-  <title> jekyll部署中的问题 | RAINFORESTS </title>
+  <title> 利用Long Ranger分析10X测序数据(一) | RAINFORESTS </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +270,7 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
             
             
               
-                jekyll部署中的问题
+                利用Long Ranger分析10X测序数据(一)
               
             
           </h1>
@@ -303,8 +282,8 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-04T00:00:00+08:00" content="2016-09-04">
-              2016-09-04
+            <time itemprop="dateCreated" datetime="2016-09-26T00:00:00+08:00" content="2016-09-26">
+              2016-09-26
             </time>
           </span>
 
@@ -333,8 +312,8 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/04/jekyll-set/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/04/jekyll-set/" itemprop="commentsCount"></span>
+                <a href="/2016/09/26/longranger-manual/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/26/longranger-manual/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,28 +336,48 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
       
 
       
-        <p>@Date: 2016-09-03 22:37:45</p>
-<hr>
+        <h2 id="1-什么是Long-Ranger"><a href="#1-什么是Long-Ranger" class="headerlink" title="1. 什么是Long Ranger"></a>1. 什么是Long Ranger</h2><p>Long Ranger是10X Genomics公司开发的一套<em>Pipeline</em>，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该<em>Pipleline</em>主要包含以下5个部分，</p>
 <ul>
-<li>content<br>{:toc}</li>
+<li><code>longranger mkfastq</code> 包含Illumina 公司的bcl2fastq功能，能够根据barcode demultiplex样品，生成 FASTQ 文件。亲自测试后发现就相当于bcl2fastq功能</li>
+<li><code>longranger wgs</code> 输入文件为全基因组的FASTQ文件，然后进行比对，去冗余，过滤，最后根据GemCode特有的barcodes信息 call and phase <strong><em>SNPs, indels, SVs</em></strong></li>
+<li><code>longranger targeted</code> 输入文ä»¶为目标样品的FASTQ文件，然后进行alignment, de-duplication, and filtering; 最后根据barcodes信息  call and phase <strong><em>SNPs, indels, SVs</em></strong></li>
+<li><code>longranger basic</code> 输入文件为 longranger basic 产生的FASTQ文件，找出并区分不同的barcodes及reads</li>
+<li><code>longranger align</code> basic pipeline部分再加上序列比对</li>
 </ul>
-<hr>
-<h2 id="1-如何添加代码高亮"><a href="#1-如何添加代码高亮" class="headerlink" title="1. 如何添加代码高亮"></a>1. 如何添加代码高亮</h2><p>不同编程语言的关键词、语法不同，因此需要对不同的位置进行高亮设置，因为目前<strong>jekyll</strong>默认编辑器为<strong>kramdown</strong>，并不支持<strong>pygments</strong>的代码高亮渲染，因此需要改为<strong>rouge</strong>进行渲染。</p>
-<p><strong>jekyll 3.0</strong>的修改方法如下，修改<strong>_config.yml</strong>文件：</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">markdown:</span> kramdown</div><div class="line"><span class="symbol">highlighter:</span> rouge</div></pre></td></tr></table></figure>
-<p>添加<strong>highlighter</strong>为<strong>rouge</strong>即可。</p>
-<p><strong>Ref:</strong> <a href="https://sacha.me/articles/jekyll-rouge/" target="_blank" rel="external">https://sacha.me/articles/jekyll-rouge/</a></p>
-<h2 id="2-修改代码块背景与字体颜色"><a href="#2-修改代码块背景与字体颜色" class="headerlink" title="2. 修改代码块背景与字体颜色"></a>2. 修改代码块背景与字体颜色</h2><p>修改文件 <strong>media/css/style.css</strong>即可：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">pre</span>,<span class="selector-tag">code</span>&#123;<span class="attribute">font-family</span>:Menlo,<span class="string">"Andale Mono"</span>,Consolas,<span class="string">"Courier New"</span>,Monaco,monospace;<span class="attribute">font-size</span>:<span class="number">14px</span>;<span class="attribute">color</span>:<span class="number">#586e75</span>;&#125;</div><div class="line"><span class="selector-tag">code</span>&#123;<span class="attribute">background-color</span>:<span class="number">#fdf6e3</span>;&#125;</div></pre></td></tr></table></figure>
-<p>在线调色工具：<a href="http://www.atool.org/colorpicker.php" target="_blank" rel="external">http://www.atool.org/colorpicker.php</a></p>
-<h2 id="3-绑定域名"><a href="#3-绑定域名" class="headerlink" title="3. 绑定域名"></a>3. 绑定域名</h2><p>为了方便访问，我从namecheap上购买了一个top域名，绑定方法如下~</p>
-<h4 id="coding-net-设置"><a href="#coding-net-设置" class="headerlink" title="coding net 设置"></a><strong>coding net</strong> 设置</h4><p>首先打开<strong>coding net</strong>中该项目的<strong>pages服务</strong>选项，绑定一个自定义域名。</p>
-<p><img src="http://ocs218n9i.bkt.clouddn.com/23g2g.png" alt="binding domain name"></p>
-<h4 id="DNS-设置"><a href="#DNS-设置" class="headerlink" title="DNS 设置"></a>DNS 设置</h4><p>然后打开<strong>namecheap</strong>的<a href="https://ap.www.namecheap.com/" target="_blank" rel="external">控制面板</a>,添加<strong>CNAME</strong>，如下图：</p>
-<p><img src="http://ocs218n9i.bkt.clouddn.com/typ1.png" alt="DNS setting"></p>
-<p><strong>Ref:</strong></p>
-<ol>
-<li><a href="http://www.jeyzhang.com/blog-on-gitcafe-with-dns-settings.html" target="_blank" rel="external">http://www.jeyzhang.com/blog-on-gitcafe-with-dns-settings.html</a></li>
+<p>Long Ranger 利用 FreeBayes （内部集成）或者GATK（用户提供）进行SNP检测。</p>
+<a id="more"></a>
+<h2 id="2-Long-Ranger-运行要求"><a href="#2-Long-Ranger-运行要求" class="headerlink" title="2. Long Ranger 运行要求"></a>2. Long Ranger 运行要求</h2><p>Linux系统要求：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">16</span>-core Intel or AMD processor</div><div class="line"><span class="number">96</span>GB RAM</div><div class="line"><span class="number">2</span>TB free disk space</div><div class="line"><span class="number">64</span>-bit CentOS/RedHat <span class="number">5.2</span> or Ubuntu <span class="number">8</span></div></pre></td></tr></table></figure>
+<p>Cluster集群要求：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">8</span>-core Intel <span class="keyword">or</span> AMD processor per <span class="keyword">node</span></div><div class="line"><span class="title">6GB</span> RAM per core</div><div class="line">Shared filesystem (e.g. NFS)</div><div class="line">SGE <span class="keyword">or</span> LSF</div></pre></td></tr></table></figure>
+<h2 id="3-Long-Ranger-下载安装"><a href="#3-Long-Ranger-下载安装" class="headerlink" title="3. Long Ranger 下载安装"></a>3. Long Ranger 下载安装</h2><h3 id="3-1-相关软件下载"><a href="#3-1-相关软件下载" class="headerlink" title="3.1 相关软件下载"></a>3.1 相关软件下载</h3><p><a href="http://support.10xgenomics.com/genome-exome/software/downloads/latest" target="_blank" rel="external">最新相关软件下载地址</a></p>
+<h4 id="Long-Ranger-2-1-1"><a href="#Long-Ranger-2-1-1" class="headerlink" title="Long Ranger 2.1.1"></a>Long Ranger 2.1.1</h4><blockquote>
+<p>Linux 64-bit – 326 MB – md5sum: e39a0f12cde47e031431fd1077eacd7a</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -O longranger-<span class="number">2.1</span>.<span class="number">1</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span> <span class="string">"https://s3-us-west-2.amazonaws.com/10x.downloads/longranger-2.1.1.tar.gz?AWSAccessKeyId=AKIAJAZONYDS6QUPQVBA&amp;Expires=1474895729&amp;Signature=URv51xh85BxZmGu97nj03sn0FgE%3D"</span></div></pre></td></tr></table></figure>
+<h4 id="hg-19"><a href="#hg-19" class="headerlink" title="hg 19"></a>hg 19</h4><blockquote>
+<p>Linux 64-bit – 5.0 GB – md5sum: 20068c9e5d799ce2e8f5a7c5502a8a7d</p>
+</blockquote>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//s3-us-west-<span class="number">2</span>.amazonaws.<span class="keyword">com</span>/<span class="number">10</span><span class="keyword">x</span>.datasets/refdata-hg19-<span class="number">2.1</span>.<span class="number">0</span>.tar.gz</div></pre></td></tr></table></figure>
+<p>hg18和GRCh36对应，hg19和GRCh37对应，hg38和GRCh38对应（以后数字应该都是一样了）。</p>
+<p>GRCh38是2013年12月发布的最新版本。hg和GRC略有不同，具体来说，hg19和GRCh37之间，染色体标号不一样，hg19使用带前缀的染色体标号chr1，chr2，……，而GRC用1,2，……来表示，所以做比对时，两个比对到两个基因组上的BAM文件是不能混用的。不过，同一个染色体上，GRCh37和hg19之间的坐标是一样的。</p>
+<p>hg19主要用来做生物信息学分析，所以只包括染色体1~22+XY+线粒体，一些其它<a href="url=https://en.wikipedia.org/wiki/Contig">Contig</a>就省略了。</p>
+<p>hg38和GRCh38之间比较统一，染色体标号是一致的，而且包含的序列的数目也一样（不过为了生物信息学软件处理方便，NCBI和UCSC也提供一些阉割的基因组版本，具体看<a href="url=http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/analysisSet/">这里</a>）。</p>
+<p>hg38相比于hg19有哪些提高，主要如下</p>
+<ul>
+<li>hg38包含了几百个alternate loci，比如6号染色体MHC区域，高度可变，每个人都不一样（除了同卵双胞胎），只在基因组里放一种序列就不太合理了</li>
+<li>hg38着丝粒区域序列和线粒体序列得到了更新</li>
+<li>hg38更正了hg19中已知的错误，比如有的基因开放阅读框（ORF）起始和终止位置不对，有的Aåº该是T（要不然编码的蛋白错误）。</li>
+</ul>
+<h3 id="3-2-Long-Ranger-相关软件安装"><a href="#3-2-Long-Ranger-相关软件安装" class="headerlink" title="3.2 Long Ranger 相关软件安装"></a>3.2 Long Ranger 相关软件安装</h3><p>解压下载好的软件及参考基因组hg19：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ tar -xzvf longranger-<span class="number">2.1</span>.<span class="number">1</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></div><div class="line">$ tar -xzvf refdata-hg19-<span class="number">2.1</span>.<span class="number">0</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
+<p>编辑<code>.bashrc</code>文件，并将Long Ranger路径加入环境变量，例如加入：</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">PATH</span>=/<span class="built_in">path</span>/to/longranger-<span class="number">2</span>.<span class="number">1</span>.<span class="number">1</span>:$<span class="built_in">PATH</span></div></pre></td></tr></table></figure>
+<p>然后重新载入环境变量：<code>source ~/.bashrc</code></p>
+<p>可以使用以下命令检验安装是否正确：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">longranger sitecheck</span></div></pre></td></tr></table></figure>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="http://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation" target="_blank" rel="external">http://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation</a></li>
 </ol>
 
       
@@ -402,13 +401,13 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
       
         <div class="post-tags">
           
-            <a href="/tags/jekyll/" rel="tag">#jekyll</a>
-          
-            <a href="/tags/tech/" rel="tag">#tech</a>
-          
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/disqus/" rel="tag">#disqus</a>
+            <a href="/tags/bioinfo/" rel="tag">#bioinfo</a>
+          
+            <a href="/tags/10x/" rel="tag">#10x</a>
+          
+            <a href="/tags/long-ranger/" rel="tag">#long ranger</a>
           
         </div>
       
@@ -417,17 +416,13 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/04/jekyll-auto-push/" rel="next" title="jekyll本地自动build与提交">
-                <i class="fa fa-chevron-left"></i> jekyll本地自动build与提交
+              <a href="/2016/09/24/hexo-migrate/" rel="next" title="从jekyll迁移到hexo">
+                <i class="fa fa-chevron-left"></i> 从jekyll迁移到hexo
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/05/general-ana/" rel="prev" title="常用分析方法bam2fastq、blastn、trimmomatic">
-                常用分析方法bam2fastq、blastn、trimmomatic <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -571,7 +566,7 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-如何添加代码高亮"><span class="nav-text">1. 如何添加代码高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-修改代码块背景与字体颜色"><span class="nav-text">2. 修改代码块背景与字体颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-绑定域名"><span class="nav-text">3. 绑定域名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#coding-net-设置"><span class="nav-text">coding net 设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-设置"><span class="nav-text">DNS 设置</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是Long-Ranger"><span class="nav-text">1. 什么是Long Ranger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Long-Ranger-运行要求"><span class="nav-text">2. Long Ranger 运行要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Long-Ranger-下载安装"><span class="nav-text">3. Long Ranger 下载安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-相关软件下载"><span class="nav-text">3.1 相关软件下载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Long-Ranger-2-1-1"><span class="nav-text">Long Ranger 2.1.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hg-19"><span class="nav-text">hg 19</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Long-Ranger-相关软件安装"><span class="nav-text">3.2 Long Ranger 相关软件安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li></ol></div>
             
           </div>
         </section>
@@ -698,9 +693,9 @@ jekyll 3.0的修改方法如下，修改_config.yml文件：
 
     <script type="text/javascript">
       var disqus_shortname = 'eugene-1';
-      var disqus_identifier = '2016/09/04/jekyll-set/';
-      var disqus_title = "jekyll部署中的问题";
-      var disqus_url = 'http://yoursite.com/2016/09/04/jekyll-set/';
+      var disqus_identifier = '2016/09/26/longranger-manual/';
+      var disqus_title = "利用Long Ranger分析10X测序数据(一)";
+      var disqus_url = 'http://yoursite.com/2016/09/26/longranger-manual/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
