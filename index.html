@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next mist use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -117,7 +117,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -709,10 +709,6 @@
           <blockquote class="blockquote-center"><p> 人生并不像火车要通过每个站似的经过每一个生活阶段。人生总是直向前行走，从不留下什么。</p>
 <p>—— 刘易斯</p>
 </blockquote>
-<p>近期看到很多布置在<strong>Git</strong>上的<em>blog</em>都采用hexo + Next主题，简洁美观，因此动了心思利用hexo从新布置一下，于是今天下午就利用周六的时间进行了迁移。</p>
-<p>现将迁移的方法与步骤记录如下，方便参考~~</p>
-<h2 id="1-shell环境代理设置"><a href="#1-shell环境代理设置" class="headerlink" title="1. shell环境代理设置"></a>1. shell环境代理设置</h2><p>因为在安装node、hexo过程中发现有时候因为网速太慢，或者GFW影响，导致安装停顿，所以国内条件允许的情况下需要设置代理~设置方法如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> http_proxy=proxy_addr:port</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/24/hexo-migrate/#more" rel="contents">
               阅读全文 &raquo;
@@ -1839,6 +1835,140 @@ content{:toc}
             
               
                 
+                <a class="post-title-link" href="/2016/09/03/sublime-evernote/" itemprop="url">
+                  sublime设置与Evernote
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-03T00:00:00+08:00" content="2016-09-03">
+              2016-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/03/sublime-evernote/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/03/sublime-evernote/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          @Date: 2016-09-03 16:37:50
+
+
+content{:toc}
+
+
+sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：
+sublime配置在使用sublime之前需要进行一系列的配置，配置方法如下：
+安装包管理插件使用快捷键ctr + ~调出命令行模式，输入以下内容并回车：
+1import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.jo
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/03/sublime-evernote/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/03/sublime-vim/" itemprop="url">
                   Sublime Text启用vim模式
                 </a>
@@ -1930,140 +2060,6 @@ Vintage模式则已启用——你可以看到”INSERT MODE”显示在状态�
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/03/sublime-vim/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/sublime-evernote/" itemprop="url">
-                  sublime设置与Evernote
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-03T00:00:00+08:00" content="2016-09-03">
-              2016-09-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/03/sublime-evernote/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/03/sublime-evernote/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          @Date: 2016-09-03 16:37:50
-
-
-content{:toc}
-
-
-sublime 是非常好用的编辑器，而Evernote是我经常用的笔记软件，如果能把二者结合将会十分完美。网上一搜索，果然可以，而且是用我最喜欢的mardown语法写笔记并且直接提交，因此马上使用该方法，特此记录如下：
-sublime配置在使用sublime之前需要进行一系列的配置，配置方法如下：
-安装包管理插件使用快捷键ctr + ~调出命令行模式，输入以下内容并回车：
-1import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.jo
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/03/sublime-evernote/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2383,139 +2379,6 @@ content{:toc}
             
               
                 
-                <a class="post-title-link" href="/2016/08/31/nodebb/" itemprop="url">
-                  CentOS搭建Nodebb
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/nodebb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/nodebb/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-目录测试{:toc #Test}
-
-CentOS搭建Nodebb1. 安装MongoDB参考
-1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
-1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-linux-x86_64-2.4.9 /usr/local/mongodbcd mongodbmkdir dbmkdir logscd binvi /usr/local/mongodb/bin/mongodb.conf
-加入内容：
-12345dbpath=/usr/local/mongodb/dblogpath=/usr/local/mongodb/logs/mongodb.logport=27017fork=truenohttpinterface=true
-修改mongodb.conf内容：12
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/nodebb/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/31/mongdb-mig/" itemprop="url">
                   CentOS6迁移NOdebb与MongoDB的升级
                 </a>
@@ -2599,6 +2462,139 @@ Content{:toc}
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/31/mongdb-mig/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/31/nodebb/" itemprop="url">
+                  CentOS搭建Nodebb
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/31/nodebb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/nodebb/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+目录测试{:toc #Test}
+
+CentOS搭建Nodebb1. 安装MongoDB参考
+1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-linux-x86_64-2.4.9 /usr/local/mongodbcd mongodbmkdir dbmkdir logscd binvi /usr/local/mongodb/bin/mongodb.conf
+加入内容：
+12345dbpath=/usr/local/mongodb/dblogpath=/usr/local/mongodb/logs/mongodb.logport=27017fork=truenohttpinterface=true
+修改mongodb.conf内容：12
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/31/nodebb/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -3007,7 +3003,7 @@ Content{:toc}
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -3072,13 +3068,6 @@ Content{:toc}
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
 
   
 
