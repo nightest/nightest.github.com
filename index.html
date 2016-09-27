@@ -266,8 +266,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/26/longranger-manual/" itemprop="url">
-                  利用Long Ranger分析10X测序数据(一)
+                <a class="post-title-link" href="/2016/09/27/lung-cancer/" itemprop="url">
+                  小细胞肺癌与非小细胞肺癌
                 </a>
               
             
@@ -280,8 +280,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-26T00:00:00+08:00" content="2016-09-26">
-              2016-09-26
+            <time itemprop="dateCreated" datetime="2016-09-27T00:00:00+08:00" content="2016-09-27">
+              2016-09-27
             </time>
           </span>
 
@@ -294,8 +294,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
-                    <span itemprop="name">bioinformatics</span>
+                  <a href="/categories/生物医学/" itemprop="url" rel="index">
+                    <span itemprop="name">生物医学</span>
                   </a>
                 </span>
 
@@ -310,8 +310,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/26/longranger-manual/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/26/longranger-manual/" itemprop="commentsCount"></span>
+                <a href="/2016/09/27/lung-cancer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/27/lung-cancer/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -335,20 +335,10 @@
 
       
         
-          <blockquote class="blockquote-center"><p>People’s thinking is great, just focus on a particular career, will certainly to make yourself feel surprised.</p>
-<p>– Mark Twain</p>
+          <blockquote class="blockquote-center"><p>人生活在希望之中，旧的希望实现了，或者泯灭了，新的希望的烈焰随之燃烧起来。如果一个人只管活一天算一天，什么希望也没有，他的生命实际上也就停止了。<br>———— 莫泊桑</p>
 </blockquote>
-<h2 id="1-什么是Long-Ranger"><a href="#1-什么是Long-Ranger" class="headerlink" title="1. 什么是Long Ranger"></a>1. 什么是Long Ranger</h2><p>Long Ranger是10X Genomics公司开发的一套<em>Pipeline</em>，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该<em>Pipleline</em>主要包含以下5个部分，</p>
-<ul>
-<li><code>longranger mkfastq</code> 包含Illumina 公司的bcl2fastq功能，能够根据barcode demultiplex样品，生成 FASTQ 文件。亲自测试后发现就相当于bcl2fastq功能</li>
-<li><code>longranger wgs</code> 输入文件为全基因组的FASTQ文件，然后进行比对，去冗余，过滤，最后根据GemCode特有的barcodes信息 call and phase <strong><em>SNPs, indels, SVs</em></strong></li>
-<li><code>longranger targeted</code> 输入文件为目标样品的FASTQ文件，然后进行alignment, de-duplication, and filtering; 最后根据barcodes信息  call and phase <strong><em>SNPs, indels, SVs</em></strong></li>
-<li><code>longranger basic</code> 输入文件为 longranger basic 产生的FASTQ文件，找出并区分不同的barcodes及reads</li>
-<li><code>longranger align</code> basic pipeline部分再加上序列比对</li>
-</ul>
-<p>Long Ranger 利用 FreeBayes （内部集成）或者GATK（用户提供）进行SNP检测。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/26/longranger-manual/#more" rel="contents">
+            <a class="btn" href="/2016/09/27/lung-cancer/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -468,18 +458,135 @@
 
       
         
-          
-          Perseverance is permanent enjoy.
-—Black
-
-1. Long Ranger调用bcl2fastq如果需要转换bcl产生FASTQ文件，则需要使用Illumina’s bcl2fastq 2.17。安装Long Ranger与bcl2fastq，并加入到$PATH变量中即可调用 longranger mkfastq转化bcl文件。
-1.1 bcl2fastq转换命令：
-1bcl2fastq -R /BHW5F3CCXX/ --sample-sheet ./SampleSheet.csv -o ./1lane.fq/
-1.2 longranger 转换123456789$ longranger mkfastq --run=/path/to/tiny_bcl \                     --samplesheet=tiny-bcl-samplesheet.csvlongranger mkfastqCopyright (c) 2016 10x 
-          ...
-
+          <blockquote class="blockquote-center"><p>生活是恼人的牢笼。一个有思想的人到成年时期，对生活有了成熟的感觉，他就不能不感到他关在一个无从脱逃的牢笼里面。</p>
+<p>———— 契诃夫</p>
+</blockquote>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/26/longranger-manual-v2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/26/longranger-manual/" itemprop="url">
+                  利用Long Ranger分析10X测序数据(一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-26T00:00:00+08:00" content="2016-09-26">
+              2016-09-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
+                    <span itemprop="name">bioinformatics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/26/longranger-manual/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/26/longranger-manual/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"><p>有三件事人类都要经历：出生生活和死亡。他们出生时无知无觉，死到临头，痛不欲生，活着的时候却又怠慢了人生。</p>
+<p>———— 拉布吕耶尔</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/26/longranger-manual/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2276,139 +2383,6 @@ content{:toc}
             
               
                 
-                <a class="post-title-link" href="/2016/08/31/mongdb-mig/" itemprop="url">
-                  CentOS6迁移NOdebb与MongoDB的升级
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/mongdb-mig/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/mongdb-mig/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-Content{:toc}
-
-1. 常见问题1：mongodb 启动不了 mongodb 启动不了
-报错:child process failed, exited with error number 100
-检查启动日志发现：
-12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/core/repair for recovery instructions.*************Sat Apr 20 09:40:31.286 [initandlisten] exception in initAndListen: 12596 old lock file, terminating
-于是：
-12345678#删除db文件夹下的mongod.lock文件rm /usr/local/mongodb/db/mongod.lock#然后以repair的模式启动：/usr/local/m
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/mongdb-mig/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/08/31/nodebb/" itemprop="url">
                   CentOS搭建Nodebb
                 </a>
@@ -2492,6 +2466,139 @@ CentOS搭建Nodebb1. 安装MongoDB参考
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/31/nodebb/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/31/mongdb-mig/" itemprop="url">
+                  CentOS6迁移NOdebb与MongoDB的升级
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/31/mongdb-mig/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/mongdb-mig/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+Content{:toc}
+
+1. 常见问题1：mongodb 启动不了 mongodb 启动不了
+报错:child process failed, exited with error number 100
+检查启动日志发现：
+12345**************Unclean shutdown detected.Please visit http://dochub.mongodb.org/core/repair for recovery instructions.*************Sat Apr 20 09:40:31.286 [initandlisten] exception in initAndListen: 12596 old lock file, terminating
+于是：
+12345678#删除db文件夹下的mongod.lock文件rm /usr/local/mongodb/db/mongod.lock#然后以repair的模式启动：/usr/local/m
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/31/mongdb-mig/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2787,145 +2894,6 @@ Content{:toc}
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/27/pbs-using/" itemprop="url">
-                  PBS and qsbu manual
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-27T00:00:00+08:00" content="2016-08-27">
-              2016-08-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/27/pbs-using/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/27/pbs-using/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-Content{:toc}
-
-1. PBS 命令1.1 qsub用于作业提交
-qsub aaa.pbs
-或者直接提交shell脚本：
-qsub -N supernova -l nodes=node01:ppn=20 bac.sh
-1.2 qstat用于查询作业状态
-qstat -an
-1.3 qdel用于删除已提交的作业
-qdel -W 15 18036  ##15秒后删除18036号作业
-1.4 qmgr用于队列管理，一般用不上
-2. PBS 脚本文件一般由两部分组成，PBS作业选项及运行脚本。
-2.1 PBS作业选项重要选项：
-1234-l resource_list ： 定义资源列表。以下为几个常用的资源种类。    cput=N ： 请求N 秒的CPU 时间; N 也可以是hh:mm:ss 的形式。    mem=N[K|M|G][B|W]：请求N &#123;kilo|mega|giga&#125;&#123;bytes|words&#125; 大小的内存。    nodes
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/27/pbs-using/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2971,7 +2939,7 @@ qdel -W 15 18036  ##15秒后删除18036号作业
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2979,7 +2947,7 @@ qdel -W 15 18036  ##15秒后删除18036号作业
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2988,7 +2956,7 @@ qdel -W 15 18036  ##15秒后删除18036号作业
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -102,25 +102,19 @@
 
 
 
-<meta name="description" content="People’s thinking is great, just focus on a particular career, will certainly to make yourself feel surprised.
-– Mark Twain
-
-1. 什么是Long RangerLong Ranger是10X Genomics公司开发的一套Pipeline，用于10X Genomicsæ°据">
+<meta name="description" content="有三件事人类都要经历：出生生活和死亡。他们出生时无知无觉，死到临头，痛不欲生，活着的时候却又怠慢了人生。
+———— 拉布吕耶尔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Long Ranger分析10X测序数据(一)">
 <meta property="og:url" content="http://yoursite.com/2016/09/26/longranger-manual/index.html">
 <meta property="og:site_name" content="RAINFORESTS">
-<meta property="og:description" content="People’s thinking is great, just focus on a particular career, will certainly to make yourself feel surprised.
-– Mark Twain
-
-1. 什么是Long RangerLong Ranger是10X Genomics公司开发的一套Pipeline，用于10X Genomicsæ°据">
-<meta property="og:updated_time" content="2016-09-26T14:57:08.000Z">
+<meta property="og:description" content="有三件事人类都要经历：出生生活和死亡。他们出生时无知无觉，死到临头，痛不欲生，活着的时候却又怠慢了人生。
+———— 拉布吕耶尔">
+<meta property="og:updated_time" content="2016-09-27T08:21:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Long Ranger分析10X测序数据(一)">
-<meta name="twitter:description" content="People’s thinking is great, just focus on a particular career, will certainly to make yourself feel surprised.
-– Mark Twain
-
-1. 什么是Long RangerLong Ranger是10X Genomics公司开发的一套Pipeline，用于10X Genomicsæ°据">
+<meta name="twitter:description" content="有三件事人类都要经历：出生生活和死亡。他们出生时无知无觉，死到临头，痛不欲生，活着的时候却又怠慢了人生。
+———— 拉布吕耶尔">
 
 
 
@@ -339,9 +333,10 @@
       
 
       
-        <blockquote class="blockquote-center"><p>People’s thinking is great, just focus on a particular career, will certainly to make yourself feel surprised.</p>
-<p>– Mark Twain</p>
+        <blockquote class="blockquote-center"><p>有三件事人类都要经历：出生生活和死亡。他们出生时无知无觉，死到临头，痛不欲生，活着的时候却又怠慢了人生。</p>
+<p>———— 拉布吕耶尔</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="1-什么是Long-Ranger"><a href="#1-什么是Long-Ranger" class="headerlink" title="1. 什么是Long Ranger"></a>1. 什么是Long Ranger</h2><p>Long Ranger是10X Genomics公司开发的一套<em>Pipeline</em>，用于10X Genomicsæ°据的比对，SNP检测与phasing，indel与SV的检测等。该<em>Pipleline</em>主要包含以下5个部分，</p>
 <ul>
 <li><code>longranger mkfastq</code> 包含Illumina 公司的bcl2fastq功能，能够根据barcode demultiplex样品，生成 FASTQ 文件。亲自测试后发现就相当于bcl2fastq功能</li>
@@ -351,7 +346,6 @@
 <li><code>longranger align</code> basic pipeline部分再加上序列比对</li>
 </ul>
 <p>Long Ranger 利用 FreeBayes （内部集成）或者GATK（用户提供）进行SNP检测。</p>
-<a id="more"></a>
 <h2 id="2-Long-Ranger-运行要求"><a href="#2-Long-Ranger-运行要求" class="headerlink" title="2. Long Ranger 运行要求"></a>2. Long Ranger 运行要求</h2><p>Linux系统要求：</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="number">16</span>-core Intel or AMD processor</div><div class="line"><span class="number">96</span>GB RAM</div><div class="line"><span class="number">2</span>TB free disk space</div><div class="line"><span class="number">64</span>-bit CentOS/RedHat <span class="number">5.2</span> or Ubuntu <span class="number">8</span></div></pre></td></tr></table></figure>
 <p>Cluster集群要求：</p>
@@ -422,13 +416,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/26/longranger-manual-v2/" rel="next" title="利用Long Ranger分析10X测序数据(二)">
-                <i class="fa fa-chevron-left"></i> 利用Long Ranger分析10X测序数据(二)
+              <a href="/2016/09/24/hexo-migrate/" rel="next" title="从jekyll迁移到hexo">
+                <i class="fa fa-chevron-left"></i> 从jekyll迁移到hexo
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/26/longranger-manual-v2/" rel="prev" title="利用Long Ranger分析10X测序数据(二)">
+                利用Long Ranger分析10X测序数据(二) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -526,7 +524,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -534,7 +532,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -543,7 +541,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
