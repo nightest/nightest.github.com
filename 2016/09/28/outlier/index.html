@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="雨林RAINFORESTS">
 <meta property="og:description" content="生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。          ———— 杜伽尔">
 <meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/boxplot.png">
-<meta property="og:updated_time" content="2016-09-28T11:43:53.000Z">
+<meta property="og:updated_time" content="2016-09-28T11:46:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异常数据分析与处理">
 <meta name="twitter:description" content="生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。          ———— 杜伽尔">
@@ -368,7 +368,9 @@
 <li>最小值： Q1-1.5(Q3-Q1)</li>
 </ul>
 <p>外的值则视为离群点</p>
-<h4 id="基于正态的检测"><a href="#基于正态的检测" class="headerlink" title="基于正态的检测"></a>基于正态的检测</h4><p>假设样品$(x_1, x_2, … , x_i, … , x<em>n)$服从正态分布，这些样品的均值$\mu$和方差$\sigma$分别为：<br>$$\mu = \sum</em>(i=1)^n \frac{x_i}{n<em>i}$$<br>$$\sigma^2 = \sum</em>(i=1)^n \frac{(x_i - \mu)^2}{n}$$</p>
+<h4 id="基于正态的检测"><a href="#基于正态的检测" class="headerlink" title="基于正态的检测"></a>基于正态的检测</h4><p>假设样品$x_1, x_2, … , x_i, … , x_n$服从正态分布，这些样品的均值$\mu$和方差$\sigma$分别为：</p>
+<p>$$\mu = \sum_(i=1)^n \frac{x_i}{n_i}$$</p>
+<p>$$\sigma^2 = \sum_(i=1)^n \frac{(x_i - \mu)^2}{n}$$</p>
 <p>在正态分布的假设下，区域 $\mu \pm 3\sigma$ 包含了99.7% 的数据，如果某个值距离分布的均值 $\mu$ 超过了 $3\sigma$，那么这个值就可以被简单的标记为一个一元离群点（outlier）。</p>
 <h3 id="2-2-异常值（一元离群点）处理"><a href="#2-2-异常值（一元离群点）处理" class="headerlink" title="2.2 异常值（一元离群点）处理"></a>2.2 异常值（一元离群点）处理</h3><p>常见的异常值处理办法是删除法、替代法（连续变量均值替代、离散变量用众数以及中位数替代）、插补法（回归插补、多重插补）除了直接删除，可以先把异常值变成缺失值、然后进行后续缺失值补齐。</p>
 <h4 id="盖帽法"><a href="#盖帽法" class="headerlink" title="盖帽法"></a>盖帽法</h4><h4 id="分箱法"><a href="#分箱法" class="headerlink" title="分箱法"></a>分箱法</h4><p>将连续变量等级化之后，不同的分位数的数据就会变成不同的等级数据，连续变量离散化了，消除了极值的影响。</p>
