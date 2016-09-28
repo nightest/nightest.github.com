@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jekyll,tech,linux,disqus," />
+  <meta name="keywords" content="hexo,Markdown,MathJax," />
 
 
 
@@ -102,46 +102,16 @@
 
 
 
-<meta name="description" content="content{:toc}
-
-
-1. 注册账号
-在disqus网站注册账号，并按照说明创建所要添加评论的网站。
-从disqus复制通用代码
-修改jekyll的代码
-
-2. jekyll 代码修改在文件_layouts/post.html的末尾添加：
-1#&amp;#123;% include comments.md %&amp;#125;
-然后新建文件_includes/comments.md，文件内容如下：">
+<meta name="description" content="零星的时间，如果能敏捷地加以利用，可成为完整的时间。所谓“积土成山”是也，失去一日甚易，欲得回已无途。         ———— 卡耐基">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为jekyll添加disqus">
-<meta property="og:url" content="http://yoursite.com/2016/09/02/disqus/index.html">
+<meta property="og:title" content="Markdown中使用MathJax">
+<meta property="og:url" content="http://yoursite.com/2016/09/29/mathjax-in-markdown/index.html">
 <meta property="og:site_name" content="雨林RAINFORESTS">
-<meta property="og:description" content="content{:toc}
-
-
-1. 注册账号
-在disqus网站注册账号，并按照说明创建所要添加评论的网站。
-从disqus复制通用代码
-修改jekyll的代码
-
-2. jekyll 代码修改在文件_layouts/post.html的末尾添加：
-1#&amp;#123;% include comments.md %&amp;#125;
-然后新建文件_includes/comments.md，文件内容如下：">
-<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta property="og:description" content="零星的时间，如果能敏捷地加以利用，可成为完整的时间。所谓“积土成山”是也，失去一日甚易，欲得回已无途。         ———— 卡耐基">
+<meta property="og:updated_time" content="2016-09-28T14:30:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为jekyll添加disqus">
-<meta name="twitter:description" content="content{:toc}
-
-
-1. 注册账号
-在disqus网站注册账号，并按照说明创建所要添加评论的网站。
-从disqus复制通用代码
-修改jekyll的代码
-
-2. jekyll 代码修改在文件_layouts/post.html的末尾添加：
-1#&amp;#123;% include comments.md %&amp;#125;
-然后新建文件_includes/comments.md，文件内容如下：">
+<meta name="twitter:title" content="Markdown中使用MathJax">
+<meta name="twitter:description" content="零星的时间，如果能敏捷地加以利用，可成为完整的时间。所谓“积土成山”是也，失去一日甚易，欲得回已无途。         ———— 卡耐基">
 
 
 
@@ -162,9 +132,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/02/disqus/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/29/mathjax-in-markdown/"/>
 
-  <title> 为jekyll添加disqus | 雨林RAINFORESTS </title>
+  <title> Markdown中使用MathJax | 雨林RAINFORESTS </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -304,7 +274,7 @@
             
             
               
-                为jekyll添加disqus
+                Markdown中使用MathJax
               
             
           </h1>
@@ -316,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-02T00:00:00+08:00" content="2016-09-02">
-              2016-09-02
+            <time itemprop="dateCreated" datetime="2016-09-29T00:00:00+08:00" content="2016-09-29">
+              2016-09-29
             </time>
           </span>
 
@@ -346,8 +316,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/02/disqus/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/02/disqus/" itemprop="commentsCount"></span>
+                <a href="/2016/09/29/mathjax-in-markdown/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/29/mathjax-in-markdown/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -370,21 +340,100 @@
       
 
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<hr>
-<h2 id="1-注册账号"><a href="#1-注册账号" class="headerlink" title="1. 注册账号"></a>1. 注册账号</h2><ol>
-<li>在<a href="https://disqus.com/" target="_blank" rel="external">disqus</a>网站注册账号，并按照说明创建所要添加评论的网站。</li>
-<li>从disqus复制<a href="https://disqus.com/admin/universalcode/" target="_blank" rel="external">通用代码</a></li>
-<li>修改jekyll的代码</li>
-</ol>
-<h2 id="2-jekyll-代码修改"><a href="#2-jekyll-代码修改" class="headerlink" title="2. jekyll 代码修改"></a>2. jekyll 代码修改</h2><p>在文件<code>_layouts/post.html</code>的末尾添加：</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#&#123;% <span class="meta-keyword">include</span> comments.md %&#125;</span></div></pre></td></tr></table></figure>
-<p>然后新建文件<code>_includes/comments.md</code>，文件内容如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Disqus Comment BEGIN --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"disqus_thread"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.</div><div class="line">     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */</div><div class="line">    <span class="comment">/*</span></div><div class="line">    var disqus_config = function () &#123;</div><div class="line">        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable</div><div class="line">        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable</div><div class="line">    &#125;;</div><div class="line">    */</div><div class="line">    <span class="keyword">var</span> disqus_config = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.page.url = <span class="string">"http://nightest.coding.me/"</span>;  <span class="comment">// Replace PAGE_URL with your page's canonical URL variable</span></div><div class="line">        <span class="keyword">this</span>.page.identifier = <span class="string">"&#123;&#123; page.url &#125;&#125;"</span>; <span class="comment">// Replace PAGE_IDENTIFIER with your page's unique identifier variable</span></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// DON'T EDIT BELOW THIS LINE</span></div><div class="line">        <span class="keyword">var</span> d = <span class="built_in">document</span>, s = d.createElement(<span class="string">'script'</span>);</div><div class="line">        s.src = <span class="string">'//eugene-1.disqus.com/embed.js'</span>;</div><div class="line">        s.setAttribute(<span class="string">'data-timestamp'</span>, +<span class="keyword">new</span> <span class="built_in">Date</span>());</div><div class="line">        (d.head || d.body).appendChild(s);</div><div class="line">    &#125;)();</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">noscript</span>&gt;</span>Please enable JavaScript to view the <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://disqus.com/?ref_noscript"</span>&gt;</span>comments powered by Disqus.<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://disqus.com"</span> <span class="attr">class</span>=<span class="string">"dsq-brlink"</span>&gt;</span>comments powered by <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"logo-disqus"</span>&gt;</span>Disqus<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- Disqus Comment END --&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a href="http://www.perfectlyrandom.org/2014/06/29/adding-disqus-to-your-jekyll-powered-github-pages/" target="_blank" rel="external">http://www.perfectlyrandom.org/2014/06/29/adding-disqus-to-your-jekyll-powered-github-pages/</a></li>
+        <blockquote class="blockquote-center"><p>零星的时间，如果能敏捷地加以利用，可成为完整的时间。所谓“积土成山”是也，失去一日甚易，欲得回已无途。<br>         ———— 卡耐基</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-如何使Hexo支持MathJax"><a href="#1-如何使Hexo支持MathJax" class="headerlink" title="1. 如何使Hexo支持MathJax"></a>1. 如何使Hexo支持MathJax</h2><p>我使用的是hexo下的<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">Next主题</a>，直接修改主题配置文件<code>theme/next/_config.yml</code>。 将 <code>mathjax</code> 下的 <code>enable</code> 设定为 <code>true</code> 即可。 <code>cdn</code> 用于指定 MathJax 的脚本地址，默认是 MathJax 官方提供的 CDN 地址。</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># MathJax Support</span></div><div class="line"><span class="symbol">mathjax:</span></div><div class="line"><span class="symbol">  enable:</span> true</div><div class="line"><span class="symbol">  cdn:</span> <span class="comment">//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span></div></pre></td></tr></table></figure>
+<h2 id="2-如何在Markdown中添加MathJax公式"><a href="#2-如何在Markdown中添加MathJax公式" class="headerlink" title="2. 如何在Markdown中添加MathJax公式"></a>2. 如何在Markdown中添加MathJax公式</h2><p>为 markdown 添加 MathJax 支持后，在markdown文件中添加数学公式方法如下：</p>
+<h3 id="2-1-行内公式与行间公式"><a href="#2-1-行内公式与行间公式" class="headerlink" title="2.1 行内公式与行间公式"></a>2.1 行内公式与行间公式</h3><p>输入<code>$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$</code>来显示行内公式：$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$。</p>
+<p>或者使用<code>$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$</code>来展示行间公式：<br>$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$</p>
+<h3 id="2-2-显示希腊字母"><a href="#2-2-显示希腊字母" class="headerlink" title="2.2 显示希腊字母"></a>2.2 显示希腊字母</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">显示</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\alpha</td>
+<td style="text-align:left">α</td>
+<td style="text-align:left">\beta</td>
+<td style="text-align:left">β</td>
+</tr>
+<tr>
+<td style="text-align:left">\gamma</td>
+<td style="text-align:left">γ</td>
+<td style="text-align:left">\delta</td>
+<td style="text-align:left">δ</td>
+</tr>
+<tr>
+<td style="text-align:left">\epsilon</td>
+<td style="text-align:left">ϵ</td>
+<td style="text-align:left">\zeta</td>
+<td style="text-align:left">ζ</td>
+</tr>
+<tr>
+<td style="text-align:left">\eta</td>
+<td style="text-align:left">η</td>
+<td style="text-align:left">\theta</td>
+<td style="text-align:left">θ</td>
+</tr>
+<tr>
+<td style="text-align:left">\iota</td>
+<td style="text-align:left">ι</td>
+<td style="text-align:left">\kappa</td>
+<td style="text-align:left">κ</td>
+</tr>
+<tr>
+<td style="text-align:left">\lambda</td>
+<td style="text-align:left">λ</td>
+<td style="text-align:left">\mu</td>
+<td style="text-align:left">μ</td>
+</tr>
+<tr>
+<td style="text-align:left">\xi</td>
+<td style="text-align:left">ξ</td>
+<td style="text-align:left">\nu</td>
+<td style="text-align:left">ν</td>
+</tr>
+<tr>
+<td style="text-align:left">\pi</td>
+<td style="text-align:left">π</td>
+<td style="text-align:left">\rho</td>
+<td style="text-align:left">ρ</td>
+</tr>
+<tr>
+<td style="text-align:left">\sigma</td>
+<td style="text-align:left">σ</td>
+<td style="text-align:left">\tau</td>
+<td style="text-align:left">τ</td>
+</tr>
+<tr>
+<td style="text-align:left">\upsilon</td>
+<td style="text-align:left">υ</td>
+<td style="text-align:left">\phi</td>
+<td style="text-align:left">ϕ</td>
+</tr>
+<tr>
+<td style="text-align:left">\chi</td>
+<td style="text-align:left">χ</td>
+<td style="text-align:left">\psi</td>
+<td style="text-align:left">ψ</td>
+</tr>
+<tr>
+<td style="text-align:left">\omega</td>
+<td style="text-align:left">ω</td>
+</tr>
+</tbody>
+</table>
+<p>如果需要显示大写的希腊字母，只需要将首字母大写即可：<code>\Gamma</code> $\Gamma$ 。</p>
+<h2 id="3-其他参考"><a href="#3-其他参考" class="headerlink" title="3. 其他参考"></a>3. 其他参考</h2><ol>
+<li><a href="http://blog.csdn.net/bendanban/article/details/44196101" target="_blank" rel="external">http://blog.csdn.net/bendanban/article/details/44196101</a></li>
+<li><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></li>
 </ol>
 
       
@@ -408,13 +457,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/jekyll/" rel="tag">#jekyll</a>
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
           
-            <a href="/tags/tech/" rel="tag">#tech</a>
+            <a href="/tags/Markdown/" rel="tag">#Markdown</a>
           
-            <a href="/tags/linux/" rel="tag">#linux</a>
-          
-            <a href="/tags/disqus/" rel="tag">#disqus</a>
+            <a href="/tags/MathJax/" rel="tag">#MathJax</a>
           
         </div>
       
@@ -423,17 +470,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/31/nodebb/" rel="next" title="CentOS搭建Nodebb">
-                <i class="fa fa-chevron-left"></i> CentOS搭建Nodebb
+              <a href="/2016/09/28/outlier/" rel="next" title="异常数据分析与处理">
+                <i class="fa fa-chevron-left"></i> 异常数据分析与处理
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/02/jekyll/" rel="prev" title="jekyll 迁移">
-                jekyll 迁移 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -577,7 +620,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-注册账号"><span class="nav-text">1. 注册账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-jekyll-代码修改"><span class="nav-text">2. jekyll 代码修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-如何使Hexo支持MathJax"><span class="nav-text">1. 如何使Hexo支持MathJax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-如何在Markdown中添加MathJax公式"><span class="nav-text">2. 如何在Markdown中添加MathJax公式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-行内公式与行间公式"><span class="nav-text">2.1 行内公式与行间公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-显示希腊字母"><span class="nav-text">2.2 显示希腊字母</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-其他参考"><span class="nav-text">3. 其他参考</span></a></li></ol></div>
             
           </div>
         </section>
@@ -697,9 +740,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'eugene-1';
-      var disqus_identifier = '2016/09/02/disqus/';
-      var disqus_title = "为jekyll添加disqus";
-      var disqus_url = 'http://yoursite.com/2016/09/02/disqus/';
+      var disqus_identifier = '2016/09/29/mathjax-in-markdown/';
+      var disqus_title = "Markdown中使用MathJax";
+      var disqus_url = 'http://yoursite.com/2016/09/29/mathjax-in-markdown/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
