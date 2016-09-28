@@ -1,0 +1,741 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="R,statistics," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。          ———— 杜伽尔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异常数据分析与处理">
+<meta property="og:url" content="http://yoursite.com/2016/09/28/outlier/index.html">
+<meta property="og:site_name" content="雨林RAINFORESTS">
+<meta property="og:description" content="生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。          ———— 杜伽尔">
+<meta property="og:image" content="http://ocs218n9i.bkt.clouddn.com/boxplot.png">
+<meta property="og:updated_time" content="2016-09-28T11:43:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="异常数据分析与处理">
+<meta name="twitter:description" content="生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。          ———— 杜伽尔">
+<meta name="twitter:image" content="http://ocs218n9i.bkt.clouddn.com/boxplot.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/28/outlier/"/>
+
+  <title> 异常数据分析与处理 | 雨林RAINFORESTS </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2fc9298ea3e117c6fdad6c6c94c7544b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">雨林RAINFORESTS</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">All Notes</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                异常数据分析与处理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T00:00:00+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/28/outlier/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/28/outlier/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>生活是一种绵延不绝的渴望，渴望不断上升，变得更伟大而高贵。<br>          ———— 杜伽尔</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-异常数据概述"><a href="#1-异常数据概述" class="headerlink" title="1. 异常数据概述"></a>1. 异常数据概述</h2><p>异常数据是少量的、与众不同的，与大多数数据相比是有偏差的,而且产生这种偏差的原因不是随机的，而是有其更深层次的必然原因，它产生于完全不同的机制。为了从数据集中识别异常数据，就必须有一个明确的标准。这需要找到数据的内在规律，在一个可接受的误差范围内，满足内在规律的数据就是正常数据，而不满足内在规律的数据就是异常数据。</p>
+<p>异常数据检测在很多实际的生产生活中都有着具体的应用，比如信用卡欺诈，工业损毁检测，图像检测等。</p>
+<h3 id="1-1-异常值"><a href="#1-1-异常值" class="headerlink" title="1.1 异常值"></a>1.1 异常值</h3><p>异常值是异常数据的一种，主要是指针对单一变量的异常数据。</p>
+<h3 id="1-2-离群点"><a href="#1-2-离群点" class="headerlink" title="1.2 离群点"></a>1.2 离群点</h3><p>离群点与异常值的主要区别在于，离群点指的是很多变量综合考虑之后的异常数据。在某些情况下，也用一元离群点指异常值。</p>
+<h3 id="1-3-异常数据之‘异常’"><a href="#1-3-异常数据之‘异常’" class="headerlink" title="1.3 异常数据之‘异常’"></a>1.3 异常数据之‘异常’</h3><p>在一个可接受的误差范围内，满足内在规律的数据是正常数据，不满足内在规律的数据是异常数据。那么这些数据的内在规律是什么呢？</p>
+<p>数据的内在规律可以根据数据本身的特点，从位置关系、函数关系、规则关系、序列关系等方面来考查。</p>
+<h4 id="位置关系"><a href="#位置关系" class="headerlink" title="位置关系"></a>位置关系</h4><p>大多数正常数据具有很大的相似性而符合一个共同模式，在空间上表现在一起的趋势，团结在一个或者多个核心的周围，而那些异常数据则表现得离群，他们总是离所有的核心都很远。</p>
+<h4 id="函数关系"><a href="#函数关系" class="headerlink" title="函数关系"></a>函数关系</h4><p>大多数数据都符合某个函数模型，因此数据点大多分布在函数曲线附近，而那些异常数据则距离曲线比较远。</p>
+<h4 id="规则关系"><a href="#规则关系" class="headerlink" title="规则关系"></a>规则关系</h4><p>如果数据集中某些符合某个规则条件，则称这些数据具有规则关系。</p>
+<h4 id="序列关系"><a href="#序列关系" class="headerlink" title="序列关系"></a>序列关系</h4><p>序列关系是指数据集中的某些数据满足某种序列模式，而那些相同条件下不满足序列模式的数据就是异常数据。</p>
+<h2 id="2-异常值（一元离群点）的检测与处理"><a href="#2-异常值（一元离群点）的检测与处理" class="headerlink" title="2. 异常值（一元离群点）的检测与处理"></a>2. 异常值（一元离群点）的检测与处理</h2><h3 id="2-1-异常值（一元离群点）检测"><a href="#2-1-异常值（一元离群点）检测" class="headerlink" title="2.1 异常值（一元离群点）检测"></a>2.1 异常值（一元离群点）检测</h3><h4 id="箱型图检测"><a href="#箱型图检测" class="headerlink" title="箱型图检测"></a>箱型图检测</h4><ul>
+<li>下四分位數(Q1)</li>
+<li>中位數(Med)</li>
+<li>上四分位數(Q3)</li>
+<li>四分位間距(interquartile range)= Q3-Q1</li>
+</ul>
+<p><img src="http://ocs218n9i.bkt.clouddn.com/boxplot.png" alt="boxplot"></p>
+<p>在区间</p>
+<ul>
+<li>最大值： Q3+1.5(Q3-Q1)</li>
+<li>最小值： Q1-1.5(Q3-Q1)</li>
+</ul>
+<p>外的值则视为离群点</p>
+<h4 id="基于正态的检测"><a href="#基于正态的检测" class="headerlink" title="基于正态的检测"></a>基于正态的检测</h4><p>假设样品$(x_1, x_2, … , x_i, … , x<em>n)$服从正态分布，这些样品的均值$\mu$和方差$\sigma$分别为：<br>$$\mu = \sum</em>(i=1)^n \frac{x_i}{n<em>i}$$<br>$$\sigma^2 = \sum</em>(i=1)^n \frac{(x_i - \mu)^2}{n}$$</p>
+<p>在正态分布的假设下，区域 $\mu \pm 3\sigma$ 包含了99.7% 的数据，如果某个值距离分布的均值 $\mu$ 超过了 $3\sigma$，那么这个值就可以被简单的标记为一个一元离群点（outlier）。</p>
+<h3 id="2-2-异常值（一元离群点）处理"><a href="#2-2-异常值（一元离群点）处理" class="headerlink" title="2.2 异常值（一元离群点）处理"></a>2.2 异常值（一元离群点）处理</h3><p>常见的异常值处理办法是删除法、替代法（连续变量均值替代、离散变量用众数以及中位数替代）、插补法（回归插补、多重插补）除了直接删除，可以先把异常值变成缺失值、然后进行后续缺失值补齐。</p>
+<h4 id="盖帽法"><a href="#盖帽法" class="headerlink" title="盖帽法"></a>盖帽法</h4><h4 id="分箱法"><a href="#分箱法" class="headerlink" title="分箱法"></a>分箱法</h4><p>将连续变量等级化之后，不同的分位数的数据就会变成不同的等级数据，连续变量离散化了，消除了极值的影响。</p>
+<h4 id="均值替换"><a href="#均值替换" class="headerlink" title="均值替换"></a>均值替换</h4><p>数据集分为缺失值、非缺失值两块内容。缺失值处理如果是连续变量，可以选择均值；离散变量，可以选择众数或者中位数。</p>
+<h4 id="回归差补法"><a href="#回归差补法" class="headerlink" title="回归差补法"></a>回归差补法</h4><h4 id="多重差补法-mice包"><a href="#多重差补法-mice包" class="headerlink" title="多重差补法-mice包"></a>多重差补法-mice包</h4><p>多重插补的处理有两个要点：先删除Y变量的缺失值然后插补。</p>
+<ol>
+<li>被解释变量有缺失值的观测不能填补，只能删除，不能自己乱补；</li>
+<li>只对放入模型的解释变量进行插补。</li>
+</ol>
+<h2 id="3-多元离群点的检测"><a href="#3-多元离群点的检测" class="headerlink" title="3. 多元离群点的检测"></a>3. 多元离群点的检测</h2><p>涉及两个或者两个以上变量的数据称为多元数据，很多一元离群点的检测方法都可以扩展到高维空间中，从而处理多元数据。</p>
+<h3 id="3-1-多元离群点的检测"><a href="#3-1-多元离群点的检测" class="headerlink" title="3.1 多元离群点的检测"></a>3.1 多元离群点的检测</h3><h4 id="多元高斯分布的异常点检测"><a href="#多元高斯分布的异常点检测" class="headerlink" title="多元高斯分布的异常点检测"></a>多元高斯分布的异常点检测</h4><h4 id="使用-Mahalanobis-距离检测多元离群点"><a href="#使用-Mahalanobis-距离检测多元离群点" class="headerlink" title="使用 Mahalanobis 距离检测多元离群点"></a>使用 Mahalanobis 距离检测多元离群点</h4><h4 id="使用-chi-2-统计量检测多元离群点"><a href="#使用-chi-2-统计量检测多元离群点" class="headerlink" title="使用 $\chi^{2}$ 统计量检测多元离群点"></a>使用 $\chi^{2}$ 统计量检测多元离群点</h4><h4 id="基于矩阵分解检测多元离群点"><a href="#基于矩阵分解检测多元离群点" class="headerlink" title="基于矩阵分解检测多元离群点"></a>基于矩阵分解检测多元离群点</h4><h4 id="基于Replicator-Neural-Networks-RNNs-检测多元离群点"><a href="#基于Replicator-Neural-Networks-RNNs-检测多元离群点" class="headerlink" title="基于Replicator Neural Networks (RNNs)检测多元离群点"></a>基于Replicator Neural Networks (RNNs)检测多元离群点</h4><h2 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4. 参考文献"></a>4. 参考文献</h2><ol>
+<li><a href="http://blog.csdn.net/sinat_26917383/article/details/51210793" target="_blank" rel="external">http://blog.csdn.net/sinat_26917383/article/details/51210793</a></li>
+<li><a href="http://blog.csdn.net/sinat_26917383/article/details/51210793" target="_blank" rel="external">https://zr9558.com/2016/06/13/outlierdetectionone/</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag">#R</a>
+          
+            <a href="/tags/statistics/" rel="tag">#statistics</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/27/lung-cancer/" rel="next" title="小细胞肺癌与非小细胞肺癌">
+                <i class="fa fa-chevron-left"></i> 小细胞肺癌与非小细胞肺癌
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ocs218n9i.bkt.clouddn.com/a50f4bfbfbe.jpg"
+               alt="Yujun" />
+          <p class="site-author-name" itemprop="name">Yujun</p>
+          <p class="site-description motion-element" itemprop="description">Rainforests are havens for millions of plants and animals. This site is the same for my ideas and notes.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-异常数据概述"><span class="nav-text">1. 异常数据概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-异常值"><span class="nav-text">1.1 异常值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-离群点"><span class="nav-text">1.2 离群点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-异常数据之‘异常’"><span class="nav-text">1.3 异常数据之‘异常’</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#位置关系"><span class="nav-text">位置关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数关系"><span class="nav-text">函数关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#规则关系"><span class="nav-text">规则关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列关系"><span class="nav-text">序列关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-异常值（一元离群点）的检测与处理"><span class="nav-text">2. 异常值（一元离群点）的检测与处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-异常值（一元离群点）检测"><span class="nav-text">2.1 异常值（一元离群点）检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#箱型图检测"><span class="nav-text">箱型图检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于正态的检测"><span class="nav-text">基于正态的检测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-异常值（一元离群点）处理"><span class="nav-text">2.2 异常值（一元离群点）处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#盖帽法"><span class="nav-text">盖帽法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分箱法"><span class="nav-text">分箱法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#均值替换"><span class="nav-text">均值替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归差补法"><span class="nav-text">回归差补法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多重差补法-mice包"><span class="nav-text">多重差补法-mice包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-多元离群点的检测"><span class="nav-text">3. 多元离群点的检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-多元离群点的检测"><span class="nav-text">3.1 多元离群点的检测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多元高斯分布的异常点检测"><span class="nav-text">多元高斯分布的异常点检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-Mahalanobis-距离检测多元离群点"><span class="nav-text">使用 Mahalanobis 距离检测多元离群点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-chi-2-统计量检测多元离群点"><span class="nav-text">使用 $\chi^{2}$ 统计量检测多元离群点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于矩阵分解检测多元离群点"><span class="nav-text">基于矩阵分解检测多元离群点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于Replicator-Neural-Networks-RNNs-检测多元离群点"><span class="nav-text">基于Replicator Neural Networks (RNNs)检测多元离群点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-参考文献"><span class="nav-text">4. 参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yujun</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'eugene-1';
+      var disqus_identifier = '2016/09/28/outlier/';
+      var disqus_title = "异常数据分析与处理";
+      var disqus_url = 'http://yoursite.com/2016/09/28/outlier/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+</body>
+</html>
