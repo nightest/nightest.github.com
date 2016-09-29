@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jekyll,tech,linux,auto," />
+  <meta name="keywords" content="linux,hexo,footnotes," />
 
 
 
@@ -102,37 +102,16 @@
 
 
 
-<meta name="description" content="@Date: 2016-09-03 16:34:09
-
-
-content{:toc}
-
-
-前期设置前期设置包括绑定远程git分支，源代码绑定为远程gcorigin主机的master分支，而子文件夹_site中的build完成的软件则绑定为gcorigin的coding-pages分支，具体配置方法请参考jekyll的迁移。
-自动化shell脚本根据提交顺序，在blog所在文件夹内新建add_pos">
+<meta name="description" content="如果你浪费了自己的年龄，那是挺可悲的。因为你的青春只能持续一点儿时间——很短的一点儿时间。 ———— 王尔德">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jekyll本地自动build与提交">
-<meta property="og:url" content="http://yoursite.com/2016/09/04/jekyll-auto-push/index.html">
+<meta property="og:title" content="hexo中添加footnotes">
+<meta property="og:url" content="http://yoursite.com/2016/09/30/hexo-footnotes/index.html">
 <meta property="og:site_name" content="RAINFORESTS雨林">
-<meta property="og:description" content="@Date: 2016-09-03 16:34:09
-
-
-content{:toc}
-
-
-前期设置前期设置包括绑定远程git分支，源代码绑定为远程gcorigin主机的master分支，而子文件夹_site中的build完成的软件则绑定为gcorigin的coding-pages分支，具体配置方法请参考jekyll的迁移。
-自动化shell脚本根据提交顺序，在blog所在文件夹内新建add_pos">
-<meta property="og:updated_time" content="2016-09-24T03:25:19.000Z">
+<meta property="og:description" content="如果你浪费了自己的年龄，那是挺可悲的。因为你的青春只能持续一点儿时间——很短的一点儿时间。 ———— 王尔德">
+<meta property="og:updated_time" content="2016-09-29T02:53:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jekyll本地自动build与提交">
-<meta name="twitter:description" content="@Date: 2016-09-03 16:34:09
-
-
-content{:toc}
-
-
-前期设置前期设置包括绑定远程git分支，源代码绑定为远程gcorigin主机的master分支，而子文件夹_site中的build完成的软件则绑定为gcorigin的coding-pages分支，具体配置方法请参考jekyll的迁移。
-自动化shell脚本根据提交顺序，在blog所在文件夹内新建add_pos">
+<meta name="twitter:title" content="hexo中添加footnotes">
+<meta name="twitter:description" content="如果你浪费了自己的年龄，那是挺可悲的。因为你的青春只能持续一点儿时间——很短的一点儿时间。 ———— 王尔德">
 
 
 
@@ -153,9 +132,9 @@ content{:toc}
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/04/jekyll-auto-push/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/30/hexo-footnotes/"/>
 
-  <title> jekyll本地自动build与提交 | RAINFORESTS雨林 </title>
+  <title> hexo中添加footnotes | RAINFORESTS雨林 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -295,7 +274,7 @@ content{:toc}
             
             
               
-                jekyll本地自动build与提交
+                hexo中添加footnotes
               
             
           </h1>
@@ -307,8 +286,8 @@ content{:toc}
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-04T00:00:00+08:00" content="2016-09-04">
-              2016-09-04
+            <time itemprop="dateCreated" datetime="2016-09-30T00:00:00+08:00" content="2016-09-30">
+              2016-09-30
             </time>
           </span>
 
@@ -337,8 +316,8 @@ content{:toc}
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/04/jekyll-auto-push/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/04/jekyll-auto-push/" itemprop="commentsCount"></span>
+                <a href="/2016/09/30/hexo-footnotes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/30/hexo-footnotes/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -361,20 +340,19 @@ content{:toc}
       
 
       
-        <p>@Date: 2016-09-03 16:34:09</p>
+        <blockquote class="blockquote-center"><p>如果你浪费了自己的年龄，那是挺可悲的。因为你的青春只能持续一点儿时间——很短的一点儿时间。<br> ———— 王尔德</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="1-安装hexo插件"><a href="#1-安装hexo插件" class="headerlink" title="1. 安装hexo插件"></a>1. 安装hexo插件</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo-footnotes <span class="comment">--save</span></div></pre></td></tr></table></figure>
+<p>如果Hexo不能自动发现插件，则需要手动安装插件<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup>，编辑<code>_config.yml</code>文件：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">plugins:</span></div><div class="line">  - hexo-footnotes</div></pre></td></tr></table></figure>
+<h2 id="2-使用方法"><a href="#2-使用方法" class="headerlink" title="2. 使用方法"></a>2. 使用方法</h2><p>Markdown 内容：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">basic footnote<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></div><div class="line">here is an inline footnote[<span class="string">^2</span>](<span class="link">inline footnote</span>)</div><div class="line">and another one<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup></div><div class="line">and another one<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></div><div class="line"></div><div class="line">[<span class="symbol">^1</span>]: <span class="link">basic footnote content</span></div><div class="line">[<span class="symbol">^3</span>]: <span class="link">paragraph</span></div><div class="line">footnote</div><div class="line">content</div><div class="line">[<span class="string">^4</span>]: footnote content with some [<span class="string">markdown</span>](<span class="link">https://en.wikipedia.org/wiki/Markdown</span>)</div></pre></td></tr></table></figure>
+<p>输出内容：</p>
 <hr>
-<ul>
-<li>content<br>{:toc}</li>
-</ul>
+<p>basic footnote<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup><br>here is an inline footnote<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup><br>and another one<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup><br>and another one<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup></p>
 <hr>
-<h2 id="前期设置"><a href="#前期设置" class="headerlink" title="前期设置"></a>前期设置</h2><p>前期设置包括绑定远程<strong>git分支</strong>，源代码绑定为<strong>远程gcorigin主机</strong>的<strong>master分支</strong>，而子文件夹<strong>_site</strong>中的build完成的软件则绑定为gcorigin的<strong>coding-pages</strong>分支，具体配置方法请参考<a href="http://nightest.coding.me/2016-09-02-jekyll/" target="_blank" rel="external">jekyll的迁移</a>。</p>
-<h2 id="自动化shell脚本"><a href="#自动化shell脚本" class="headerlink" title="自动化shell脚本"></a>自动化shell脚本</h2><p>根据提交顺序，在blog所在文件夹内新建<strong>add_post.sh</strong>文件，内容如下：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -m <span class="string">'add posts'</span></div><div class="line">git push gcorigin coding-pages:master</div><div class="line">jekyll build</div><div class="line">cd _site/</div><div class="line">git <span class="keyword">add</span><span class="bash"> .</span></div><div class="line">git commit -m <span class="string">'add posts'</span></div><div class="line">git push origin master:coding-pages</div></pre></td></tr></table></figure>
-<p>赋予该脚本运行权限，在<strong>_posts</strong>文件夹下添加文件后，在当前文件夹下用<strong>./add_post.sh</strong>的方式运行即可自动buld并提交静态网站。</p>
-<h2 id="git-pull远程分支"><a href="#git-pull远程分支" class="headerlink" title="git pull远程分支"></a>git pull远程分支</h2><p>如果在其他机器上修改并提交给git仓库后，需要在本机进行同步，则需要使用命令：</p>
-<pre><code>git pull gcorigin master:coding-pages
-</code></pre><p>其中，<strong>gcorigin</strong>是远程主机名，<strong>master</strong>表示远程主机的分支名，<strong>coding-pages</strong>则为本地主机分支名，此句话表示把远程主机的<strong>master</strong>分支拉下并与本地<strong>coding-pages</strong>分支合并。</p>
-
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">basic footnote content</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">inline footnote</span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">paragraph<br>footnote<br>content</span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;">footnote content with some <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="external">markdown</a></span><a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">5.</span><span style="display: inline-block; vertical-align: top;"><a href="https://github.com/LouisBarranqueiro/hexo-footnotes" target="_blank" rel="external">https://github.com/LouisBarranqueiro/hexo-footnotes</a></span><a href="#fnref:5" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -396,13 +374,11 @@ content{:toc}
       
         <div class="post-tags">
           
-            <a href="/tags/jekyll/" rel="tag">#jekyll</a>
-          
-            <a href="/tags/tech/" rel="tag">#tech</a>
-          
             <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/auto/" rel="tag">#auto</a>
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/footnotes/" rel="tag">#footnotes</a>
           
         </div>
       
@@ -411,17 +387,13 @@ content{:toc}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/03/sublime-vim/" rel="next" title="Sublime Text启用vim模式">
-                <i class="fa fa-chevron-left"></i> Sublime Text启用vim模式
+              <a href="/2016/09/29/mathjax-in-markdown/" rel="next" title="Markdown中使用MathJax">
+                <i class="fa fa-chevron-left"></i> Markdown中使用MathJax
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/04/jekyll-set/" rel="prev" title="jekyll部署中的问题">
-                jekyll部署中的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +537,7 @@ content{:toc}
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前期设置"><span class="nav-text">前期设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化shell脚本"><span class="nav-text">自动化shell脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-pull远程分支"><span class="nav-text">git pull远程分支</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装hexo插件"><span class="nav-text">1. 安装hexo插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用方法"><span class="nav-text">2. 使用方法</span></a></li></ol></div>
             
           </div>
         </section>
@@ -685,9 +657,9 @@ content{:toc}
 
     <script type="text/javascript">
       var disqus_shortname = 'eugene-1';
-      var disqus_identifier = '2016/09/04/jekyll-auto-push/';
-      var disqus_title = "jekyll本地自动build与提交";
-      var disqus_url = 'http://yoursite.com/2016/09/04/jekyll-auto-push/';
+      var disqus_identifier = '2016/09/30/hexo-footnotes/';
+      var disqus_title = "hexo中添加footnotes";
+      var disqus_url = 'http://yoursite.com/2016/09/30/hexo-footnotes/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
