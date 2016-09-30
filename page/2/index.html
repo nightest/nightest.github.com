@@ -276,8 +276,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/31/nodebb/" itemprop="url">
-                  CentOS搭建Nodebb
+                <a class="post-title-link" href="/2016/09/02/jekyll/" itemprop="url">
+                  jekyll 迁移
                 </a>
               
             
@@ -290,8 +290,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
-              2016-08-31
+            <time itemprop="dateCreated" datetime="2016-09-02T00:00:00+08:00" content="2016-09-02">
+              2016-09-02
             </time>
           </span>
 
@@ -320,8 +320,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/31/nodebb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/nodebb/" itemprop="commentsCount"></span>
+                <a href="/2016/09/02/jekyll/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/02/jekyll/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -347,18 +347,17 @@
         
           
           
-目录测试{:toc #Test}
+目录测试{:toc}
 
-CentOS搭建Nodebb1. 安装MongoDB参考
-1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
-1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-linux-x86_64-2.4.9 /usr/local/mongodbcd mongodbmkdir dbmkdir logscd binvi /usr/local/mongodb/bin/mongodb.conf
-加入内容：
-12345dbpath=/usr/local/mongodb/dblogpath=/usr/local/mongodb/logs/mongodb.logport=27017fork=truenohttpinterface=true
-修改mongodb.conf内容：12
+之前使用的github加jekyll的方式部署blog，但是国内速度太慢，近几天得知国内的码市也能够使用git pages服务，因此决定从github迁移至coding net.
+同时，为了希望方便同步，防止因为文件过大引起通过缓慢，因此决定使用国内七牛云提供的免费10G空间作为图床，以上两个网站的具体注册过程就不在此详述了~~
+1. coding net 注册与准备1.1 创建项目并推送在 Coding 上创建一个与用户名相同的项目，例如用户名为username，那么就创建名为username的项目，jekyll构建静态网页完成后即可通过http://username.coding.me/访问该网站~
+构建方法
+1234#生成静态网页，默认在_site文件夹下jekyll build#发布到本地，默认使用[http://127.0.0.1:4000]( http://127.0.0.1:4000)预览~本人未在本地实现，因此没有利用servejekyll se
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/31/nodebb/#more" rel="contents">
+            <a class="btn" href="/2016/09/02/jekyll/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -542,8 +541,8 @@ Content{:toc}
             
               
                 
-                <a class="post-title-link" href="/2016/08/30/10x-data-ana/" itemprop="url">
-                  10X Data Analysis
+                <a class="post-title-link" href="/2016/08/31/nodebb/" itemprop="url">
+                  CentOS搭建Nodebb
                 </a>
               
             
@@ -556,8 +555,8 @@ Content{:toc}
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
-              2016-08-30
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
             </time>
           </span>
 
@@ -570,8 +569,8 @@ Content{:toc}
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
-                    <span itemprop="name">bioinformatics</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -586,8 +585,8 @@ Content{:toc}
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/30/10x-data-ana/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/10x-data-ana/" itemprop="commentsCount"></span>
+                <a href="/2016/08/31/nodebb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/31/nodebb/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -613,16 +612,18 @@ Content{:toc}
         
           
           
-Content{:toc}
+目录测试{:toc #Test}
 
-1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
-执行：:
-12345678$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXXsupernova demuxCopyright (c) 2016 10x Genomics, Inc.  All rights reserved.-----------------------------------------------------------------------------Martian Runtime - 2.0.0Running preflight checks (please wait)...
-如果
+CentOS搭建Nodebb1. 安装MongoDB参考
+1.1 下载MongoDB（64位）http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz
+1.2 安装MongoDB1234567tar zxvf mongodb-linux-x86_64-2.4.9.tgzmv mongodb-linux-x86_64-2.4.9 /usr/local/mongodbcd mongodbmkdir dbmkdir logscd binvi /usr/local/mongodb/bin/mongodb.conf
+加入内容：
+12345dbpath=/usr/local/mongodb/dblogpath=/usr/local/mongodb/logs/mongodb.logport=27017fork=truenohttpinterface=true
+修改mongodb.conf内容：12
           ...
 
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/30/10x-data-ana/#more" rel="contents">
+            <a class="btn" href="/2016/08/31/nodebb/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -758,6 +759,137 @@ supernova Installation1.下载安装包从10X公司提供的下载页面下载�
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/30/10x-soft-pre/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/30/10x-data-ana/" itemprop="url">
+                  10X Data Analysis
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
+                    <span itemprop="name">bioinformatics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/10x-data-ana/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/30/10x-data-ana/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+Content{:toc}
+
+1. fastq格式转换1.1 利用supernova demux进行格式转换注意：如果测序时用的并非8bp的 index，那么不能使用该方法，应该直接利用bcl2fastq进行格式转换。如果不是整个lane都是所需要的数据也不能利用该方法进行转换，否则无法区分不同的样品。
+执行：:
+12345678$ supernova demux --run=/sequencing/140101_D00123_0111_AHAWT7ADXXsupernova demuxCopyright (c) 2016 10x Genomics, Inc.  All rights reserved.-----------------------------------------------------------------------------Martian Runtime - 2.0.0Running preflight checks (please wait)...
+如果
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/30/10x-data-ana/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2680,7 +2812,7 @@ To insist- work for 3 hours
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2697,7 +2829,7 @@ To insist- work for 3 hours
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
