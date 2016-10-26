@@ -2037,138 +2037,6 @@ http://stackoverflow.com/questions/38443545
             
               
                 
-                <a class="post-title-link" href="/2016/09/05/general-ana/" itemprop="url">
-                  常用分析方法bam2fastq、blastn、trimmomatic
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T00:00:00+08:00" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
-                    <span itemprop="name">bioinformatics</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/05/general-ana/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/05/general-ana/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          合理的安排时间，就等于节约时间。———— 培根
-
-1. bam转换为fastq使用bam2fastq，ion平台的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用samtools查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何map结果，可以直接转为fq文件也不会损失任何信息。
-1bam2fastq ./path/to/&lt;name&gt;.bam -o path/to/&lt;name&gt;.fastq
-2. blast 比对这里提到的是BLAST+。
-blastn用于碱基序列之间的比对，一般只适用于少量序列与参考序列的比对。
-一般情况下建立索引比较慢，但是建立好索引之后可以多次使用，比对速度适中, 比对结果准确。
-1blastn -query ./path/to/query.fasta  -out  /output/to/&lt;name&gt;.blast  -db ~/database/blast/db/16SMicrobial/16SMic
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/05/general-ana/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/05/read-name/" itemprop="url">
                   Illumina下机数据reads名称含义
                 </a>
@@ -2383,6 +2251,138 @@ pairs函数当有多组样本数据，需要对比这些样本之间的相关性
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/05/pairs-plot/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/05/general-ana/" itemprop="url">
+                  常用分析方法bam2fastq、blastn、trimmomatic
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:00:00+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/bioinformatics/" itemprop="url" rel="index">
+                    <span itemprop="name">bioinformatics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/05/general-ana/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/05/general-ana/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          合理的安排时间，就等于节约时间。———— 培根
+
+1. bam转换为fastq使用bam2fastq，ion平台的测序数据一般为bam文件，包含与参考基因组的比对结果，可以使用samtools查看。不过对于宏基因组测序来说，因为不存在参考基因组，因此没有任何map结果，可以直接转为fq文件也不会损失任何信息。
+1bam2fastq ./path/to/&lt;name&gt;.bam -o path/to/&lt;name&gt;.fastq
+2. blast 比对这里提到的是BLAST+。
+blastn用于碱基序列之间的比对，一般只适用于少量序列与参考序列的比对。
+一般情况下建立索引比较慢，但是建立好索引之后可以多次使用，比对速度适中, 比对结果准确。
+1blastn -query ./path/to/query.fasta  -out  /output/to/&lt;name&gt;.blast  -db ~/database/blast/db/16SMicrobial/16SMic
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/05/general-ana/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
